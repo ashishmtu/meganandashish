@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Pinyon+Script&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -21,12 +21,12 @@
             sage: '#BCBC86',
             rose: '#BE8979',
             blush: '#E2CEC0',
-            ivory: '#F7F1EB',
+            paper: '#FAF6F2',
           },
           fontFamily: {
             serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            script: ['"Pinyon Script"', 'cursive'],
+            script: ['"Alex Brush"', 'cursive'],
           }
         }
       }
@@ -35,698 +35,559 @@
 
   <style>
     body {
-      background-color: #E2CEC0;
+      background-color: #FAF6F2;
       color: #384F1D;
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
+      transition: background-color 0.5s ease;
     }
-    .arch-frame {
-      border-top-left-radius: 9999px;
-      border-top-right-radius: 9999px;
+    body.blush-mode {
+      background-color: #E2CEC0;
     }
-    .editorial-border {
-      border: 1px solid rgba(159, 144, 109, 0.45);
+    .watercolor-paint {
+      filter: url(#watercolor-feathered);
     }
-    .glass-nav {
-      background: rgba(226, 206, 192, 0.9);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+    .vignette-mask {
+      mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
     }
-    .canvas-texture {
-      background-image: radial-gradient(rgba(159, 144, 109, 0.14) 1px, transparent 0);
-      background-size: 16px 16px;
-    }
-    .painted-artwork {
-      filter: url(#watercolor-brush);
-    }
-    .fade-up {
+    .fade-section {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      transform: translateY(20px);
+      transition: opacity 0.9s ease-out, transform 0.9s ease-out;
     }
-    .fade-up.visible {
+    .fade-section.visible {
       opacity: 1;
       transform: translateY(0);
     }
+    input, select, textarea {
+      background: transparent;
+      border-bottom: 1px solid rgba(56, 79, 29, 0.35);
+      border-radius: 0;
+    }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-bottom-color: #BE8979;
+    }
   </style>
 </head>
-<body class="canvas-texture selection:bg-rose selection:text-ivory">
+<body class="selection:bg-rose selection:text-paper relative">
 
   <svg class="hidden" width="0" height="0" aria-hidden="true">
     <defs>
-      <filter id="watercolor-brush" x="-10%" y="-10%" width="120%" height="120%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="4" seed="8" result="noise" />
-        <feDisplacementMap in="SourceGraphic" in2="noise" scale="7" xChannelSelector="R" yChannelSelector="G" result="displaced" />
-        <feGaussianBlur in="displaced" stdDeviation="0.45" result="softened" />
-        <feMerge>
-          <feMergeNode in="softened" />
-        </feMerge>
+      <filter id="watercolor-feathered" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" seed="11" result="noise" />
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+        <feGaussianBlur in="displaced" stdDeviation="0.6" result="soft" />
       </filter>
     </defs>
   </svg>
 
-  <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-taupe/30">
-    <div class="max-w-7xl mx-auto px-4 sm:px-8 h-20 flex items-center justify-between">
-      <a href="#home" class="font-serif text-2xl sm:text-3xl tracking-wider font-semibold text-olive">
-        A <span class="font-script text-rose text-3xl mx-0.5">&amp;</span> M
-      </a>
-
-      <nav class="hidden lg:flex items-center space-x-7 text-xs uppercase tracking-[0.2em] font-medium text-olive/90">
-        <a href="#home" class="hover:text-rose transition">Home</a>
-        <a href="#story" class="hover:text-rose transition">Our Story</a>
-        <a href="#venue" class="hover:text-rose transition">Venue</a>
-        <a href="#details" class="hover:text-rose transition">Details</a>
-        <a href="#travel" class="hover:text-rose transition">Travel</a>
-        <a href="#party" class="hover:text-rose transition">Wedding Party</a>
-        <a href="#registry" class="hover:text-rose transition">Registry</a>
-        <a href="#faqs" class="hover:text-rose transition">FAQs</a>
-      </nav>
-
-      <div class="flex items-center space-x-3">
-        <a href="#rsvp" class="px-5 py-2.5 bg-olive text-ivory text-xs uppercase tracking-[0.2em] rounded-full hover:bg-rose transition duration-300">
-          RSVP
-        </a>
-        <button id="mobile-menu-btn" class="lg:hidden p-2 text-olive focus:outline-none" aria-label="Toggle Menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/>
-          </svg>
-        </button>
-      </div>
+  <nav class="sticky top-0 z-40 py-4 px-4 sm:px-8 backdrop-blur-md bg-paper/75 border-b border-taupe/15 transition-colors duration-500" id="top-nav">
+    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[11px] uppercase tracking-[0.22em] text-olive/80">
+      <a href="#home" class="hover:text-rose transition">Home</a>
+      <a href="#story" class="hover:text-rose transition">Our Story</a>
+      <a href="#venue" class="hover:text-rose transition">Ceremony</a>
+      <a href="#details" class="hover:text-rose transition">Reception &amp; Details</a>
+      <a href="#travel" class="hover:text-rose transition">Where To Stay</a>
+      <a href="#party" class="hover:text-rose transition">Wedding Party</a>
+      <a href="#registry" class="hover:text-rose transition">Registry</a>
+      <a href="#rsvp" class="hover:text-rose transition font-semibold text-olive">RSVP</a>
+      <a href="#faqs" class="hover:text-rose transition">FAQs</a>
     </div>
+  </nav>
 
-    <div id="mobile-menu" class="hidden lg:hidden bg-ivory border-b border-taupe/30 px-6 py-6 space-y-3 text-xs uppercase tracking-[0.2em]">
-      <a href="#home" class="block py-2 hover:text-rose">1. Home</a>
-      <a href="#story" class="block py-2 hover:text-rose">Love Story &amp; Memory Lane</a>
-      <a href="#venue" class="block py-2 hover:text-rose">2. Venue</a>
-      <a href="#details" class="block py-2 hover:text-rose">3. Details &amp; Dress Code</a>
-      <a href="#travel" class="block py-2 hover:text-rose">4. Travel &amp; Stay</a>
-      <a href="#party" class="block py-2 hover:text-rose">5. Wedding Party</a>
-      <a href="#registry" class="block py-2 hover:text-rose">6. Gift Registry</a>
-      <a href="#rsvp" class="block py-2 hover:text-rose">7. RSVP</a>
-      <a href="#faqs" class="block py-2 hover:text-rose">8. FAQs</a>
-    </div>
-  </header>
+  <button 
+    onclick="toggleCanvasColor()" 
+    class="fixed bottom-5 right-5 z-50 px-4 py-2 rounded-full bg-olive text-paper text-[10px] uppercase tracking-[0.18em] shadow-md hover:bg-rose transition"
+    title="Switch continuous background between Soft Ivory and Warm Blush">
+    Switch Canvas Tone
+  </button>
 
-  <section id="home" class="relative pt-28 pb-20 md:pt-36 md:pb-28 px-4 sm:px-8 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+  <main class="max-w-5xl mx-auto px-4 sm:px-8">
+
+    <section id="home" class="pt-6 pb-20 text-center fade-section">
       
-      <div class="lg:col-span-7 space-y-6 text-center lg:text-left fade-up">
-        <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full bg-ivory/80 border border-taupe/40 text-xs uppercase tracking-[0.25em] text-olive">
-          <span>Together With Their Families</span>
-        </div>
+      <div class="max-w-3xl mx-auto relative">
+        <svg viewBox="0 0 800 560" class="w-full h-auto watercolor-paint vignette-mask" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="heroWash" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#E2CEC0" stop-opacity="0.7" />
+              <stop offset="65%" stop-color="#BCBC86" stop-opacity="0.35" />
+              <stop offset="100%" stop-color="#FAF6F2" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="pillarGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#E2CEC0" />
+              <stop offset="50%" stop-color="#FAF6F2" />
+              <stop offset="100%" stop-color="#9F906D" stop-opacity="0.55" />
+            </linearGradient>
+          </defs>
 
-        <h1 class="font-serif text-6xl sm:text-7xl xl:text-8xl leading-[0.95] text-olive font-normal">
-          Ashish <span class="font-script text-rose block sm:inline text-6xl sm:text-7xl my-2">&amp;</span> Megan
+          <ellipse cx="400" cy="290" rx="370" ry="240" fill="url(#heroWash)" />
+
+          <g fill="#BCBC86" opacity="0.65">
+            <circle cx="170" cy="280" r="95" />
+            <circle cx="120" cy="340" r="75" />
+            <circle cx="630" cy="280" r="95" />
+            <circle cx="680" cy="340" r="75" />
+          </g>
+          <g fill="#384F1D" opacity="0.55">
+            <circle cx="195" cy="310" r="70" />
+            <circle cx="605" cy="310" r="70" />
+            <ellipse cx="400" cy="105" rx="190" ry="42" />
+          </g>
+
+          <path d="M235 450 L235 190 Q400 75 565 190 L565 450" fill="none" stroke="#9F906D" stroke-width="26" opacity="0.5" />
+          <path d="M210 465 L210 175 Q400 55 590 175 L590 465" fill="none" stroke="url(#pillarGrad)" stroke-width="34" />
+          
+          <rect x="182" y="185" width="56" height="280" fill="url(#pillarGrad)" stroke="#9F906D" stroke-width="1.5" />
+          <rect x="255" y="210" width="42" height="235" fill="url(#pillarGrad)" stroke="#9F906D" stroke-width="1.2" />
+          <rect x="503" y="210" width="42" height="235" fill="url(#pillarGrad)" stroke="#9F906D" stroke-width="1.2" />
+          <rect x="562" y="185" width="56" height="280" fill="url(#pillarGrad)" stroke="#9F906D" stroke-width="1.5" />
+
+          <rect x="172" y="455" width="76" height="22" fill="#E2CEC0" stroke="#9F906D" stroke-width="1.5" />
+          <rect x="552" y="455" width="76" height="22" fill="#E2CEC0" stroke="#9F906D" stroke-width="1.5" />
+
+          <g fill="#384F1D" opacity="0.85">
+            <path d="M378 245 C378 232 392 232 392 245 L395 340 L375 340 Z" />
+            <rect x="376" y="335" width="18" height="105" rx="4" />
+            <circle cx="386" cy="222" r="12" fill="#E2CEC0" />
+            <path d="M376 218 Q386 208 395 218" fill="#384F1D" />
+          </g>
+
+          <g>
+            <circle cx="414" cy="228" r="11" fill="#E2CEC0" />
+            <path d="M406 222 Q418 214 424 230" fill="#384F1D" />
+            <path d="M418 226 Q455 290 470 430 L415 430 Z" fill="#FAF6F2" opacity="0.65" />
+            <path d="M402 248 L424 248 L465 440 L372 440 Z" fill="#FAF6F2" stroke="#E2CEC0" stroke-width="2" />
+            <path d="M398 280 Q425 350 452 440" stroke="#E2CEC0" stroke-width="3" fill="none" />
+            <circle cx="398" cy="285" r="22" fill="#384F1D" opacity="0.8" />
+            <circle cx="394" cy="282" r="9" fill="#BE8979" />
+            <circle cx="406" cy="288" r="8" fill="#E2CEC0" />
+            <circle cx="398" cy="294" r="7" fill="#BE8979" />
+          </g>
+
+          <g fill="#384F1D" opacity="0.75">
+            <ellipse cx="260" cy="115" rx="55" ry="20" transform="rotate(-18 260 115)" />
+            <ellipse cx="400" cy="92" rx="75" ry="22" />
+            <ellipse cx="540" cy="115" rx="55" ry="20" transform="rotate(18 540 115)" />
+          </g>
+          <g fill="#BE8979" opacity="0.85">
+            <circle cx="240" cy="122" r="12" />
+            <circle cx="310" cy="98" r="14" />
+            <circle cx="400" cy="88" r="15" />
+            <circle cx="485" cy="98" r="14" />
+            <circle cx="555" cy="122" r="12" />
+            <circle cx="110" cy="435" r="10" />
+            <circle cx="145" cy="420" r="12" />
+            <circle cx="655" cy="420" r="12" />
+            <circle cx="690" cy="435" r="10" />
+          </g>
+
+          <g fill="#384F1D" opacity="0.7">
+            <path d="M40 465 Q95 390 175 455 Z" />
+            <path d="M85 470 Q135 405 185 465 Z" />
+            <path d="M615 465 Q665 405 715 470 Z" />
+            <path d="M625 455 Q705 390 760 465 Z" />
+          </g>
+          <ellipse cx="400" cy="478" rx="280" ry="22" fill="#E2CEC0" opacity="0.65" />
+        </svg>
+      </div>
+
+      <div class="mt-2 space-y-3">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-taupe">Together With Their Families</p>
+        <h1 class="font-script text-6xl sm:text-7xl md:text-8xl text-olive leading-none py-2">
+          Ashish &amp; Megan
         </h1>
-
-        <p class="font-serif italic text-2xl sm:text-3xl text-taupe max-w-xl mx-auto lg:mx-0">
-          Invite you to celebrate their wedding beside the water and gardens
+        <p class="text-xs sm:text-sm text-olive/80 tracking-wide">
+          Joyfully invite you to celebrate their wedding day
+        </p>
+        <p class="font-serif text-lg sm:text-xl uppercase tracking-[0.18em] text-olive pt-1">
+          January 23, 2027 &nbsp;•&nbsp; Pompano Beach, Florida
         </p>
 
-        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 sm:gap-8 text-sm tracking-[0.18em] uppercase font-medium text-olive">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-rose"></span>
-            <span>January 23, 2027</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-olive"></span>
-            <span>Galuppi's • Pompano Beach, FL</span>
-          </div>
-        </div>
-
-        <div class="pt-6">
-          <p class="text-xs uppercase tracking-[0.25em] text-taupe mb-3">Counting Down To Forever</p>
-          <div id="countdown" class="grid grid-cols-4 gap-3 max-w-md mx-auto lg:mx-0">
-            <div class="bg-ivory/90 editorial-border rounded-2xl p-4 text-center">
-              <span id="days" class="font-serif text-3xl sm:text-4xl font-semibold text-olive block">000</span>
-              <span class="text-[10px] uppercase tracking-[0.2em] text-taupe">Days</span>
-            </div>
-            <div class="bg-ivory/90 editorial-border rounded-2xl p-4 text-center">
-              <span id="hours" class="font-serif text-3xl sm:text-4xl font-semibold text-olive block">00</span>
-              <span class="text-[10px] uppercase tracking-[0.2em] text-taupe">Hours</span>
-            </div>
-            <div class="bg-ivory/90 editorial-border rounded-2xl p-4 text-center">
-              <span id="minutes" class="font-serif text-3xl sm:text-4xl font-semibold text-olive block">00</span>
-              <span class="text-[10px] uppercase tracking-[0.2em] text-taupe">Minutes</span>
-            </div>
-            <div class="bg-ivory/90 editorial-border rounded-2xl p-4 text-center">
-              <span id="seconds" class="font-serif text-3xl sm:text-4xl font-semibold text-olive block">00</span>
-              <span class="text-[10px] uppercase tracking-[0.2em] text-taupe">Seconds</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pt-4 flex flex-wrap justify-center lg:justify-start gap-4">
-          <a href="#rsvp" class="px-8 py-4 bg-olive text-ivory text-xs uppercase tracking-[0.22em] rounded-full hover:bg-rose transition duration-300 shadow-sm">
-            Confirm Attendance
-          </a>
-          <a href="#venue" class="px-8 py-4 bg-ivory/80 text-olive editorial-border text-xs uppercase tracking-[0.22em] rounded-full hover:bg-sage/40 transition duration-300">
-            Explore The Day
+        <div class="pt-4">
+          <a href="#rsvp" class="inline-block px-9 py-2.5 bg-olive text-paper text-xs tracking-wider rounded-full hover:bg-rose transition duration-300">
+            Kindly RSVP by December 1
           </a>
         </div>
-      </div>
 
-      <div class="lg:col-span-5 fade-up">
-        <div class="relative mx-auto max-w-md">
-          <div class="arch-frame p-3 editorial-border bg-ivory/75 shadow-xl">
-            <div class="arch-frame relative h-[490px] sm:h-[540px] overflow-hidden bg-[#F7F1EB] flex flex-col items-center justify-end p-6 text-center">
-              
-              <svg viewBox="0 0 400 540" class="absolute inset-0 w-full h-full object-cover painted-artwork" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <linearGradient id="skyWash" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stop-color="#E2CEC0" />
-                    <stop offset="55%" stop-color="#F7F1EB" />
-                    <stop offset="100%" stop-color="#BCBC86" stop-opacity="0.5" />
-                  </linearGradient>
-                  <linearGradient id="lakeWash" x1="0" y1="0" x2="1" y2="0">
-                    <stop offset="0%" stop-color="#9F906D" stop-opacity="0.45" />
-                    <stop offset="50%" stop-color="#E2CEC0" stop-opacity="0.8" />
-                    <stop offset="100%" stop-color="#BCBC86" stop-opacity="0.55" />
-                  </linearGradient>
-                </defs>
-                <rect width="400" height="540" fill="url(#skyWash)" />
-                <circle cx="200" cy="155" r="78" fill="#BE8979" opacity="0.22" />
-                <path d="M-20 310 Q90 250 210 295 T420 280 L420 380 L-20 380 Z" fill="#9F906D" opacity="0.4" />
-                <path d="M-20 335 Q140 285 270 325 T420 310 L420 410 L-20 410 Z" fill="#BCBC86" opacity="0.7" />
-                <rect x="0" y="345" width="400" height="95" fill="url(#lakeWash)" />
-                <path d="M-20 420 Q110 380 250 415 T420 395 L420 540 L-20 540 Z" fill="#384F1D" opacity="0.85" />
-                
-                <g stroke="#384F1D" stroke-width="5" fill="none" opacity="0.85">
-                  <path d="M95 430 L95 190 Q200 135 305 190 L305 430" />
-                </g>
-                <path d="M92 200 Q145 275 102 425 L80 425 Q95 290 88 200 Z" fill="#F7F1EB" opacity="0.92" />
-                <path d="M308 200 Q255 275 298 425 L320 425 Q305 290 312 200 Z" fill="#F7F1EB" opacity="0.92" />
-                <path d="M95 195 Q200 235 305 195 Q200 165 95 195 Z" fill="#F7F1EB" opacity="0.9" />
-
-                <g fill="#384F1D" opacity="0.9">
-                  <ellipse cx="115" cy="185" rx="35" ry="18" transform="rotate(-20 115 185)" />
-                  <ellipse cx="200" cy="168" rx="48" ry="18" />
-                  <ellipse cx="285" cy="185" rx="35" ry="18" transform="rotate(20 285 185)" />
-                  <ellipse cx="92" cy="275" rx="22" ry="38" />
-                  <ellipse cx="308" cy="275" rx="22" ry="38" />
-                </g>
-                <g fill="#BE8979">
-                  <circle cx="105" cy="190" r="14" />
-                  <circle cx="130" cy="178" r="11" />
-                  <circle cx="190" cy="166" r="15" />
-                  <circle cx="215" cy="172" r="12" />
-                  <circle cx="275" cy="182" r="14" />
-                  <circle cx="298" cy="196" r="11" />
-                  <circle cx="92" cy="265" r="12" />
-                  <circle cx="308" cy="265" r="12" />
-                </g>
-                <g fill="#E2CEC0">
-                  <circle cx="118" cy="192" r="9" />
-                  <circle cx="202" cy="162" r="10" />
-                  <circle cx="288" cy="186" r="9" />
-                  <circle cx="96" cy="282" r="9" />
-                  <circle cx="302" cy="282" r="9" />
-                </g>
-              </svg>
-
-              <div class="relative z-10 bg-ivory/90 backdrop-blur-sm px-6 py-4 rounded-2xl editorial-border shadow-sm">
-                <p class="text-[10px] uppercase tracking-[0.25em] text-taupe">Built-In Watercolor &amp; Oil Canvas</p>
-                <p class="font-serif italic text-lg text-olive">Lakeside Floral Arch &amp; Garden Vows</p>
-              </div>
-            </div>
+        <div id="countdown" class="pt-8 flex justify-center gap-8 sm:gap-12 text-olive">
+          <div>
+            <span id="days" class="font-serif text-2xl sm:text-3xl block">000</span>
+            <span class="text-[9px] uppercase tracking-[0.25em] text-taupe">Days</span>
           </div>
-
-          <div class="hidden sm:flex absolute -bottom-6 -left-6 w-32 h-32 rounded-full bg-olive text-ivory flex-col items-center justify-center text-center p-3 shadow-lg border-4 border-blush">
-            <span class="font-script text-2xl text-rose">Save</span>
-            <span class="text-[10px] uppercase tracking-[0.2em]">The Date</span>
-            <span class="font-serif text-sm mt-0.5">01.23.27</span>
+          <div>
+            <span id="hours" class="font-serif text-2xl sm:text-3xl block">00</span>
+            <span class="text-[9px] uppercase tracking-[0.25em] text-taupe">Hours</span>
+          </div>
+          <div>
+            <span id="minutes" class="font-serif text-2xl sm:text-3xl block">00</span>
+            <span class="text-[9px] uppercase tracking-[0.25em] text-taupe">Minutes</span>
+          </div>
+          <div>
+            <span id="seconds" class="font-serif text-2xl sm:text-3xl block">00</span>
+            <span class="text-[9px] uppercase tracking-[0.25em] text-taupe">Seconds</span>
           </div>
         </div>
       </div>
+    </section>
 
-    </div>
+    <div class="text-center text-sage/60 text-2xl select-none">✦</div>
 
-    <div class="mt-24 bg-ivory/85 editorial-border rounded-3xl p-8 sm:p-14 max-w-4xl mx-auto text-center fade-up">
-      <p class="text-xs uppercase tracking-[0.25em] text-rose mb-2">A Note From Us</p>
-      <h2 class="font-serif text-3xl sm:text-4xl text-olive mb-6">Welcome to Our Wedding Celebration</h2>
-      <p class="text-olive/85 leading-relaxed text-base sm:text-lg font-light max-w-2xl mx-auto">
-        We are overjoyed to gather our closest family and friends in sunny South Florida as we begin our next chapter together. From the lush garden florals and lakeside vows to an afternoon filled with music, warmth, and our favorite people, every detail of this celebration has been shaped by the love and support you have given us over the years.
+    <section id="story" class="py-16 text-center max-w-3xl mx-auto fade-section">
+      <h2 class="font-script text-5xl sm:text-6xl text-olive">Our Love Story</h2>
+      <p class="text-xs sm:text-sm text-olive/80 leading-relaxed mt-4 max-w-xl mx-auto">
+        We are overjoyed to gather our closest family and friends in sunny South Florida. From snowy trails in Rocky Mountain National Park and Red Rocks to historic gardens in Miami, Key West refuges, and cozy evenings at home with our cat Ellie, every chapter has led us to this lakeside celebration.
       </p>
-      <p class="font-script text-4xl text-rose mt-6">Ashish &amp; Megan</p>
-    </div>
-  </section>
 
-  <section id="story" class="py-20 bg-ivory/60 border-y border-taupe/30 px-4 sm:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-16 fade-up">
-        <p class="text-xs uppercase tracking-[0.25em] text-taupe">Chapter By Chapter</p>
-        <h2 class="font-serif text-4xl sm:text-5xl text-olive mt-2">Our Love Story &amp; Memory Lane</h2>
-        <p class="text-sm text-olive/75 mt-3">Rendered in our vintage landscape painting style. Ready to customize with your personal photos.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <div class="bg-blush/50 editorial-border rounded-3xl p-8 fade-up">
-          <span class="text-xs uppercase tracking-[0.2em] text-rose font-semibold">Chapter I</span>
-          <h3 class="font-serif text-2xl text-olive mt-2 mb-3">Where It All Began</h3>
-          <p class="text-sm text-olive/80 leading-relaxed">
-            Two paths grounded in a love for landscapes, maps, design, and exploring natural wonders crossed in Florida and quickly turned every weekend into an adventure.
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-14">
+        <div class="space-y-2">
+          <p class="font-serif text-base uppercase tracking-[0.18em] text-olive">Chapter I • First Spark</p>
+          <p class="text-xs text-taupe leading-relaxed">
+            Two paths grounded in a love for landscapes, maps, design, and nature crossed in Florida and turned every weekend into an adventure.
           </p>
         </div>
-
-        <div class="bg-blush/50 editorial-border rounded-3xl p-8 fade-up">
-          <span class="text-xs uppercase tracking-[0.2em] text-rose font-semibold">Chapter II</span>
-          <h3 class="font-serif text-2xl text-olive mt-2 mb-3">Adventures Across Mountains &amp; Coasts</h3>
-          <p class="text-sm text-olive/80 leading-relaxed">
-            From snowy trails in Rocky Mountain National Park and Red Rocks to historic gardens in Miami, Key West refuges, and cozy evenings at home with Ellie.
+        <div class="space-y-2">
+          <p class="font-serif text-base uppercase tracking-[0.18em] text-olive">Chapter II • Memory Lane</p>
+          <p class="text-xs text-taupe leading-relaxed">
+            Exploring mountain peaks, art museums, natural springs, and botanical gardens together across Colorado and Florida.
           </p>
         </div>
-
-        <div class="bg-blush/50 editorial-border rounded-3xl p-8 fade-up">
-          <span class="text-xs uppercase tracking-[0.2em] text-rose font-semibold">Chapter III</span>
-          <h3 class="font-serif text-2xl text-olive mt-2 mb-3">The Proposal &amp; Next Chapter</h3>
-          <p class="text-sm text-olive/80 leading-relaxed">
-            With a promise for a lifetime of curiosity, laughter, and coastal road trips, we cannot wait to say our vows surrounded by the people who mean the world to us.
+        <div class="space-y-2">
+          <p class="font-serif text-base uppercase tracking-[0.18em] text-olive">Chapter III • Forever</p>
+          <p class="text-xs text-taupe leading-relaxed">
+            Saying our vows beside the water before heading off on our Oregon and California coastal honeymoon road trip.
           </p>
         </div>
       </div>
+    </section>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 fade-up">
-        <div class="arch-frame overflow-hidden h-72 editorial-border bg-ivory relative">
-          <svg viewBox="0 0 300 360" class="w-full h-full object-cover painted-artwork" xmlns="http://www.w3.org/2000/svg">
-            <rect width="300" height="360" fill="#E2CEC0" />
-            <circle cx="220" cy="85" r="42" fill="#BE8979" opacity="0.45" />
-            <polygon points="-20,280 95,120 210,280" fill="#9F906D" />
-            <polygon points="80,290 195,105 320,290" fill="#384F1D" opacity="0.85" />
-            <polygon points="195,105 165,155 225,155" fill="#F7F1EB" opacity="0.8" />
-            <rect y="260" width="300" height="100" fill="#BCBC86" />
+    <section id="venue" class="py-16 relative fade-section">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        
+        <div class="md:col-span-6 relative">
+          <svg viewBox="0 0 500 540" class="w-full max-w-md mx-auto h-auto watercolor-paint" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(-20, 10)">
+              <line x1="95" y1="85" x2="10" y2="210" stroke="#9F906D" stroke-width="3" />
+              <path d="M20 55 Q95 15 165 95 Q130 95 95 85 Q55 75 20 55 Z" fill="#BCBC86" opacity="0.85" />
+              <path d="M45 62 Q95 30 135 88" fill="#FAF6F2" opacity="0.75" />
+            </g>
+
+            <ellipse cx="265" cy="485" rx="115" ry="18" fill="#9F906D" opacity="0.25" />
+
+            <path d="M190 335 L182 490 M340 335 L348 490 M215 345 L212 465 M315 345 L318 465" stroke="#9F906D" stroke-width="8" stroke-linecap="round" />
+            <path d="M195 175 Q265 145 335 175 L328 315 L202 315 Z" fill="#FAF6F2" stroke="#9F906D" stroke-width="5" />
+            <ellipse cx="265" cy="325" rx="88" ry="24" fill="#FAF6F2" stroke="#9F906D" stroke-width="5" />
+
+            <path d="M192 215 Q160 320 152 455 Q172 460 185 335 Z" fill="#FAF6F2" opacity="0.9" stroke="#E2CEC0" stroke-width="1.5" />
+
+            <g fill="#384F1D" opacity="0.85">
+              <ellipse cx="215" cy="175" rx="52" ry="22" transform="rotate(-25 215 175)" />
+              <ellipse cx="275" cy="160" rx="58" ry="20" />
+              <ellipse cx="330" cy="182" rx="48" ry="20" transform="rotate(25 330 182)" />
+              <ellipse cx="180" cy="235" rx="22" ry="42" transform="rotate(-15 180 235)" />
+            </g>
+            <g fill="#FAF6F2" stroke="#E2CEC0" stroke-width="1.5">
+              <circle cx="220" cy="172" r="18" />
+              <circle cx="255" cy="158" r="20" />
+              <circle cx="292" cy="166" r="17" />
+              <circle cx="195" cy="205" r="16" />
+              <circle cx="322" cy="188" r="15" />
+            </g>
+            <g fill="#BE8979" opacity="0.85">
+              <circle cx="238" cy="168" r="12" />
+              <circle cx="275" cy="154" r="13" />
+              <circle cx="182" cy="228" r="11" />
+              <circle cx="310" cy="178" r="12" />
+            </g>
           </svg>
-          <div class="absolute bottom-0 inset-x-0 bg-olive/85 text-ivory text-[11px] uppercase tracking-widest py-2 text-center">
-            Painting 01 • Colorado Peaks
-          </div>
         </div>
 
-        <div class="rounded-t-2xl rounded-b-full overflow-hidden h-72 editorial-border bg-ivory relative">
-          <svg viewBox="0 0 300 360" class="w-full h-full object-cover painted-artwork" xmlns="http://www.w3.org/2000/svg">
-            <rect width="300" height="360" fill="#F7F1EB" />
-            <path d="M0 220 Q150 180 300 220 L300 360 L0 360 Z" fill="#BCBC86" />
-            <rect x="85" y="100" width="130" height="130" rx="65" fill="#9F906D" opacity="0.45" />
-            <circle cx="95" cy="165" r="35" fill="#384F1D" opacity="0.85" />
-            <circle cx="205" cy="165" r="35" fill="#384F1D" opacity="0.85" />
-            <circle cx="110" cy="155" r="16" fill="#BE8979" />
-            <circle cx="190" cy="155" r="16" fill="#BE8979" />
-          </svg>
-          <div class="absolute bottom-0 inset-x-0 bg-olive/85 text-ivory text-[11px] uppercase tracking-widest py-2 text-center">
-            Painting 02 • Vizcaya Gardens
-          </div>
-        </div>
-
-        <div class="arch-frame overflow-hidden h-72 editorial-border bg-ivory relative">
-          <svg viewBox="0 0 300 360" class="w-full h-full object-cover painted-artwork" xmlns="http://www.w3.org/2000/svg">
-            <rect width="300" height="360" fill="#E2CEC0" />
-            <circle cx="150" cy="175" r="55" fill="#BE8979" opacity="0.55" />
-            <rect y="200" width="300" height="80" fill="#9F906D" opacity="0.55" />
-            <path d="M0 265 Q140 240 300 275 L300 360 L0 360 Z" fill="#384F1D" opacity="0.85" />
-            <path d="M75 270 Q95 160 65 95" stroke="#384F1D" stroke-width="6" fill="none" />
-            <ellipse cx="45" cy="100" rx="28" ry="8" fill="#384F1D" transform="rotate(-25 45 100)" />
-            <ellipse cx="90" cy="98" rx="28" ry="8" fill="#384F1D" transform="rotate(20 90 98)" />
-          </svg>
-          <div class="absolute bottom-0 inset-x-0 bg-olive/85 text-ivory text-[11px] uppercase tracking-widest py-2 text-center">
-            Painting 03 • Key West Coast
-          </div>
-        </div>
-
-        <div class="rounded-t-2xl rounded-b-full overflow-hidden h-72 editorial-border bg-ivory relative">
-          <svg viewBox="0 0 300 360" class="w-full h-full object-cover painted-artwork" xmlns="http://www.w3.org/2000/svg">
-            <rect width="300" height="360" fill="#F7F1EB" />
-            <circle cx="150" cy="170" r="85" fill="#BCBC86" opacity="0.45" />
-            <circle cx="120" cy="160" r="32" fill="#BE8979" opacity="0.85" />
-            <circle cx="175" cy="150" r="28" fill="#9F906D" opacity="0.75" />
-            <circle cx="155" cy="195" r="34" fill="#384F1D" opacity="0.85" />
-            <circle cx="145" cy="170" r="18" fill="#E2CEC0" />
-          </svg>
-          <div class="absolute bottom-0 inset-x-0 bg-olive/85 text-ivory text-[11px] uppercase tracking-widest py-2 text-center">
-            Painting 04 • Botanical Crest
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="venue" class="py-24 px-4 sm:px-8 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
-      <div class="lg:col-span-6 fade-up">
-        <div class="bg-ivory p-4 rounded-3xl editorial-border shadow-md">
-          <div class="relative h-80 sm:h-96 rounded-2xl overflow-hidden bg-[#F7F1EB]">
-            
-            <svg viewBox="0 0 600 420" class="w-full h-full object-cover painted-artwork" xmlns="http://www.w3.org/2000/svg">
-              <rect width="600" height="420" fill="#E2CEC0" />
-              <path d="M0 190 Q300 165 600 195 L600 285 L0 285 Z" fill="#9F906D" opacity="0.4" />
-              <path d="M0 265 Q300 245 600 265 L600 420 L0 420 Z" fill="#BCBC86" opacity="0.85" />
-              <polygon points="210,315 390,315 430,365 170,365" fill="#BE8979" opacity="0.65" />
-              <path d="M250 420 L275 345 L325 345 L350 420 Z" fill="#F7F1EB" opacity="0.85" />
-
-              <rect x="440" y="210" width="95" height="70" fill="#F7F1EB" stroke="#9F906D" stroke-width="8" />
-              <text x="487" y="250" text-anchor="middle" fill="#384F1D" font-family="Cormorant Garamond, serif" font-style="italic" font-size="20">Welcome</text>
-
-              <path d="M195 320 L195 110 L405 110 L405 320" stroke="#384F1D" stroke-width="8" fill="none" />
-              <path d="M195 115 Q245 200 205 320 L175 320 Q190 200 185 115 Z" fill="#F7F1EB" />
-              <path d="M405 115 Q355 200 395 320 L425 320 Q410 200 415 115 Z" fill="#F7F1EB" />
-              <path d="M195 115 Q300 165 405 115 Z" fill="#F7F1EB" />
-
-              <g fill="#384F1D">
-                <ellipse cx="210" cy="115" rx="45" ry="20" />
-                <ellipse cx="300" cy="108" rx="55" ry="18" />
-                <ellipse cx="390" cy="115" rx="45" ry="20" />
-                <ellipse cx="300" cy="305" rx="85" ry="22" />
-              </g>
-              <g fill="#BE8979">
-                <circle cx="205" cy="115" r="14" />
-                <circle cx="295" cy="108" r="15" />
-                <circle cx="385" cy="115" r="14" />
-                <circle cx="255" cy="305" r="13" />
-                <circle cx="305" cy="302" r="15" />
-                <circle cx="345" cy="305" r="13" />
-              </g>
-            </svg>
-
-            <div class="absolute top-4 left-4 bg-ivory/95 px-4 py-1.5 rounded-full text-[11px] uppercase tracking-[0.2em] text-olive editorial-border">
-              Painted Venue Illustration • Galuppi's Gazebo &amp; Welcome Easel
-            </div>
-          </div>
-
-          <div class="grid grid-cols-3 gap-3 mt-4 text-center">
-            <div class="bg-blush/60 p-3 rounded-xl editorial-border">
-              <p class="font-serif text-xl font-semibold text-olive">Lakeside Arch</p>
-              <p class="text-[11px] text-olive/75">Draped ivory fabric &amp; lush florals</p>
-            </div>
-            <div class="bg-blush/60 p-3 rounded-xl editorial-border">
-              <p class="font-serif text-xl font-semibold text-olive">Curved Seating</p>
-              <p class="text-[11px] text-olive/75">8 to 10 ft floral-lined central aisle</p>
-            </div>
-            <div class="bg-blush/60 p-3 rounded-xl editorial-border">
-              <p class="font-serif text-xl font-semibold text-olive">Live Duo</p>
-              <p class="text-[11px] text-olive/75">Acoustic ceremony musicians</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="lg:col-span-6 space-y-6 fade-up">
-        <p class="text-xs uppercase tracking-[0.25em] text-rose font-semibold">The Setting</p>
-        <h2 class="font-serif text-4xl sm:text-5xl text-olive">Galuppi's Restaurant &amp; Patio</h2>
-        <p class="text-olive/80 leading-relaxed text-sm sm:text-base">
-          Set beside scenic water views and palm-lined greens, our ceremony will take place outdoors at the lakeside brick gazebo, greeted by our framed vintage landscape welcome easel and cascading garden arrangements. Reception dining and toasts will follow immediately on the terrace.
-        </p>
-
-        <div class="bg-ivory/85 editorial-border rounded-2xl p-6 space-y-3 text-sm">
-          <div class="flex justify-between border-b border-taupe/25 pb-2">
-            <span class="uppercase tracking-wider text-xs text-taupe">Address</span>
-            <span class="font-medium text-olive text-right">1103 N Federal Hwy, Pompano Beach, FL 33062</span>
-          </div>
-          <div class="flex justify-between border-b border-taupe/25 pb-2">
-            <span class="uppercase tracking-wider text-xs text-taupe">Ceremony Entrance</span>
-            <span class="font-medium text-olive text-right">Garden Brick Pathway &amp; Vintage Welcome Easel</span>
-          </div>
-          <div class="flex justify-between">
-            <span class="uppercase tracking-wider text-xs text-taupe">Parking</span>
-            <span class="font-medium text-olive text-right">Complimentary On-Site Lot</span>
-          </div>
-        </div>
-
-        <div class="rounded-2xl overflow-hidden editorial-border h-52 bg-ivory">
-          <iframe 
-            title="Galuppi's Location Map"
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            loading="lazy" 
-            allowfullscreen 
-            src="https://www.google.com/maps?q=Galuppi's+1103+N+Federal+Hwy+Pompano+Beach+FL&output=embed">
-          </iframe>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section id="details" class="py-24 bg-olive text-ivory px-4 sm:px-8">
-    <div class="max-w-7xl mx-auto space-y-20">
-      
-      <div class="text-center max-w-2xl mx-auto fade-up">
-        <p class="text-xs uppercase tracking-[0.25em] text-sage">Order Of Events</p>
-        <h2 class="font-serif text-4xl sm:text-5xl mt-2">Wedding Day Timeline</h2>
-        <p class="text-sm text-ivory/75 mt-3">A sunlit celebration of vows, acoustic music, garden florals, and celebratory dining.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-5 gap-6 fade-up">
-        <div class="bg-ivory/10 border border-taupe/40 rounded-2xl p-6">
-          <span class="text-xs uppercase tracking-[0.2em] text-rose">10:30 AM</span>
-          <h3 class="font-serif text-2xl mt-2">Guest Arrival</h3>
-          <p class="text-xs text-ivory/75 mt-2 leading-relaxed">Follow the garden pathway past the vintage landscape welcome easel and take your seat along the curved lawn chairs.</p>
-        </div>
-        <div class="bg-ivory/10 border border-taupe/40 rounded-2xl p-6">
-          <span class="text-xs uppercase tracking-[0.2em] text-rose">11:00 AM</span>
-          <h3 class="font-serif text-2xl mt-2">Lakeside Ceremony</h3>
-          <p class="text-xs text-ivory/75 mt-2 leading-relaxed">Accompanied by live musicians beside the draped floral arch overlooking the water.</p>
-        </div>
-        <div class="bg-ivory/10 border border-taupe/40 rounded-2xl p-6">
-          <span class="text-xs uppercase tracking-[0.2em] text-rose">11:45 AM</span>
-          <h3 class="font-serif text-2xl mt-2">Garden Portraits</h3>
-          <p class="text-xs text-ivory/75 mt-2 leading-relaxed">Enjoy light refreshments and music while family and bridal party portraits are captured on the greens.</p>
-        </div>
-        <div class="bg-ivory/10 border border-taupe/40 rounded-2xl p-6">
-          <span class="text-xs uppercase tracking-[0.2em] text-rose">12:30 PM</span>
-          <h3 class="font-serif text-2xl mt-2">Reception Feast</h3>
-          <p class="text-xs text-ivory/75 mt-2 leading-relaxed">Gather around candlelit tables adorned with dusty rose and burgundy floral arrangements for lunch and toasts.</p>
-        </div>
-        <div class="bg-ivory/10 border border-taupe/40 rounded-2xl p-6">
-          <span class="text-xs uppercase tracking-[0.2em] text-rose">2:30 PM</span>
-          <h3 class="font-serif text-2xl mt-2">Cake &amp; Send-Off</h3>
-          <p class="text-xs text-ivory/75 mt-2 leading-relaxed">Cutting of our three-tier vanilla and chocolate cake crafted by The Cake Lovers, crowned with a love bird topper on antique brass pedestals.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center bg-ivory text-olive rounded-3xl p-8 sm:p-12 fade-up">
-        <div class="lg:col-span-7 space-y-4">
-          <p class="text-xs uppercase tracking-[0.25em] text-rose font-semibold">Attire &amp; Aesthetic</p>
-          <h3 class="font-serif text-3xl sm:text-4xl">Garden Formal &amp; Cultural Elegance</h3>
-          <p class="text-sm sm:text-base text-olive/80 leading-relaxed">
-            We invite our guests to dress in Garden Formal or Indian Festive attire that complements our romantic botanical palette. Notice the bridal combination of structured ivory satin, cathedral veil drama, statement earrings, and traditional Indian henna extending to the elbows.
+        <div class="md:col-span-6 text-center space-y-3">
+          <h2 class="font-script text-5xl sm:text-6xl text-olive">Wedding Day</h2>
+          <p class="font-serif text-base sm:text-lg uppercase tracking-[0.16em] text-olive pt-2">
+            23 January 2027
           </p>
-          <ul class="text-xs sm:text-sm text-olive/85 space-y-2 pt-2">
-            <li>• <strong>For Women:</strong> Midi or floor-length dresses, sarees, or lehengas in soft earth tones, sage, taupe, blush, or floral prints. Block heels or wedges are recommended for the ceremony lawn.</li>
-            <li>• <strong>For Men:</strong> Suits, dress trousers with blazers, or classic kurtas and bandhgalas in olive, taupe, charcoal, or linen neutrals.</li>
-          </ul>
+          <p class="font-serif text-base sm:text-lg uppercase tracking-[0.16em] text-olive">
+            Galuppi's Restaurant &amp; Patio, Pompano Beach, FL
+          </p>
+          <p class="font-serif text-sm sm:text-base uppercase tracking-[0.16em] text-olive">
+            Guest Arrival 10:30 AM &nbsp;•&nbsp; Ceremony 11:00 AM
+          </p>
+          <p class="font-serif text-sm sm:text-base uppercase tracking-[0.16em] text-olive">
+            Dress Code: Garden Formal &amp; Indian Festive
+          </p>
+          <p class="text-xs text-taupe max-w-sm mx-auto pt-1 leading-relaxed">
+            Follow the brick pathway past our vintage landscape welcome painting to the lakeside floral arch, curved lawn seating, and live acoustic duo.
+          </p>
+          <div class="pt-4">
+            <a 
+              href="https://www.google.com/maps/search/?api=1&query=Galuppi's+1103+N+Federal+Hwy+Pompano+Beach+FL" 
+              target="_blank" 
+              rel="noopener"
+              class="inline-block px-7 py-2 border border-olive/60 text-olive text-xs tracking-wider rounded-full hover:bg-olive hover:text-paper transition">
+              View Venue Map
+            </a>
+          </div>
         </div>
 
-        <div class="lg:col-span-5">
-          <p class="text-xs uppercase tracking-[0.2em] text-taupe text-center mb-4">Our Wedding Color Palette</p>
-          <div class="grid grid-cols-5 gap-2 sm:gap-3 text-center">
-            <div>
-              <div class="h-24 rounded-full bg-[#384F1D] border border-taupe/40 shadow-inner"></div>
-              <p class="text-[10px] font-medium mt-2">Deep Olive</p>
-              <p class="text-[9px] text-taupe">#384F1D</p>
+      </div>
+    </section>
+
+    <section id="details" class="py-16 fade-section">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        
+        <div class="md:col-span-6 text-center space-y-3 order-2 md:order-1">
+          <h2 class="font-script text-5xl sm:text-6xl text-olive">The Reception</h2>
+          <p class="font-serif text-base sm:text-lg uppercase tracking-[0.16em] text-olive pt-2">
+            23 January 2027
+          </p>
+          <p class="font-serif text-base sm:text-lg uppercase tracking-[0.16em] text-olive">
+            Galuppi's Lakeside Terrace &amp; Dining Room
+          </p>
+          <p class="font-serif text-sm sm:text-base uppercase tracking-[0.16em] text-olive">
+            At 12:30 PM &nbsp;•&nbsp; Cake Cutting at 2:30 PM
+          </p>
+          <p class="font-serif text-sm sm:text-base uppercase tracking-[0.16em] text-olive">
+            Palette: Deep Olive, Dusty Rose, Sage &amp; Warm Blush
+          </p>
+          <p class="text-xs text-taupe max-w-sm mx-auto pt-1 leading-relaxed">
+            Candlelit tables adorned with dusty rose and burgundy floral arrangements, followed by our three-tier vanilla and chocolate cake with a love bird topper on antique brass pedestals.
+          </p>
+          <div class="pt-4">
+            <a href="#rsvp" class="inline-block px-7 py-2 border border-olive/60 text-olive text-xs tracking-wider rounded-full hover:bg-olive hover:text-paper transition">
+              Confirm Your Seat
+            </a>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 order-1 md:order-2">
+          <svg viewBox="0 0 520 440" class="w-full max-w-md mx-auto h-auto watercolor-paint" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="260" cy="390" rx="185" ry="20" fill="#9F906D" opacity="0.25" />
+
+            <path d="M115 175 L130 375 M95 275 L155 275 L162 375" stroke="#384F1D" stroke-width="6" fill="none" />
+            <path d="M405 175 L390 375 M425 275 L365 275 L358 375" stroke="#384F1D" stroke-width="6" fill="none" />
+
+            <path d="M185 235 L335 385 M335 235 L185 385" stroke="#9F906D" stroke-width="14" stroke-linecap="round" />
+            <rect x="180" y="225" width="16" height="165" fill="#9F906D" />
+            <rect x="324" y="225" width="16" height="165" fill="#9F906D" />
+
+            <path d="M135 195 L385 195 L402 265 Q260 278 118 265 Z" fill="#FAF6F2" stroke="#E2CEC0" stroke-width="2" />
+
+            <ellipse cx="185" cy="195" rx="34" ry="8" fill="#9F906D" opacity="0.6" />
+            <ellipse cx="335" cy="195" rx="34" ry="8" fill="#9F906D" opacity="0.6" />
+            <ellipse cx="235" cy="162" rx="10" ry="16" fill="#E2CEC0" opacity="0.7" />
+            <line x1="235" y1="178" x2="235" y2="195" stroke="#9F906D" stroke-width="2" />
+            <ellipse cx="285" cy="162" rx="10" ry="16" fill="#E2CEC0" opacity="0.7" />
+            <line x1="285" y1="178" x2="285" y2="195" stroke="#9F906D" stroke-width="2" />
+
+            <rect x="248" y="138" width="24" height="52" rx="8" fill="#E2CEC0" opacity="0.85" />
+            <g fill="#384F1D" opacity="0.85">
+              <circle cx="245" cy="118" r="22" />
+              <circle cx="275" cy="122" r="20" />
+              <circle cx="260" cy="102" r="18" />
+            </g>
+            <g fill="#BE8979">
+              <circle cx="248" cy="120" r="10" />
+              <circle cx="272" cy="116" r="11" />
+              <circle cx="260" cy="104" r="9" />
+            </g>
+          </svg>
+        </div>
+
+      </div>
+
+      <div class="mt-20 text-center">
+        <h3 class="font-script text-4xl sm:text-5xl text-olive">Attire, Florals &amp; Sweet Details</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
+          <div class="space-y-1.5">
+            <p class="font-serif text-base uppercase tracking-[0.15em] text-olive">Bridal &amp; Cultural Style</p>
+            <p class="text-xs text-taupe">Structured Ivory Satin &amp; Cathedral Veil</p>
+            <p class="text-xs text-olive font-medium pt-1">Traditional Indian Henna &amp; Statement Earrings</p>
+          </div>
+          <div class="space-y-1.5">
+            <p class="font-serif text-base uppercase tracking-[0.15em] text-olive">Botanical Palette</p>
+            <p class="text-xs text-taupe">Extravagant Dusty Rose &amp; Olive Arrangements</p>
+            <div class="flex justify-center gap-2 pt-2">
+              <span class="w-4 h-4 rounded-full bg-[#384F1D] inline-block" title="#384F1D"></span>
+              <span class="w-4 h-4 rounded-full bg-[#9F906D] inline-block" title="#9F906D"></span>
+              <span class="w-4 h-4 rounded-full bg-[#BCBC86] inline-block" title="#BCBC86"></span>
+              <span class="w-4 h-4 rounded-full bg-[#BE8979] inline-block" title="#BE8979"></span>
+              <span class="w-4 h-4 rounded-full bg-[#E2CEC0] border border-taupe/40 inline-block" title="#E2CEC0"></span>
             </div>
-            <div>
-              <div class="h-24 rounded-full bg-[#9F906D] border border-taupe/40 shadow-inner"></div>
-              <p class="text-[10px] font-medium mt-2">Muted Taupe</p>
-              <p class="text-[9px] text-taupe">#9F906D</p>
-            </div>
-            <div>
-              <div class="h-24 rounded-full bg-[#BCBC86] border border-taupe/40 shadow-inner"></div>
-              <p class="text-[10px] font-medium mt-2">Soft Sage</p>
-              <p class="text-[9px] text-taupe">#BCBC86</p>
-            </div>
-            <div>
-              <div class="h-24 rounded-full bg-[#BE8979] border border-taupe/40 shadow-inner"></div>
-              <p class="text-[10px] font-medium mt-2">Dusty Rose</p>
-              <p class="text-[9px] text-taupe">#BE8979</p>
-            </div>
-            <div>
-              <div class="h-24 rounded-full bg-[#E2CEC0] border border-taupe/40 shadow-inner"></div>
-              <p class="text-[10px] font-medium mt-2">Warm Blush</p>
-              <p class="text-[9px] text-taupe">#E2CEC0</p>
-            </div>
+          </div>
+          <div class="space-y-1.5">
+            <p class="font-serif text-base uppercase tracking-[0.15em] text-olive">The Wedding Cake</p>
+            <p class="text-xs text-taupe">3-Tier Vanilla &amp; Chocolate by The Cake Lovers</p>
+            <p class="text-xs text-olive font-medium pt-1">Love Bird Topper on Antique Brass Pedestals</p>
           </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <div class="text-center text-sage/60 text-2xl select-none">✦</div>
 
-  <section id="travel" class="py-24 px-4 sm:px-8 max-w-7xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16 fade-up">
-      <p class="text-xs uppercase tracking-[0.25em] text-rose font-semibold">For Out-Of-Town Guests</p>
-      <h2 class="font-serif text-4xl sm:text-5xl text-olive mt-2">Travel, Stay &amp; Local Guide</h2>
-      <p class="text-sm text-olive/75 mt-3">Everything you need for a smooth trip to South Florida in January.</p>
-    </div>
+    <section id="travel" class="py-16 text-center fade-section">
+      <h2 class="font-script text-5xl sm:text-6xl text-olive">Where to stay</h2>
+      <p class="text-xs text-taupe mt-2">Recommended accommodations near Pompano Beach, Boca Raton, and West Palm Beach</p>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-up">
-      <div class="bg-ivory/90 editorial-border rounded-3xl p-8 space-y-4">
-        <span class="text-xs uppercase tracking-[0.2em] text-taupe">01 • Getting Here</span>
-        <h3 class="font-serif text-3xl text-olive">Airports &amp; Transit</h3>
-        <p class="text-sm text-olive/80 leading-relaxed">
-          <strong>Fort Lauderdale-Hollywood International (FLL):</strong> Located 20 minutes south of Galuppi's and Pompano Beach.
-        </p>
-        <p class="text-sm text-olive/80 leading-relaxed">
-          <strong>Palm Beach International (PBI):</strong> Located 35 minutes north in West Palm Beach, ideal if you are staying near our home base.
-        </p>
-        <p class="text-xs text-taupe pt-2">Brightline high-speed rail also connects West Palm Beach, Boca Raton, Fort Lauderdale, and Miami.</p>
-      </div>
-
-      <div class="bg-ivory/90 editorial-border rounded-3xl p-8 space-y-4">
-        <span class="text-xs uppercase tracking-[0.2em] text-taupe">02 • Accommodations</span>
-        <h3 class="font-serif text-3xl text-olive">Where To Stay</h3>
-        <p class="text-sm text-olive/80 leading-relaxed">
-          We recommend booking near Pompano Beach for quick venue access, or in West Palm Beach and Boca Raton for coastal sightseeing:
-        </p>
-        <ul class="text-sm text-olive/85 space-y-2">
-          <li>• <strong>Fort Lauderdale Marriott Pompano Beach Resort:</strong> Oceanfront, 10 mins from venue.</li>
-          <li>• <strong>Hilton Garden Inn Boca Raton:</strong> Central between West Palm Beach and Pompano.</li>
-          <li>• <strong>Canopy by Hilton West Palm Beach:</strong> Vibrant downtown stay near the waterfront.</li>
-        </ul>
-      </div>
-
-      <div class="bg-ivory/90 editorial-border rounded-3xl p-8 space-y-4">
-        <span class="text-xs uppercase tracking-[0.2em] text-taupe">03 • Our Favorites</span>
-        <h3 class="font-serif text-3xl text-olive">See, Do &amp; Dine</h3>
-        <ul class="text-sm text-olive/85 space-y-2.5 leading-relaxed">
-          <li>• <strong>Gardens &amp; Art:</strong> Stroll through Morikami Japanese Gardens in Delray Beach, Boca Raton Museum of Art, or Vizcaya Museum &amp; Gardens in Miami.</li>
-          <li>• <strong>Nature &amp; Coast:</strong> Wakodahatchee Wetlands in Delray Beach or a sunny walk along the Pompano Beach Pier.</li>
-          <li>• <strong>Where To Eat:</strong> Chhauka in West Palm Beach for authentic Indian flavors, or coastal dining along Atlantic Avenue in Delray.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="party" class="py-24 bg-ivory/70 border-y border-taupe/30 px-4 sm:px-8">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center max-w-2xl mx-auto mb-16 fade-up">
-        <p class="text-xs uppercase tracking-[0.25em] text-taupe">Our Favorite People</p>
-        <h2 class="font-serif text-4xl sm:text-5xl text-olive mt-2">The Wedding Party &amp; Family</h2>
-        <p class="text-sm text-olive/75 mt-3">Honoring our parents, siblings, grandparents, and bridal party standing beside us.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 fade-up">
-        <div class="bg-blush/50 editorial-border rounded-3xl p-8 text-center">
-          <p class="text-xs uppercase tracking-[0.2em] text-rose">Parents &amp; Family of the Groom</p>
-          <h3 class="font-serif text-2xl text-olive mt-2">Ram Nath &amp; Raj Rani</h3>
-          <p class="text-sm text-olive/80 mt-2">Together with sister Preeti, brother-in-law Pushpendra, and niece Harshi</p>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+        <div class="space-y-2">
+          <p class="font-serif text-base uppercase tracking-[0.15em] text-olive leading-snug">
+            Marriott Pompano<br/>Beach Resort
+          </p>
+          <p class="text-[11px] text-taupe">(Less than 10 minutes from Galuppi's, oceanfront stay)</p>
+          <p class="text-xs font-semibold text-olive pt-1">Pompano Beach, FL</p>
         </div>
-        <div class="bg-blush/50 editorial-border rounded-3xl p-8 text-center">
-          <p class="text-xs uppercase tracking-[0.2em] text-rose">Family &amp; Loved Ones of the Bride</p>
-          <h3 class="font-serif text-2xl text-olive mt-2">The Bichotte Family</h3>
-          <p class="text-sm text-olive/80 mt-2">Honoring mothers with simple bouquets and fathers, grandparents, and brothers with custom boutonnieres</p>
+
+        <div class="space-y-2">
+          <p class="font-serif text-base uppercase tracking-[0.15em] text-olive leading-snug">
+            Hilton Garden Inn<br/>Boca Raton
+          </p>
+          <p class="text-[11px] text-taupe">(Central location between West Palm Beach &amp; venue)</p>
+          <p class="text-xs font-semibold text-olive pt-1">Boca Raton, FL</p>
+        </div>
+
+        <div class="space-y-2">
+          <p class="font-serif text-base uppercase tracking-[0.15em] text-olive leading-snug">
+            Canopy By Hilton<br/>West Palm Beach
+          </p>
+          <p class="text-[11px] text-taupe">(Vibrant downtown stay near our home base &amp; waterfront)</p>
+          <p class="text-xs font-semibold text-olive pt-1">West Palm Beach, FL</p>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 fade-up">
-        <div class="bg-ivory editorial-border rounded-3xl p-6 text-center">
-          <div class="w-28 h-28 mx-auto rounded-full bg-rose/30 editorial-border mb-4 flex items-center justify-center font-serif text-2xl text-olive">
-            01
-          </div>
-          <h4 class="font-serif text-2xl text-olive">Bridesmaid One</h4>
-          <p class="text-xs uppercase tracking-[0.2em] text-taupe mt-1">Small Flowy Rose Bouquet</p>
-          <p class="text-xs text-olive/75 mt-3">Ready for custom painted portrait (`images/bridesmaid-1.jpg`).</p>
-        </div>
-        <div class="bg-ivory editorial-border rounded-3xl p-6 text-center">
-          <div class="w-28 h-28 mx-auto rounded-full bg-sage/40 editorial-border mb-4 flex items-center justify-center font-serif text-2xl text-olive">
-            02
-          </div>
-          <h4 class="font-serif text-2xl text-olive">Bridesmaid Two</h4>
-          <p class="text-xs uppercase tracking-[0.2em] text-taupe mt-1">Small Flowy Rose Bouquet</p>
-          <p class="text-xs text-olive/75 mt-3">Ready for custom painted portrait (`images/bridesmaid-2.jpg`).</p>
-        </div>
-        <div class="bg-ivory editorial-border rounded-3xl p-6 text-center">
-          <div class="w-28 h-28 mx-auto rounded-full bg-rose/30 editorial-border mb-4 flex items-center justify-center font-serif text-2xl text-olive">
-            03
-          </div>
-          <h4 class="font-serif text-2xl text-olive">Bridesmaid Three</h4>
-          <p class="text-xs uppercase tracking-[0.2em] text-taupe mt-1">Small Flowy Rose Bouquet</p>
-          <p class="text-xs text-olive/75 mt-3">Ready for custom painted portrait (`images/bridesmaid-3.jpg`).</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="registry" class="py-24 px-4 sm:px-8 max-w-7xl mx-auto">
-    <div class="text-center max-w-2xl mx-auto mb-16 fade-up">
-      <p class="text-xs uppercase tracking-[0.25em] text-rose font-semibold">Warmest Wishes</p>
-      <h2 class="font-serif text-4xl sm:text-5xl text-olive mt-2">Gift Registry &amp; Honeymoon Fund</h2>
-      <p class="text-sm text-olive/80 mt-3 leading-relaxed">
-        Your presence at our wedding is the greatest gift of all. Should you wish to honor us with a gift, you can contribute to our Pacific Northwest &amp; California coastal honeymoon fund or browse our linked registries below.
+      <p class="text-xs text-taupe mt-10 max-w-md mx-auto">
+        Exploring South Florida? Visit Vizcaya Museum &amp; Gardens, Morikami Japanese Gardens, Wakodahatchee Wetlands, or dine at Chhauka in West Palm Beach.
       </p>
-    </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 fade-up">
-      <div class="bg-ivory editorial-border rounded-3xl p-8 flex flex-col justify-between">
-        <div>
-          <span class="text-[11px] uppercase tracking-[0.2em] text-rose font-semibold">Honeymoon Experience</span>
-          <h3 class="font-serif text-2xl text-olive mt-2">Oregon &amp; California Coast Drive</h3>
-          <p class="text-sm text-olive/75 mt-2 leading-relaxed">
-            Help us explore Cannon Beach, towering redwoods, and scenic coastal highways on our honeymoon adventure.
-          </p>
-        </div>
-        <button onclick="openRegistryModal('Oregon & California Coast Honeymoon Fund')" class="mt-6 w-full py-3.5 bg-olive text-ivory text-xs uppercase tracking-[0.2em] rounded-full hover:bg-rose transition">
-          Contribute Gift
-        </button>
-      </div>
-
-      <div class="bg-ivory editorial-border rounded-3xl p-8 flex flex-col justify-between">
-        <div>
-          <span class="text-[11px] uppercase tracking-[0.2em] text-rose font-semibold">Home &amp; Botanicals</span>
-          <h3 class="font-serif text-2xl text-olive mt-2">Newlywed Home &amp; Garden Fund</h3>
-          <p class="text-sm text-olive/75 mt-2 leading-relaxed">
-            For framing our custom artwork, expanding our indoor plant collection, and cozying up our home with Ellie.
-          </p>
-        </div>
-        <button onclick="openRegistryModal('Newlywed Home & Garden Fund')" class="mt-6 w-full py-3.5 bg-olive text-ivory text-xs uppercase tracking-[0.2em] rounded-full hover:bg-rose transition">
-          Contribute Gift
-        </button>
-      </div>
-
-      <div class="bg-ivory editorial-border rounded-3xl p-8 flex flex-col justify-between">
-        <div>
-          <span class="text-[11px] uppercase tracking-[0.2em] text-rose font-semibold">Universal Store Registry</span>
-          <h3 class="font-serif text-2xl text-olive mt-2">Zola / MyRegistry Storefront</h3>
-          <p class="text-sm text-olive/75 mt-2 leading-relaxed">
-            Prefer to pick out a traditional household or kitchen gift? Browse our curated wishlist on our registry page.
-          </p>
-        </div>
-        <a href="https://www.myregistry.com" target="_blank" rel="noopener" class="mt-6 block text-center w-full py-3.5 bg-rose text-ivory text-xs uppercase tracking-[0.2em] rounded-full hover:bg-olive transition">
-          View Store Registry
+      <div class="mt-6">
+        <a href="#rsvp" class="inline-block px-9 py-2.5 bg-olive text-paper text-xs tracking-wider rounded-full hover:bg-rose transition">
+          Kindly RSVP by December 1
         </a>
       </div>
-    </div>
-  </section>
 
-  <section id="rsvp" class="py-24 bg-olive text-ivory px-4 sm:px-8">
-    <div class="max-w-3xl mx-auto bg-ivory text-olive rounded-3xl p-8 sm:p-14 editorial-border shadow-xl fade-up">
-      <div class="text-center mb-10">
-        <p class="text-xs uppercase tracking-[0.25em] text-rose font-semibold">Kindly Reply By December 1, 2026</p>
-        <h2 class="font-serif text-4xl sm:text-5xl mt-2">RSVP</h2>
-        <p class="text-sm text-olive/75 mt-2">Let us know if you will be celebrating with us at Galuppi's.</p>
+      <div class="max-w-2xl mx-auto mt-10">
+        <svg viewBox="0 0 700 360" class="w-full h-auto watercolor-paint vignette-mask" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="350" cy="310" rx="310" ry="38" fill="#BCBC86" opacity="0.45" />
+          <circle cx="565" cy="215" r="70" fill="#BCBC86" opacity="0.55" />
+          <circle cx="145" cy="230" r="55" fill="#9F906D" opacity="0.35" />
+
+          <polygon points="175,185 235,95 465,95 525,185" fill="#384F1D" opacity="0.75" />
+          <rect x="195" y="185" width="310" height="125" fill="#FAF6F2" stroke="#9F906D" stroke-width="2" />
+
+          <polygon points="295,185 350,75 405,185" fill="#FAF6F2" stroke="#384F1D" stroke-width="3" />
+          <polygon points="215,185 250,115 285,185" fill="#FAF6F2" stroke="#384F1D" stroke-width="2.5" />
+          <polygon points="415,185 450,115 485,185" fill="#FAF6F2" stroke="#384F1D" stroke-width="2.5" />
+
+          <rect x="334" y="235" width="32" height="75" fill="#384F1D" />
+          <rect x="235" y="225" width="32" height="45" fill="#9F906D" opacity="0.55" stroke="#384F1D" stroke-width="1.5" />
+          <rect x="435" y="225" width="32" height="45" fill="#9F906D" opacity="0.55" stroke="#384F1D" stroke-width="1.5" />
+          <rect x="338" y="125" width="24" height="38" fill="#9F906D" opacity="0.55" stroke="#384F1D" stroke-width="1.5" />
+        </svg>
+      </div>
+    </section>
+
+    <section id="party" class="py-16 text-center fade-section">
+      <h2 class="font-script text-5xl sm:text-6xl text-olive">The Wedding Party &amp; Family</h2>
+      <p class="text-xs text-taupe mt-2">Honoring our parents, siblings, grandparents, and bridal party</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 max-w-3xl mx-auto">
+        <div class="space-y-1.5">
+          <p class="font-serif text-base uppercase tracking-[0.16em] text-olive">Family of the Groom</p>
+          <p class="text-xs text-taupe">Parents: Ram Nath &amp; Raj Rani</p>
+          <p class="text-xs text-olive font-medium">Sister Preeti, Brother-in-law Pushpendra &amp; Niece Harshi</p>
+        </div>
+
+        <div class="space-y-1.5">
+          <p class="font-serif text-base uppercase tracking-[0.16em] text-olive">Family of the Bride</p>
+          <p class="text-xs text-taupe">The Bichotte Family</p>
+          <p class="text-xs text-olive font-medium">Mothers' Simple Bouquets • Fathers', Grandparents' &amp; Brothers' Boutonnieres</p>
+        </div>
       </div>
 
-      <form id="rsvp-form" class="space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+        <div class="space-y-1">
+          <p class="font-serif text-base uppercase tracking-[0.15em] text-olive">Bridesmaid One</p>
+          <p class="text-[11px] text-taupe">Bridal Party</p>
+          <p class="text-xs text-olive font-medium">Small Flowy Dusty Rose Bouquet</p>
+        </div>
+        <div class="space-y-1">
+          <p class="font-serif text-base uppercase tracking-[0.15em] text-olive">Bridesmaid Two</p>
+          <p class="text-[11px] text-taupe">Bridal Party</p>
+          <p class="text-xs text-olive font-medium">Small Flowy Dusty Rose Bouquet</p>
+        </div>
+        <div class="space-y-1">
+          <p class="font-serif text-base uppercase tracking-[0.15em] text-olive">Bridesmaid Three</p>
+          <p class="text-[11px] text-taupe">Bridal Party</p>
+          <p class="text-xs text-olive font-medium">Small Flowy Dusty Rose Bouquet</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="text-center text-sage/60 text-2xl select-none">✦</div>
+
+    <section id="registry" class="py-16 text-center fade-section">
+      <h2 class="font-script text-5xl sm:text-6xl text-olive">Gift Registry &amp; Honeymoon Fund</h2>
+      <p class="text-xs text-taupe mt-2 max-w-lg mx-auto">
+        Your love and company on our wedding day is the greatest gift of all. Should you wish to contribute to our next adventure, explore our funds below.
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+        <div class="space-y-3">
+          <p class="font-serif text-base uppercase tracking-[0.15em] text-olive">Oregon &amp; California<br/>Coast Honeymoon</p>
+          <p class="text-xs text-taupe leading-relaxed">Help us explore Cannon Beach, redwood trails, and scenic coastal drives.</p>
+          <button onclick="openRegistryModal('Oregon & California Coast Honeymoon Fund')" class="inline-block px-7 py-2 border border-olive/60 text-olive text-xs tracking-wider rounded-full hover:bg-olive hover:text-paper transition">
+            Contribute Gift
+          </button>
+        </div>
+
+        <div class="space-y-3">
+          <p class="font-serif text-base uppercase tracking-[0.15em] text-olive">Newlywed Home &amp;<br/>Botanical Fund</p>
+          <p class="text-xs text-taupe leading-relaxed">For custom canvas artwork, indoor houseplants, and our home with Ellie.</p>
+          <button onclick="openRegistryModal('Newlywed Home & Botanical Fund')" class="inline-block px-7 py-2 border border-olive/60 text-olive text-xs tracking-wider rounded-full hover:bg-olive hover:text-paper transition">
+            Contribute Gift
+          </button>
+        </div>
+
+        <div class="space-y-3">
+          <p class="font-serif text-base uppercase tracking-[0.15em] text-olive">Universal Wedding<br/>Store Registry</p>
+          <p class="text-xs text-taupe leading-relaxed">Browse our curated household wishlist on MyRegistry or Zola.</p>
+          <a href="https://www.myregistry.com" target="_blank" rel="noopener" class="inline-block px-7 py-2 border border-olive/60 text-olive text-xs tracking-wider rounded-full hover:bg-olive hover:text-paper transition">
+            View Storefront
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp" class="py-16 max-w-2xl mx-auto text-center fade-section">
+      <h2 class="font-script text-5xl sm:text-6xl text-olive">Kindly RSVP</h2>
+      <p class="text-xs text-taupe mt-2">Please reply by December 1, 2026</p>
+
+      <form id="rsvp-form" class="mt-10 space-y-6 text-left">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label class="block text-xs uppercase tracking-[0.18em] text-olive mb-2">Full Name(s) *</label>
-            <input type="text" name="name" required placeholder="e.g. Preeti & Pushpendra Soni" class="w-full px-4 py-3.5 rounded-xl bg-blush/40 editorial-border focus:outline-none focus:border-olive text-sm" />
+            <label class="block text-[10px] uppercase tracking-[0.2em] text-taupe mb-1">Full Name(s) *</label>
+            <input type="text" name="name" required placeholder="Your Name(s)" class="w-full py-2.5 text-sm text-olive" />
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-[0.18em] text-olive mb-2">Email Address *</label>
-            <input type="email" name="email" required placeholder="you@example.com" class="w-full px-4 py-3.5 rounded-xl bg-blush/40 editorial-border focus:outline-none focus:border-olive text-sm" />
+            <label class="block text-[10px] uppercase tracking-[0.2em] text-taupe mb-1">Email Address *</label>
+            <input type="email" name="email" required placeholder="you@example.com" class="w-full py-2.5 text-sm text-olive" />
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
-            <label class="block text-xs uppercase tracking-[0.18em] text-olive mb-2">Will You Attend? *</label>
-            <select name="attendance" required class="w-full px-4 py-3.5 rounded-xl bg-blush/40 editorial-border focus:outline-none focus:border-olive text-sm">
+            <label class="block text-[10px] uppercase tracking-[0.2em] text-taupe mb-1">Attendance *</label>
+            <select name="attendance" required class="w-full py-2.5 text-sm text-olive">
               <option value="Joyfully Accepts">Joyfully Accepts</option>
               <option value="Regretfully Declines">Regretfully Declines</option>
             </select>
           </div>
           <div>
-            <label class="block text-xs uppercase tracking-[0.18em] text-olive mb-2">Number of Guests in Party *</label>
-            <select name="guests" class="w-full px-4 py-3.5 rounded-xl bg-blush/40 editorial-border focus:outline-none focus:border-olive text-sm">
+            <label class="block text-[10px] uppercase tracking-[0.2em] text-taupe mb-1">Number of Guests *</label>
+            <select name="guests" class="w-full py-2.5 text-sm text-olive">
               <option value="1">1 Guest</option>
               <option value="2">2 Guests</option>
               <option value="3">3 Guests</option>
@@ -736,108 +597,136 @@
         </div>
 
         <div>
-          <label class="block text-xs uppercase tracking-[0.18em] text-olive mb-2">Dietary Restrictions or Allergies</label>
-          <input type="text" name="dietary" placeholder="Vegetarian, vegan, gluten-free, nut allergy, etc." class="w-full px-4 py-3.5 rounded-xl bg-blush/40 editorial-border focus:outline-none focus:border-olive text-sm" />
+          <label class="block text-[10px] uppercase tracking-[0.2em] text-taupe mb-1">Dietary Restrictions &amp; Song Requests</label>
+          <input type="text" name="notes" placeholder="Vegetarian, allergies, or a song for the reception..." class="w-full py-2.5 text-sm text-olive" />
         </div>
 
-        <div>
-          <label class="block text-xs uppercase tracking-[0.18em] text-olive mb-2">Song Request or Note for the Couple</label>
-          <textarea name="message" rows="3" placeholder="Share a song that gets you on the dance floor or a note for Ashish & Megan..." class="w-full px-4 py-3.5 rounded-xl bg-blush/40 editorial-border focus:outline-none focus:border-olive text-sm"></textarea>
+        <div class="text-center pt-4">
+          <button type="submit" class="px-10 py-2.5 bg-olive text-paper text-xs tracking-wider rounded-full hover:bg-rose transition">
+            Send RSVP
+          </button>
         </div>
 
-        <button type="submit" class="w-full py-4 bg-olive text-ivory text-xs uppercase tracking-[0.22em] rounded-full hover:bg-rose transition duration-300">
-          Send RSVP
-        </button>
-
-        <div id="rsvp-success" class="hidden p-4 rounded-xl bg-sage/40 text-olive text-center text-sm font-medium">
-          Thank you! Your RSVP has been recorded. We cannot wait to celebrate with you!
+        <div id="rsvp-success" class="hidden text-center text-xs text-olive font-medium pt-3">
+          Thank you! Your RSVP has been received.
         </div>
       </form>
-    </div>
-  </section>
+    </section>
 
-  <section id="faqs" class="py-24 px-4 sm:px-8 max-w-4xl mx-auto">
-    <div class="text-center mb-14 fade-up">
-      <p class="text-xs uppercase tracking-[0.25em] text-rose font-semibold">Good To Know</p>
-      <h2 class="font-serif text-4xl sm:text-5xl text-olive mt-2">Frequently Asked Questions</h2>
-    </div>
+    <section id="faqs" class="py-16 max-w-3xl mx-auto text-center fade-section">
+      <h2 class="font-script text-5xl sm:text-6xl text-olive">Frequently Asked Questions</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 text-left">
+        <div class="space-y-1">
+          <p class="font-serif text-base uppercase tracking-[0.14em] text-olive">What time should I arrive?</p>
+          <p class="text-xs text-taupe leading-relaxed">Please arrive by 10:30 AM to stroll down the garden path past our welcome painting and take your seat before the 11:00 AM ceremony.</p>
+        </div>
+        <div class="space-y-1">
+          <p class="font-serif text-base uppercase tracking-[0.14em] text-olive">Is the ceremony outdoors?</p>
+          <p class="text-xs text-taupe leading-relaxed">Yes, vows take place on the lakeside lawn at Galuppi's followed by a covered patio and indoor dining reception.</p>
+        </div>
+        <div class="space-y-1">
+          <p class="font-serif text-base uppercase tracking-[0.14em] text-olive">Can I wear Indian or Western attire?</p>
+          <p class="text-xs text-taupe leading-relaxed">Both are warmly encouraged! Garden formal dresses, suits, sarees, lehengas, and kurtas in earthy floral tones all fit right in.</p>
+        </div>
+        <div class="space-y-1">
+          <p class="font-serif text-base uppercase tracking-[0.14em] text-olive">Is parking available on site?</p>
+          <p class="text-xs text-taupe leading-relaxed">Complimentary parking is available directly in front of Galuppi's at 1103 N Federal Hwy.</p>
+        </div>
+      </div>
+    </section>
 
-    <div class="space-y-4 fade-up">
-      <details class="group bg-ivory/90 editorial-border rounded-2xl p-6 cursor-pointer">
-        <summary class="flex justify-between items-center font-serif text-2xl text-olive list-none">
-          <span>What time should I arrive for the ceremony?</span>
-          <span class="text-rose group-open:rotate-45 transition-transform text-2xl">+</span>
-        </summary>
-        <p class="text-sm text-olive/80 mt-3 leading-relaxed">
-          Please arrive 25 to 30 minutes prior to the ceremony start time so you can park comfortably, walk down the garden brick path past our welcome signage, and find your seat by the lakeside arch.
-        </p>
-      </details>
-
-      <details class="group bg-ivory/90 editorial-border rounded-2xl p-6 cursor-pointer">
-        <summary class="flex justify-between items-center font-serif text-2xl text-olive list-none">
-          <span>Is the wedding indoors or outdoors?</span>
-          <span class="text-rose group-open:rotate-45 transition-transform text-2xl">+</span>
-        </summary>
-        <p class="text-sm text-olive/80 mt-3 leading-relaxed">
-          The ceremony takes place outdoors on the lawn overlooking the water and greens at Galuppi's, followed by a covered patio and indoor reception. January weather in South Florida is typically sunny and mild in the low 70s (°F).
-        </p>
-      </details>
-
-      <details class="group bg-ivory/90 editorial-border rounded-2xl p-6 cursor-pointer">
-        <summary class="flex justify-between items-center font-serif text-2xl text-olive list-none">
-          <span>Can I bring a plus-one or children?</span>
-          <span class="text-rose group-open:rotate-45 transition-transform text-2xl">+</span>
-        </summary>
-        <p class="text-sm text-olive/80 mt-3 leading-relaxed">
-          Because we are hosting an intimate daytime celebration of approximately 45 guests, we are only able to accommodate the guests formally named on your invitation.
-        </p>
-      </details>
-
-      <details class="group bg-ivory/90 editorial-border rounded-2xl p-6 cursor-pointer">
-        <summary class="flex justify-between items-center font-serif text-2xl text-olive list-none">
-          <span>Can we wear Indian traditional attire or Western formal wear?</span>
-          <span class="text-rose group-open:rotate-45 transition-transform text-2xl">+</span>
-        </summary>
-        <p class="text-sm text-olive/80 mt-3 leading-relaxed">
-          Both are warmly welcomed and encouraged! Whether you choose a garden formal dress or suit, or a saree, lehenga, or kurta in our earthy floral palette, we want you to feel celebratory and comfortable.
-        </p>
-      </details>
-    </div>
-  </section>
-
-  <footer class="py-14 bg-ivory border-t border-taupe/30 text-center px-4">
-    <p class="font-script text-4xl text-rose">Ashish &amp; Megan</p>
-    <p class="text-xs uppercase tracking-[0.25em] text-olive mt-2">January 23, 2027 • Galuppi's • South Florida</p>
-    <p class="text-[11px] text-taupe mt-6">Designed with love in our Deep Olive, Dusty Rose &amp; Warm Blush palette</p>
-  </footer>
-
-  <div id="registry-modal" class="fixed inset-0 z-50 hidden bg-olive/70 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-ivory editorial-border rounded-3xl max-w-md w-full p-8 relative text-center space-y-5">
-      <button onclick="closeRegistryModal()" class="absolute top-4 right-5 text-olive text-2xl leading-none">&times;</button>
-      <p class="text-xs uppercase tracking-[0.2em] text-rose font-semibold">Zero-Fee Gift Contribution</p>
-      <h3 id="modal-fund-title" class="font-serif text-3xl text-olive">Honeymoon Fund</h3>
-      <p class="text-sm text-olive/80 leading-relaxed">
-        Thank you so much for contributing to our next adventure! You can send a gift with zero platform fees using either option below:
+    <section class="pt-16 pb-20 text-center fade-section">
+      <h2 class="font-script text-5xl sm:text-6xl text-olive leading-tight">
+        Wedding Day<br/>Transportation
+      </h2>
+      <p class="text-xs text-taupe max-w-md mx-auto mt-3">
+        Travel guidance for guests arriving from across the country and internationally from India.
       </p>
-      <div class="space-y-3 text-left bg-blush/50 p-4 rounded-2xl editorial-border text-sm">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 max-w-xl mx-auto mt-10">
+        <div class="space-y-2">
+          <p class="font-serif text-base uppercase tracking-[0.18em] text-olive">By Air</p>
+          <p class="text-xs text-taupe leading-relaxed">
+            Fly into Fort Lauderdale International (FLL), located 20 minutes from Galuppi's, or Palm Beach International (PBI), 35 minutes north.
+          </p>
+        </div>
+        <div class="space-y-2">
+          <p class="font-serif text-base uppercase tracking-[0.18em] text-olive">By Road &amp; Rail</p>
+          <p class="text-xs text-taupe leading-relaxed">
+            Easily accessible via I-95 to Sample Rd / US-1 in Pompano Beach, with Brightline rail stations in West Palm Beach, Boca Raton, and Fort Lauderdale.
+          </p>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto mt-10">
+        <svg viewBox="0 0 800 420" class="w-full h-auto watercolor-paint" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="520" cy="220" r="145" fill="#BCBC86" opacity="0.45" />
+          <circle cx="620" cy="195" r="110" fill="#384F1D" opacity="0.28" />
+          <ellipse cx="540" cy="345" rx="190" ry="24" fill="#9F906D" opacity="0.3" />
+
+          <g transform="translate(40, 20) rotate(-10)">
+            <path d="M90 65 L65 15 L85 15 L125 60 Z" fill="#384F1D" opacity="0.75" />
+            <ellipse cx="195" cy="72" rx="125" ry="22" fill="#FAF6F2" stroke="#384F1D" stroke-width="2.5" />
+            <path d="M75 72 Q195 92 315 68" fill="#384F1D" opacity="0.7" />
+            <path d="M165 76 L95 112 L135 112 L215 76 Z" fill="#384F1D" />
+            <ellipse cx="170" cy="100" rx="18" ry="9" fill="#9F906D" stroke="#384F1D" stroke-width="2" />
+            <ellipse cx="235" cy="92" rx="16" ry="8" fill="#9F906D" stroke="#384F1D" stroke-width="2" />
+          </g>
+
+          <g transform="translate(380, 195)">
+            <path d="M35 85 Q55 15 145 15 Q225 15 255 85 L285 95 Q295 115 280 125 L20 125 Q5 110 35 85 Z" fill="#BCBC86" stroke="#384F1D" stroke-width="2.5" />
+            <path d="M75 75 Q90 32 135 32 L135 75 Z" fill="#FAF6F2" stroke="#384F1D" stroke-width="2" />
+            <path d="M145 32 Q195 32 212 75 L145 75 Z" fill="#FAF6F2" stroke="#384F1D" stroke-width="2" />
+            <circle cx="75" cy="125" r="28" fill="#384F1D" />
+            <circle cx="75" cy="125" r="15" fill="#FAF6F2" />
+            <circle cx="225" cy="125" r="28" fill="#384F1D" />
+            <circle cx="225" cy="125" r="15" fill="#FAF6F2" />
+          </g>
+        </svg>
+      </div>
+
+      <div class="relative pt-8 pb-6">
+        <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.24em] text-olive">
+          We Can't Wait To<br/>Celebrate With You!
+        </p>
+        <h2 class="font-script text-6xl sm:text-7xl text-olive mt-3">
+          Ashish &amp; Megan
+        </h2>
+        <div class="mt-4">
+          <a href="#home" class="inline-block px-8 py-2 bg-olive text-paper text-[11px] tracking-wider rounded-full hover:bg-rose transition">
+            AshishAndMegan.com
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="registry-modal" class="fixed inset-0 z-50 hidden bg-olive/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-paper border border-taupe/40 rounded-3xl max-w-md w-full p-8 relative text-center space-y-4">
+      <button onclick="closeRegistryModal()" class="absolute top-4 right-5 text-olive text-2xl leading-none">&times;</button>
+      <p class="text-[10px] uppercase tracking-[0.2em] text-rose font-semibold">Gift Contribution</p>
+      <h3 id="modal-fund-title" class="font-script text-4xl text-olive">Honeymoon Fund</h3>
+      <p class="text-xs text-olive/80 leading-relaxed">
+        Thank you for celebrating with us! You can send a direct gift with zero platform fees below:
+      </p>
+      <div class="space-y-2 text-left bg-blush/35 p-4 rounded-2xl text-xs text-olive">
         <p><strong>Venmo:</strong> @Ashish-And-Megan</p>
         <p><strong>Zelle:</strong> your-email@domain.com</p>
       </div>
-      <button onclick="closeRegistryModal()" class="w-full py-3 bg-olive text-ivory text-xs uppercase tracking-[0.2em] rounded-full">
-        Done
+      <button onclick="closeRegistryModal()" class="w-full py-2.5 bg-olive text-paper text-xs uppercase tracking-[0.2em] rounded-full">
+        Close
       </button>
     </div>
   </div>
 
   <script>
-    const menuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
-    });
+    function toggleCanvasColor() {
+      document.body.classList.toggle('blush-mode');
+      const nav = document.getElementById('top-nav');
+      nav.classList.toggle('bg-paper/75');
+      nav.classList.toggle('bg-blush/80');
+    }
 
     const weddingDate = new Date('2027-01-23T11:00:00-05:00').getTime();
     function updateCountdown() {
@@ -858,8 +747,8 @@
           entry.target.classList.add('visible');
         }
       });
-    }, { threshold: 0.12 });
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
 
     function openRegistryModal(title) {
       document.getElementById('modal-fund-title').innerText = title;
