@@ -5,68 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Megan & Ashish | Wedding Celebration</title>
 
-<script>
-    // 1. Sidebar Slide-Out Drawer Controls
-    const toggleBtn = document.getElementById('menu-toggle-btn');
-    const closeBtn = document.getElementById('menu-close-btn');
-    const sidebar = document.getElementById('sidebar-menu');
-    const overlay = document.getElementById('sidebar-overlay');
-    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+  <!-- REQUIRED: Tailwind CSS Framework -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-    function openSidebar() {
-      sidebar.classList.remove('translate-x-full');
-      overlay.classList.remove('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = 'hidden';
-    }
+  <!-- REQUIRED: Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Prata&display=swap" rel="stylesheet">
 
-    function closeSidebar() {
-      sidebar.classList.add('translate-x-full');
-      overlay.classList.add('opacity-0', 'pointer-events-none');
-      document.body.style.overflow = '';
-    }
-
-    if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
-    if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
-    if (overlay) overlay.addEventListener('click', closeSidebar);
-    sidebarLinks.forEach(link => link.addEventListener('click', closeSidebar));
-
-    // 2. Countdown Timer (Set to January 29, 2027 11:00 AM EST)
-    const weddingDate = new Date('2027-01-29T11:00:00-05:00').getTime();
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const diff = weddingDate - now;
-      if (diff <= 0) return;
-      document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-      document.getElementById('hours').innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-      document.getElementById('minutes').innerText = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
-      document.getElementById('seconds').innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
-    }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-
-    // 3. Scroll Fade-Up Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            olive: '#384F1D',
+            taupe: '#9F906D',
+            sage: '#BCBC86',
+            rose: '#BE8979',
+            blush: '#E2CEC0',
+            paper: '#FAF9F6',
+          },
+          fontFamily: {
+            script: ['"Alex Brush"', 'cursive'],
+            serif: ['"Prata"', 'Georgia', 'serif'],
+            cinzel: ['"Cinzel"', 'serif'],
+            sans: ['"Montserrat"', 'sans-serif'],
+          }
         }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
-
-    // 4. RSVP Submission Handler
-    const rsvpForm = document.getElementById('rsvp-form');
-    if (rsvpForm) {
-      rsvpForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const FORMSPREE_ENDPOINT = "";
-        if (FORMSPREE_ENDPOINT) {
-          const data = new FormData(rsvpForm);
-          await fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-        }
-        document.getElementById('rsvp-success').classList.remove('hidden');
-        rsvpForm.reset();
-      });
+      }
     }
   </script>
 
@@ -80,10 +46,6 @@
     }
     .watercolor-paint {
       filter: url(#watercolor-feathered);
-    }
-    .vignette-mask {
-      mask-image: radial-gradient(ellipse at center, black 58%, transparent 96%);
-      -webkit-mask-image: radial-gradient(ellipse at center, black 58%, transparent 96%);
     }
     .fade-section {
       opacity: 0;
@@ -109,6 +71,7 @@
 </head>
 <body class="selection:bg-rose selection:text-paper relative">
 
+  <!-- SVG Watercolor Filter -->
   <svg class="hidden" width="0" height="0" aria-hidden="true">
     <defs>
       <filter id="watercolor-feathered" x="-15%" y="-15%" width="130%" height="130%">
@@ -183,7 +146,7 @@
 
   <main class="max-w-5xl mx-auto px-4 sm:px-8">
 
-<section id="home" class="pt-2 sm:pt-6 pb-20 text-center fade-section">
+    <section id="home" class="pt-2 sm:pt-6 pb-20 text-center fade-section">
       <!-- Full-Width Responsive Artwork Container with Feathered Edge Blending -->
       <div class="w-full max-w-6xl mx-auto px-0 sm:px-4">
         <div class="w-full relative">
@@ -264,7 +227,7 @@
       <div class="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto mb-6">
         <div class="w-full h-full rounded-full overflow-hidden p-1.5 border border-taupe/40 shadow-sm bg-paper">
           <img 
-            src="images/our-story.jpeg" 
+            src="images/our-story.jpg" 
             alt="Ashish & Megan" 
             class="w-full h-full object-cover rounded-full"
             style="object-position: center 25%;"
@@ -327,7 +290,7 @@
           </svg>
         </div>
 
-<div class="md:col-span-6 text-center space-y-3.5">
+        <div class="md:col-span-6 text-center space-y-3.5">
           <h2 class="font-script text-5xl sm:text-6xl text-olive">Wedding Day</h2>
           <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.2em] text-olive pt-2">
             29 January 2027
@@ -341,6 +304,13 @@
           <p class="font-serif text-xs uppercase tracking-[0.2em] text-olive">
             Dress Code: Garden Formal
           </p>
+          <div class="flex justify-center items-center gap-3 pt-2">
+            <div class="flex flex-col items-center"><span class="w-5 h-5 rounded-full bg-[#111111] inline-block shadow-sm"></span><span class="text-[9px] uppercase tracking-wider text-taupe mt-1">Black</span></div>
+            <div class="flex flex-col items-center"><span class="w-5 h-5 rounded-full bg-[#F5F5F5] border border-taupe/40 inline-block shadow-sm"></span><span class="text-[9px] uppercase tracking-wider text-taupe mt-1">White</span></div>
+            <div class="flex flex-col items-center"><span class="w-5 h-5 rounded-full bg-[#6B1D2F] inline-block shadow-sm"></span><span class="text-[9px] uppercase tracking-wider text-taupe mt-1">Maroon</span></div>
+            <div class="flex flex-col items-center"><span class="w-5 h-5 rounded-full bg-[#7D848A] inline-block shadow-sm"></span><span class="text-[9px] uppercase tracking-wider text-taupe mt-1">Grey</span></div>
+            <div class="flex flex-col items-center"><span class="w-5 h-5 rounded-full bg-[#384F1D] inline-block shadow-sm"></span><span class="text-[9px] uppercase tracking-wider text-taupe mt-1">Green</span></div>
+          </div>
           <p class="text-[11px] text-taupe max-w-sm mx-auto pt-2 leading-relaxed">
             Follow the brick pathway past our vintage landscape welcome painting to the lakeside floral arch, curved lawn seating, and live acoustic musicians.
           </p>
@@ -765,12 +735,37 @@
   </main>
 
   <script>
-    const weddingDate = new Date('2027-01-23T11:00:00-05:00').getTime();
+    // 1. Sidebar Slide-Out Drawer Controls
+    const toggleBtn = document.getElementById('menu-toggle-btn');
+    const closeBtn = document.getElementById('menu-close-btn');
+    const sidebar = document.getElementById('sidebar-menu');
+    const overlay = document.getElementById('sidebar-overlay');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+    function openSidebar() {
+      sidebar.classList.remove('translate-x-full');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeSidebar() {
+      sidebar.classList.add('translate-x-full');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
+    if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+    if (overlay) overlay.addEventListener('click', closeSidebar);
+    sidebarLinks.forEach(link => link.addEventListener('click', closeSidebar));
+
+    // 2. Countdown Timer (Set to January 29, 2027 11:00 AM EST)
+    const weddingDate = new Date('2027-01-29T11:00:00-05:00').getTime();
     function updateCountdown() {
       const now = new Date().getTime();
       const diff = weddingDate - now;
       if (diff <= 0) return;
-      document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
       document.getElementById('hours').innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
       document.getElementById('minutes').innerText = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
       document.getElementById('seconds').innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
@@ -778,6 +773,7 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
+    // 3. Scroll Fade-Up Observer
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -787,17 +783,20 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
 
+    // 4. RSVP Submission Handler
     const rsvpForm = document.getElementById('rsvp-form');
-    rsvpForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const FORMSPREE_ENDPOINT = "";
-      if (FORMSPREE_ENDPOINT) {
-        const data = new FormData(rsvpForm);
-        await fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
-      }
-      document.getElementById('rsvp-success').classList.remove('hidden');
-      rsvpForm.reset();
-    });
+    if (rsvpForm) {
+      rsvpForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const FORMSPREE_ENDPOINT = "";
+        if (FORMSPREE_ENDPOINT) {
+          const data = new FormData(rsvpForm);
+          await fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+        }
+        document.getElementById('rsvp-success').classList.remove('hidden');
+        rsvpForm.reset();
+      });
+    }
   </script>
 </body>
 </html>
