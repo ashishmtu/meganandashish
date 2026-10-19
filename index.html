@@ -101,22 +101,35 @@
   <main class="max-w-5xl mx-auto px-4 sm:px-8">
 
 <section id="home" class="pt-2 sm:pt-6 pb-20 text-center fade-section">
-      <!-- Full-Width Responsive Artwork Container -->
+      <!-- Full-Width Responsive Artwork Container with Feathered Edge Blending -->
       <div class="w-full max-w-6xl mx-auto px-0 sm:px-4">
-        <div class="w-full">
+        <div class="w-full relative">
           <img 
             src="images/header.jpeg" 
             alt="Megan & Ashish Watercolor Ceremony Arch" 
             class="w-full h-auto object-contain mx-auto block"
+            style="
+              mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 97%),
+                          linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 6%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
+              -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 68%, rgba(0,0,0,0) 97%),
+                                  linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 6%, rgba(0,0,0,1) 92%, rgba(0,0,0,0) 100%);
+              mask-composite: intersect;
+              -webkit-mask-composite: source-in;
+            "
           />
         </div>
       </div>
 
       <div class="mt-4 space-y-3 px-4">
         <p class="text-[10px] uppercase tracking-[0.3em] text-taupe font-normal">Together With Their Families</p>
-        <h1 class="font-script text-6xl sm:text-7xl md:text-8xl text-olive leading-none py-2">
-          Megan &amp; Ashish
+        
+        <!-- Multi-Line Script Names -->
+        <h1 class="py-2">
+          <span class="font-script text-6xl sm:text-7xl md:text-8xl text-olive block leading-none">Megan</span>
+          <span class="font-script text-4xl sm:text-5xl text-rose block my-1 leading-none">&amp;</span>
+          <span class="font-script text-6xl sm:text-7xl md:text-8xl text-olive block leading-none">Ashish</span>
         </h1>
+
         <p class="text-xs text-olive/80 tracking-[0.06em] font-light">
           Joyfully invite you to celebrate their wedding celebration
         </p>
@@ -163,45 +176,30 @@
     <div class="text-center text-sage/60 text-xl select-none">✦</div>
 
     <!-- LOVE STORY & MEMORY LANE -->
-    <section id="story" class="py-16 text-center max-w-3xl mx-auto fade-section">
+    <section id="story" class="py-16 text-center max-w-2xl mx-auto px-4 fade-section">
       <!-- Circular Portrait -->
       <div class="relative w-44 h-44 sm:w-52 sm:h-52 mx-auto mb-6">
         <div class="w-full h-full rounded-full overflow-hidden p-1.5 border border-taupe/40 shadow-sm bg-paper">
           <img 
-            src="images/our-story.jpeg" 
+            src="images/our-story.jpg" 
             alt="Ashish & Megan" 
             class="w-full h-full object-cover rounded-full"
             style="object-position: center 25%;"
           />
         </div>
-        <!-- Subtle botanical accent circle behind -->
+        <!-- Subtle botanical accent ring -->
         <div class="absolute inset-0 rounded-full border border-sage/50 -scale-105 pointer-events-none"></div>
       </div>
 
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Our Love Story</h2>
-      <p class="text-xs text-olive/80 leading-relaxed mt-4 max-w-xl mx-auto">
-        We are overjoyed to gather our closest family and friends in sunny South Florida. From snowy trails in Rocky Mountain National Park and Red Rocks to historic gardens in Miami, Key West refuges, and cozy evenings at home with our cat Ellie, every chapter has led us to this lakeside celebration.
-      </p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 mt-14">
-        <div class="space-y-2.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive">Chapter I &bull; First Spark</p>
-          <p class="text-[11px] text-taupe leading-relaxed">
-            Two paths grounded in a love for landscapes, maps, design, and nature crossed in Florida and turned every weekend into an adventure.
-          </p>
-        </div>
-        <div class="space-y-2.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive">Chapter II &bull; Memory Lane</p>
-          <p class="text-[11px] text-taupe leading-relaxed">
-            Exploring mountain peaks, art museums, natural springs, and botanical gardens together across Colorado and Florida.
-          </p>
-        </div>
-        <div class="space-y-2.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive">Chapter III &bull; Forever</p>
-          <p class="text-[11px] text-taupe leading-relaxed">
-            Saying our vows beside the water before heading off on our Oregon and California coastal honeymoon road trip.
-          </p>
-        </div>
+      
+      <div class="mt-6 space-y-4 text-xs sm:text-sm text-olive/85 leading-relaxed font-light text-center">
+        <p>
+          Their paths first crossed in West Palm Beach, where they both worked and shared a love for the city, his through mapping and hers through landscape design. Their first date was at the beautiful Morikami Museum and Japanese Gardens, followed by a second date exploring Downtown West Palm Beach and dinner at True Food Kitchen. Just 12 days later, they made things official.
+        </p>
+        <p>
+          What began as a connection soon grew into something meaningful, and now they’re excited to begin their next chapter together.
+        </p>
       </div>
     </section>
 
