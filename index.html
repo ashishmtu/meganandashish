@@ -355,20 +355,18 @@
           <div class="order-1 md:order-2 relative flex justify-center">
             
             <!-- Placeholder Box (Will be replaced by your image later) -->
-            <div class="w-full max-w-sm aspect-[4/3] bg-paper border border-taupe/30 shadow-sm rounded-2xl flex flex-col items-center justify-center p-6 text-center">
-               <span class="text-2xl mb-2">🗺️</span>
-               <p class="text-[10px] uppercase tracking-[0.2em] text-taupe/60">
-                 [ Map Illustration Goes Here ]
-               </p>
-               
-               <!-- 
-                 WHEN YOUR MAP IS READY: 
-                 1. Delete this entire <div class="w-full max-w-sm aspect-[4/3]..."> block 
-                 2. Uncomment the image tag below and update the src link 
-               -->
-               
-               <!-- <img src="images/venue-map.jpeg" alt="Illustrated Map of Galuppi's" class="w-full h-auto object-contain watercolor-paint vignette-mask drop-shadow-sm" /> -->
-            </div>
+            <!-- Right Column: Illustrated Map -->
+          <div class="order-1 md:order-2 relative flex justify-center">
+            <img 
+              src="images/venue-map.jpeg" 
+              alt="Illustrated Map of Galuppi's and Pompano Beach" 
+              class="w-full max-w-sm h-auto object-contain rounded-2xl drop-shadow-md"
+              style="
+                mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+                -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%);
+              "
+            />
+          </div>
 
           </div>
         </div>
