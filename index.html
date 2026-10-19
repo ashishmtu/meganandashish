@@ -5,33 +5,68 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Megan & Ashish | Wedding Celebration</title>
 
-  <script src="https://cdn.tailwindcss.com"></script>
+<script>
+    // 1. Sidebar Slide-Out Drawer Controls
+    const toggleBtn = document.getElementById('menu-toggle-btn');
+    const closeBtn = document.getElementById('menu-close-btn');
+    const sidebar = document.getElementById('sidebar-menu');
+    const overlay = document.getElementById('sidebar-overlay');
+    const sidebarLinks = document.querySelectorAll('.sidebar-link');
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Prata&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Prata&display=swap" rel="stylesheet">
+    function openSidebar() {
+      sidebar.classList.remove('translate-x-full');
+      overlay.classList.remove('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = 'hidden';
+    }
 
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            olive: '#384F1D',
-            taupe: '#9F906D',
-            sage: '#BCBC86',
-            rose: '#BE8979',
-            blush: '#E2CEC0',
-            paper: '#FAF9F6',
-          },
-          fontFamily: {
-            script: ['"Alex Brush"', 'cursive'],
-            serif: ['"Prata"', 'Georgia', 'serif'],
-            cinzel: ['"Cinzel"', 'serif'],
-            sans: ['"Montserrat"', 'sans-serif'],
-          }
+    function closeSidebar() {
+      sidebar.classList.add('translate-x-full');
+      overlay.classList.add('opacity-0', 'pointer-events-none');
+      document.body.style.overflow = '';
+    }
+
+    if (toggleBtn) toggleBtn.addEventListener('click', openSidebar);
+    if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+    if (overlay) overlay.addEventListener('click', closeSidebar);
+    sidebarLinks.forEach(link => link.addEventListener('click', closeSidebar));
+
+    // 2. Countdown Timer (Set to January 29, 2027 11:00 AM EST)
+    const weddingDate = new Date('2027-01-29T11:00:00-05:00').getTime();
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+      if (diff <= 0) return;
+      document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById('hours').innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+      document.getElementById('minutes').innerText = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
+      document.getElementById('seconds').innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    // 3. Scroll Fade-Up Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
         }
-      }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+
+    // 4. RSVP Submission Handler
+    const rsvpForm = document.getElementById('rsvp-form');
+    if (rsvpForm) {
+      rsvpForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const FORMSPREE_ENDPOINT = "";
+        if (FORMSPREE_ENDPOINT) {
+          const data = new FormData(rsvpForm);
+          await fetch(FORMSPREE_ENDPOINT, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+        }
+        document.getElementById('rsvp-success').classList.remove('hidden');
+        rsvpForm.reset();
+      });
     }
   </script>
 
@@ -84,19 +119,67 @@
     </defs>
   </svg>
 
-  <nav class="sticky top-0 z-40 py-4 px-4 sm:px-8 backdrop-blur-md bg-paper/85 border-b border-taupe/15">
-    <div class="max-w-5xl mx-auto flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-[10px] uppercase tracking-[0.24em] font-normal text-olive/80">
-      <a href="#home" class="hover:text-rose transition">Home</a>
-      <a href="#story" class="hover:text-rose transition">Our Story</a>
-      <a href="#venue" class="hover:text-rose transition">Wedding Day</a>
-      <a href="#details" class="hover:text-rose transition">Reception</a>
-      <a href="#travel" class="hover:text-rose transition">Where To Stay</a>
-      <a href="#party" class="hover:text-rose transition">Wedding Party</a>
-      <a href="#registry" class="hover:text-rose transition">Registry</a>
-      <a href="#rsvp" class="hover:text-rose transition font-medium text-olive">RSVP</a>
-      <a href="#faqs" class="hover:text-rose transition">FAQs</a>
+  <!-- FLOATING HAMBURGER BUTTON -->
+  <header class="fixed top-5 right-5 sm:top-7 sm:right-7 z-50">
+    <button 
+      id="menu-toggle-btn" 
+      type="button"
+      aria-label="Open Navigation Menu"
+      class="w-12 h-12 rounded-full bg-paper/90 border border-taupe/40 backdrop-blur-md shadow-sm flex flex-col items-center justify-center gap-1.5 text-olive hover:bg-olive hover:text-paper hover:border-olive transition duration-300 group"
+    >
+      <span class="w-5 h-[1.5px] bg-current transition-transform duration-300 group-hover:scale-x-110"></span>
+      <span class="w-5 h-[1.5px] bg-current transition-transform duration-300 group-hover:scale-x-110"></span>
+      <span class="w-5 h-[1.5px] bg-current transition-transform duration-300 group-hover:scale-x-110"></span>
+    </button>
+  </header>
+
+  <!-- SIDEBAR BACKDROP OVERLAY -->
+  <div 
+    id="sidebar-overlay" 
+    class="fixed inset-0 bg-olive/40 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"
+  ></div>
+
+  <!-- SLIDE-OUT SIDEBAR DRAWER -->
+  <aside 
+    id="sidebar-menu" 
+    class="fixed top-0 right-0 h-full w-80 max-w-[85vw] bg-[#FAF9F6] border-l border-taupe/30 z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-8 sm:p-10"
+  >
+    <!-- Top Row: Monogram & Close Button -->
+    <div>
+      <div class="flex items-center justify-between pb-8 border-b border-taupe/20">
+        <a href="#home" class="font-script text-4xl text-olive">
+          M <span class="text-rose text-3xl font-serif">&amp;</span> A
+        </a>
+        <button 
+          id="menu-close-btn" 
+          type="button"
+          aria-label="Close Navigation Menu"
+          class="w-10 h-10 rounded-full border border-taupe/30 text-olive flex items-center justify-center hover:bg-rose hover:text-paper hover:border-rose transition text-xl leading-none"
+        >
+          &times;
+        </button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="mt-8 flex flex-col space-y-5 text-xs uppercase tracking-[0.24em] font-light text-olive/85">
+        <a href="#home" class="sidebar-link hover:text-rose transition py-1">Home</a>
+        <a href="#story" class="sidebar-link hover:text-rose transition py-1">Our Story</a>
+        <a href="#venue" class="sidebar-link hover:text-rose transition py-1">Wedding Day</a>
+        <a href="#details" class="sidebar-link hover:text-rose transition py-1">The Reception</a>
+        <a href="#travel" class="sidebar-link hover:text-rose transition py-1">Where To Stay</a>
+        <a href="#party" class="sidebar-link hover:text-rose transition py-1">Wedding Party</a>
+        <a href="#registry" class="sidebar-link hover:text-rose transition py-1">Gift Registry</a>
+        <a href="#rsvp" class="sidebar-link hover:text-rose font-medium text-olive transition py-1">RSVP</a>
+        <a href="#faqs" class="sidebar-link hover:text-rose transition py-1">FAQs</a>
+      </nav>
     </div>
-  </nav>
+
+    <!-- Sidebar Bottom Details -->
+    <div class="pt-8 border-t border-taupe/20 text-center">
+      <p class="font-cinzel text-xs tracking-[0.16em] text-olive font-semibold">January 29, 2027</p>
+      <p class="text-[10px] uppercase tracking-[0.22em] text-taupe mt-1">Pompano Beach, FL</p>
+    </div>
+  </aside>
 
   <main class="max-w-5xl mx-auto px-4 sm:px-8">
 
