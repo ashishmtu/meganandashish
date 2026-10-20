@@ -621,19 +621,36 @@
     if (overlay) overlay.addEventListener('click', closeSidebar);
     sidebarLinks.forEach(link => link.addEventListener('click', closeSidebar));
 
-    // 2. Countdown Timer (Set to January 29, 2027 11:00 AM EST)
+    // 2. Countdown Timers
     const weddingDate = new Date('2027-01-29T11:00:00-05:00').getTime();
-    function updateCountdown() {
+    const rsvpDate = new Date('2026-12-15T23:59:59-05:00').getTime();
+
+    function updateCountdowns() {
       const now = new Date().getTime();
-      const diff = weddingDate - now;
-      if (diff <= 0) return;
-      document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-      document.getElementById('hours').innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-      document.getElementById('minutes').innerText = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
-      document.getElementById('seconds').innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+
+      // Main Wedding Timer
+      const diffWedding = weddingDate - now;
+      if (diffWedding > 0) {
+        document.getElementById('days').innerText = Math.floor(diffWedding / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = String(Math.floor((diffWedding / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+        document.getElementById('minutes').innerText = String(Math.floor((diffWedding / 1000 / 60) % 60)).padStart(2, '0');
+        document.getElementById('seconds').innerText = String(Math.floor((diffWedding / 1000) % 60)).padStart(2, '0');
+      }
+
+      // RSVP Deadline Timer
+      const diffRSVP = rsvpDate - now;
+      const rsvpContainer = document.getElementById('rsvp-countdown');
+      if (diffRSVP > 0) {
+        document.getElementById('rsvp-days').innerText = Math.floor(diffRSVP / (1000 * 60 * 60 * 24));
+        document.getElementById('rsvp-hours').innerText = String(Math.floor((diffRSVP / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+        document.getElementById('rsvp-minutes').innerText = String(Math.floor((diffRSVP / 1000 / 60) % 60)).padStart(2, '0');
+        document.getElementById('rsvp-seconds').innerText = String(Math.floor((diffRSVP / 1000) % 60)).padStart(2, '0');
+      } else if (rsvpContainer) {
+        rsvpContainer.style.display = 'none'; // Automatically hides the timer once the deadline passes
+      }
     }
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    updateCountdowns();
+    setInterval(updateCountdowns, 1000);;
 
     // 3. Scroll Fade-Up Observer
     const observer = new IntersectionObserver((entries) => {
