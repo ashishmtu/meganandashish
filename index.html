@@ -496,7 +496,27 @@
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Kindly RSVP</h2>
       <p class="text-xs text-taupe mt-2">Please reply by December 15, 2026</p>
 
-      <div class="mt-10 p-8 sm:p-12 border border-taupe/30 bg-paper rounded-3xl shadow-sm text-center">
+      <!-- RSVP Mini Countdown -->
+      <div id="rsvp-countdown" class="pt-5 pb-2 flex justify-center gap-5 sm:gap-8 text-olive px-4">
+        <div class="flex flex-col items-center">
+          <span id="rsvp-days" class="font-serif text-lg sm:text-xl block leading-none">00</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-taupe mt-1.5">Days</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span id="rsvp-hours" class="font-serif text-lg sm:text-xl block leading-none">00</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-taupe mt-1.5">Hrs</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span id="rsvp-minutes" class="font-serif text-lg sm:text-xl block leading-none">00</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-taupe mt-1.5">Min</span>
+        </div>
+        <div class="flex flex-col items-center">
+          <span id="rsvp-seconds" class="font-serif text-lg sm:text-xl block leading-none">00</span>
+          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-taupe mt-1.5">Sec</span>
+        </div>
+      </div>
+
+      <div class="mt-8 p-8 sm:p-12 border border-taupe/30 bg-paper rounded-3xl shadow-sm text-center">
         <p class="font-cinzel text-base sm:text-lg uppercase tracking-[0.18em] text-olive font-semibold mb-2">
           Find Your Invitation
         </p>
