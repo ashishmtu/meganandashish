@@ -494,34 +494,23 @@
     <!-- RSVP SECTION (ZOLA GUEST PORTAL) -->
     <section id="rsvp" class="py-16 max-w-2xl mx-auto text-center fade-section px-4">
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Kindly RSVP</h2>
-      <p class="text-xs text-taupe mt-2">Please reply by December 15, 2026</p>
+      
+      <!-- Highlighted Deadline -->
+      <p class="font-serif text-sm sm:text-base text-rose uppercase tracking-[0.16em] mt-4 font-semibold">
+        Please reply by December 15, 2026
+      </p>
 
-      <!-- RSVP Mini Countdown -->
-      <div id="rsvp-countdown" class="pt-5 pb-2 flex justify-center gap-5 sm:gap-8 text-olive px-4">
-        <div class="flex flex-col items-center">
-          <span id="rsvp-days" class="font-serif text-lg sm:text-xl block leading-none">00</span>
-          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-taupe mt-1.5">Days</span>
-        </div>
-        <div class="flex flex-col items-center">
-          <span id="rsvp-hours" class="font-serif text-lg sm:text-xl block leading-none">00</span>
-          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-taupe mt-1.5">Hrs</span>
-        </div>
-        <div class="flex flex-col items-center">
-          <span id="rsvp-minutes" class="font-serif text-lg sm:text-xl block leading-none">00</span>
-          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-taupe mt-1.5">Min</span>
-        </div>
-        <div class="flex flex-col items-center">
-          <span id="rsvp-seconds" class="font-serif text-lg sm:text-xl block leading-none">00</span>
-          <span class="text-[8px] sm:text-[9px] uppercase tracking-[0.2em] text-taupe mt-1.5">Sec</span>
-        </div>
-      </div>
+      <!-- Minimal RSVP Text Countdown -->
+      <p id="rsvp-text-timer" class="text-[10px] sm:text-[11px] text-taupe uppercase tracking-[0.2em] mt-2 font-medium">
+        <!-- JS will inject: "57 Days 3 Hours Remaining" -->
+      </p>
 
       <div class="mt-8 p-8 sm:p-12 border border-taupe/30 bg-paper rounded-3xl shadow-sm text-center">
         <p class="font-cinzel text-base sm:text-lg uppercase tracking-[0.18em] text-olive font-semibold mb-2">
           Find Your Invitation
         </p>
         <p class="text-[11px] sm:text-xs text-olive/80 leading-relaxed max-w-md mx-auto mb-8 font-light">
-          Enter your name on our guest portal to locate your party, confirm your attendance, and let us know your meal preferences.
+          Enter your name on our guest portal to locate your party and confirm your attendance. Responding in advance helps us plan thoughtfully and minimize waste.
         </p>
         
         <a 
@@ -628,7 +617,7 @@
     function updateCountdowns() {
       const now = new Date().getTime();
 
-      // Main Wedding Timer
+      // Main Wedding Timer (Days, Hrs, Min, Sec)
       const diffWedding = weddingDate - now;
       if (diffWedding > 0) {
         document.getElementById('days').innerText = Math.floor(diffWedding / (1000 * 60 * 60 * 24));
@@ -637,20 +626,22 @@
         document.getElementById('seconds').innerText = String(Math.floor((diffWedding / 1000) % 60)).padStart(2, '0');
       }
 
-      // RSVP Deadline Timer
+      // Minimal RSVP Text Timer (Days & Hours only)
       const diffRSVP = rsvpDate - now;
-      const rsvpContainer = document.getElementById('rsvp-countdown');
-      if (diffRSVP > 0) {
-        document.getElementById('rsvp-days').innerText = Math.floor(diffRSVP / (1000 * 60 * 60 * 24));
-        document.getElementById('rsvp-hours').innerText = String(Math.floor((diffRSVP / (1000 * 60 * 60)) % 24)).padStart(2, '0');
-        document.getElementById('rsvp-minutes').innerText = String(Math.floor((diffRSVP / 1000 / 60) % 60)).padStart(2, '0');
-        document.getElementById('rsvp-seconds').innerText = String(Math.floor((diffRSVP / 1000) % 60)).padStart(2, '0');
-      } else if (rsvpContainer) {
-        rsvpContainer.style.display = 'none'; // Automatically hides the timer once the deadline passes
+      const rsvpTextContainer = document.getElementById('rsvp-text-timer');
+      
+      if (rsvpTextContainer) {
+        if (diffRSVP > 0) {
+          const days = Math.floor(diffRSVP / (1000 * 60 * 60 * 24));
+          const hours = Math.floor((diffRSVP / (1000 * 60 * 60)) % 24);
+          rsvpTextContainer.innerText = `${days} Days ${hours} Hours Remaining`;
+        } else {
+          rsvpTextContainer.style.display = 'none'; // Automatically hides once the deadline passes
+        }
       }
     }
     updateCountdowns();
-    setInterval(updateCountdowns, 1000);;
+    setInterval(updateCountdowns, 1000);
 
     // 3. Scroll Fade-Up Observer
     const observer = new IntersectionObserver((entries) => {
