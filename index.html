@@ -415,16 +415,6 @@
           </a>
         </div>
       </div>
-
-      <p class="text-[11px] text-taupe mt-14 max-w-md mx-auto leading-relaxed">
-        Exploring South Florida? Visit Vizcaya Museum &amp; Gardens, Morikami Japanese Gardens, Wakodahatchee Wetlands, or dine at Chhauka in West Palm Beach.
-      </p>
-
-      <div class="mt-6">
-        <a href="#rsvp" class="inline-block px-8 py-2.5 bg-olive text-paper text-[11px] tracking-[0.16em] font-normal rounded-full hover:bg-rose transition">
-          Kindly RSVP by December 1
-        </a>
-      </div>
     </section>
 
     <div class="text-center text-sage/60 text-xl select-none">✦</div>
@@ -501,56 +491,32 @@
       </div>
     </section>
 
-    <section id="rsvp" class="py-16 max-w-2xl mx-auto text-center fade-section">
+    <!-- RSVP SECTION (ZOLA GUEST PORTAL) -->
+    <section id="rsvp" class="py-16 max-w-2xl mx-auto text-center fade-section px-4">
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Kindly RSVP</h2>
-      <p class="text-xs text-taupe mt-2">Please reply by December 1, 2026</p>
+      <p class="text-xs text-taupe mt-2">Please reply by December 15, 2026</p>
 
-      <form id="rsvp-form" class="mt-10 space-y-6 text-left">
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-[10px] uppercase tracking-[0.22em] text-taupe mb-1">Full Name(s) *</label>
-            <input type="text" name="name" required placeholder="Your Name(s)" class="w-full py-2.5 text-xs text-olive" />
-          </div>
-          <div>
-            <label class="block text-[10px] uppercase tracking-[0.22em] text-taupe mb-1">Email Address *</label>
-            <input type="email" name="email" required placeholder="you@example.com" class="w-full py-2.5 text-xs text-olive" />
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label class="block text-[10px] uppercase tracking-[0.22em] text-taupe mb-1">Attendance *</label>
-            <select name="attendance" required class="w-full py-2.5 text-xs text-olive">
-              <option value="Joyfully Accepts">Joyfully Accepts</option>
-              <option value="Regretfully Declines">Regretfully Declines</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-[10px] uppercase tracking-[0.22em] text-taupe mb-1">Number of Guests *</label>
-            <select name="guests" class="w-full py-2.5 text-xs text-olive">
-              <option value="1">1 Guest</option>
-              <option value="2">2 Guests</option>
-              <option value="3">3 Guests</option>
-              <option value="4">4 Guests</option>
-            </select>
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-[10px] uppercase tracking-[0.22em] text-taupe mb-1">Dietary Restrictions &amp; Song Requests</label>
-          <input type="text" name="notes" placeholder="Vegetarian, allergies, or a song for the reception..." class="w-full py-2.5 text-xs text-olive" />
-        </div>
-
-        <div class="text-center pt-4">
-          <button type="submit" class="px-9 py-2.5 bg-olive text-paper text-[11px] tracking-[0.16em] font-normal rounded-full hover:bg-rose transition">
-            Send RSVP
-          </button>
-        </div>
-
-        <div id="rsvp-success" class="hidden text-center text-xs text-olive font-medium pt-3">
-          Thank you! Your RSVP has been received.
-        </div>
-      </form>
+      <div class="mt-10 p-8 sm:p-12 border border-taupe/30 bg-paper rounded-3xl shadow-sm text-center">
+        <p class="font-cinzel text-base sm:text-lg uppercase tracking-[0.18em] text-olive font-semibold mb-2">
+          Find Your Invitation
+        </p>
+        <p class="text-[11px] sm:text-xs text-olive/80 leading-relaxed max-w-md mx-auto mb-8 font-light">
+          Enter your name on our guest portal to locate your party, confirm your attendance, and let us know your meal preferences.
+        </p>
+        
+        <a 
+          href="https://www.zola.com/wedding/megan-ashish/rsvp" 
+          target="_blank" 
+          rel="noopener"
+          class="inline-block px-10 py-3 bg-olive text-paper text-[11px] tracking-[0.2em] uppercase font-normal rounded-full hover:bg-rose transition duration-300 shadow-md"
+        >
+          Continue to RSVP
+        </a>
+        
+        <p class="text-[10px] text-taupe mt-6 uppercase tracking-wider">
+          Having trouble locating your invitation? Please reach out to us directly.
+        </p>
+      </div>
     </section>
 
     <section id="faqs" class="py-16 max-w-3xl mx-auto text-center fade-section">
