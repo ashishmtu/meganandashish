@@ -68,6 +68,24 @@
       border-bottom-color: #BE8979;
     }
 
+    /* Full-Width Continuous Sliding Photo Marquee (8 Portrait Images) */
+    @keyframes marqueeScroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 52s linear infinite;
+    }
+    .marquee-track:hover {
+      animation-play-state: paused;
+    }
+
     /* Interactive Envelope & Card Styles */
     .envelope-stage {
       perspective: 1200px;
@@ -190,7 +208,7 @@
 
   <main class="max-w-5xl mx-auto px-4 sm:px-8">
 
-    <section id="home" class="pt-2 sm:pt-6 pb-20 text-center fade-section">
+    <section id="home" class="pt-2 sm:pt-6 pb-16 text-center fade-section">
       <!-- Full-Width Responsive Artwork Container with Feathered Edge Blending -->
       <div class="w-full max-w-6xl mx-auto px-0 sm:px-4">
         <div class="w-full relative">
@@ -259,6 +277,31 @@
         <div>
           <span id="seconds" class="font-serif text-xl sm:text-2xl block">00</span>
           <span class="text-[9px] uppercase tracking-[0.26em] text-taupe">Seconds</span>
+        </div>
+      </div>
+
+      <!-- FULL-BLEED SLIDING PHOTO MARQUEE (8 Portrait Photos) -->
+      <div class="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mt-14 sm:mt-16 py-2 select-none">
+        <div class="marquee-track gap-3 sm:gap-5 px-1.5 sm:px-2.5">
+          <!-- Set 1 (Original 8 Portrait Photos) -->
+          <img src="images/slide1.jpg" alt="Megan & Ashish Photo 1" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide2.jpg" alt="Megan & Ashish Photo 2" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide3.jpg" alt="Megan & Ashish Photo 3" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide4.jpg" alt="Megan & Ashish Photo 4" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide5.jpg" alt="Megan & Ashish Photo 5" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide6.jpg" alt="Megan & Ashish Photo 6" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide7.jpg" alt="Megan & Ashish Photo 7" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide8.jpg" alt="Megan & Ashish Photo 8" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+
+          <!-- Set 2 (Duplicated for Seamless Infinite Loop) -->
+          <img src="images/slide1.jpg" alt="" aria-hidden="true" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide2.jpg" alt="" aria-hidden="true" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide3.jpg" alt="" aria-hidden="true" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide4.jpg" alt="" aria-hidden="true" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide5.jpg" alt="" aria-hidden="true" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide6.jpg" alt="" aria-hidden="true" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide7.jpg" alt="" aria-hidden="true" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
+          <img src="images/slide8.jpg" alt="" aria-hidden="true" class="h-72 sm:h-96 md:h-[440px] aspect-[3/4] object-cover rounded-sm shadow-sm shrink-0" />
         </div>
       </div>
     </section>
@@ -377,7 +420,7 @@
           </div>
 
           <!-- Envelope Front Pocket (Side & Bottom Folds) -->
-          <div class=" relative z-20 pointer-events-none h-[290px] sm:h-[330px] -mt-[180px]">
+          <div class="relative z-20 pointer-events-none h-[290px] sm:h-[330px] -mt-[180px]">
             <svg viewBox="0 0 500 320" preserveAspectRatio="none" class="w-full h-full rounded-xl overflow-hidden drop-shadow-sm">
               <!-- Left & Right Pocket Folds -->
               <polygon points="0,0 255,165 0,320" fill="#E5D3C5" />
@@ -665,6 +708,11 @@
         <h2 class="font-script text-6xl sm:text-7xl text-olive mt-3">
           Ashish &amp; Megan
         </h2>
+        <div class="mt-4">
+          <a href="#home" class="inline-block px-8 py-2 bg-olive text-paper text-[10px] uppercase tracking-[0.2em] font-normal rounded-full hover:bg-rose transition">
+            AshishAndMegan.com
+          </a>
+        </div>
       </div>
     </section>
 
