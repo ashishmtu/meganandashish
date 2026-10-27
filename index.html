@@ -11,7 +11,7 @@
   <!-- REQUIRED: Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Prata&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700&family=Montserrat:ital,wght@0,400;0,500;0,600&family=Prata&display=swap" rel="stylesheet">
 
   <script>
     tailwind.config = {
@@ -41,7 +41,7 @@
       background-color: #FAF9F6;
       color: #384F1D;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
+      font-weight: 400; /* Increased from 300 for better base readability */
       overflow-x: hidden;
     }
     .watercolor-paint {
@@ -61,14 +61,14 @@
       border-bottom: 1px solid rgba(56, 79, 29, 0.3);
       border-radius: 0;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 300;
+      font-weight: 400;
     }
     input:focus, select:focus, textarea:focus {
       outline: none;
       border-bottom-color: #BE8979;
     }
 
-    /* Full-Width Continuous Sliding Photo Marquee (8 Portrait Images) */
+    /* Full-Width Continuous Sliding Photo Marquee */
     @keyframes marqueeScroll {
       0% {
         transform: translateX(0);
@@ -186,8 +186,8 @@
         </button>
       </div>
 
-      <!-- Navigation Links -->
-      <nav class="mt-8 flex flex-col space-y-5 text-xs uppercase tracking-[0.24em] font-light text-olive/85">
+      <!-- Navigation Links (Increased legibility) -->
+      <nav class="mt-8 flex flex-col space-y-5 text-sm uppercase tracking-[0.2em] font-medium text-olive">
         <a href="#home" class="sidebar-link hover:text-rose transition py-1">Home</a>
         <a href="#story" class="sidebar-link hover:text-rose transition py-1">Our Story</a>
         <a href="#invitation" class="sidebar-link hover:text-rose transition py-1">Invitation</a>
@@ -195,15 +195,15 @@
         <a href="#directions" class="sidebar-link hover:text-rose transition py-1">How To Get There</a>
         <a href="#travel" class="sidebar-link hover:text-rose transition py-1">Where To Stay</a>
         <a href="#registry" class="sidebar-link hover:text-rose transition py-1">Gift Registry</a>
-        <a href="#rsvp" class="sidebar-link hover:text-rose font-medium text-olive transition py-1">RSVP</a>
+        <a href="#rsvp" class="sidebar-link hover:text-rose font-bold transition py-1">RSVP</a>
         <a href="#faqs" class="sidebar-link hover:text-rose transition py-1">FAQs</a>
       </nav>
     </div>
 
     <!-- Sidebar Bottom Details -->
     <div class="pt-8 border-t border-taupe/20 text-center">
-      <p class="font-cinzel text-xs tracking-[0.16em] text-olive font-semibold">January 29, 2027</p>
-      <p class="text-[10px] uppercase tracking-[0.22em] text-taupe mt-1">Pompano Beach, FL</p>
+      <p class="font-cinzel text-sm tracking-[0.16em] text-olive font-bold">January 29, 2027</p>
+      <p class="text-xs uppercase tracking-[0.2em] text-taupe mt-1 font-medium">Pompano Beach, FL</p>
     </div>
   </aside>
 
@@ -230,7 +230,7 @@
       </div>
 
       <div class="mt-4 space-y-3 px-4">
-        <p class="text-[10px] uppercase tracking-[0.3em] text-taupe font-normal">Together With Their Families</p>
+        <p class="text-xs uppercase tracking-[0.25em] text-taupe font-semibold">Together With Their Families</p>
         
         <!-- Multi-Line Script Names -->
         <h1 class="py-2">
@@ -239,49 +239,49 @@
           <span class="font-script text-6xl sm:text-7xl md:text-8xl text-olive block leading-none">Ashish</span>
         </h1>
 
-        <p class="text-xs text-olive/80 tracking-[0.06em] font-light">
+        <p class="text-sm text-olive tracking-[0.05em] font-medium">
           Joyfully invite you to celebrate their wedding celebration
         </p>
         
         <div class="pt-3 pb-1 space-y-1">
-          <p class="font-sans text-[11px] sm:text-xs uppercase tracking-[0.32em] text-taupe font-normal">
+          <p class="font-sans text-xs sm:text-sm uppercase tracking-[0.25em] text-taupe font-semibold">
             Friday
           </p>
-          <p class="font-cinzel text-xl sm:text-2xl tracking-[0.14em] text-olive font-semibold">
+          <p class="font-cinzel text-xl sm:text-2xl tracking-[0.14em] text-olive font-bold">
             January 29, 2027
           </p>
-          <p class="font-sans text-[11px] sm:text-xs uppercase tracking-[0.26em] text-olive/85 pt-0.5">
+          <p class="font-sans text-xs sm:text-sm uppercase tracking-[0.2em] text-olive font-medium pt-0.5">
             Pompano Beach, Florida
           </p>
         </div>
 
         <div class="pt-4">
-          <a href="#rsvp" class="inline-block px-8 py-2.5 bg-olive text-paper text-[11px] tracking-[0.16em] font-normal rounded-full hover:bg-rose transition duration-300">
+          <a href="#rsvp" class="inline-block px-8 py-3 bg-olive text-paper text-xs tracking-[0.15em] uppercase font-medium rounded-full hover:bg-rose transition duration-300">
             Kindly RSVP by December 15
           </a>
         </div>
       </div>
 
-      <div id="countdown" class="pt-10 flex justify-center gap-8 sm:gap-14 text-olive px-4">
+      <div id="countdown" class="pt-10 flex justify-center gap-6 sm:gap-14 text-olive px-4">
         <div>
-          <span id="days" class="font-serif text-xl sm:text-2xl block">00</span>
-          <span class="text-[9px] uppercase tracking-[0.26em] text-taupe">Days</span>
+          <span id="days" class="font-serif text-2xl sm:text-3xl block font-bold">00</span>
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-taupe font-semibold">Days</span>
         </div>
         <div>
-          <span id="hours" class="font-serif text-xl sm:text-2xl block">00</span>
-          <span class="text-[9px] uppercase tracking-[0.26em] text-taupe">Hours</span>
+          <span id="hours" class="font-serif text-2xl sm:text-3xl block font-bold">00</span>
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-taupe font-semibold">Hours</span>
         </div>
         <div>
-          <span id="minutes" class="font-serif text-xl sm:text-2xl block">00</span>
-          <span class="text-[9px] uppercase tracking-[0.26em] text-taupe">Minutes</span>
+          <span id="minutes" class="font-serif text-2xl sm:text-3xl block font-bold">00</span>
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-taupe font-semibold">Minutes</span>
         </div>
         <div>
-          <span id="seconds" class="font-serif text-xl sm:text-2xl block">00</span>
-          <span class="text-[9px] uppercase tracking-[0.26em] text-taupe">Seconds</span>
+          <span id="seconds" class="font-serif text-2xl sm:text-3xl block font-bold">00</span>
+          <span class="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-taupe font-semibold">Seconds</span>
         </div>
       </div>
 
-      <!-- FULL-BLEED SLIDING PHOTO MARQUEE (Supports both Portrait & Landscape) -->
+      <!-- FULL-BLEED SLIDING PHOTO MARQUEE -->
       <div class="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden mt-14 sm:mt-16 py-2 select-none">
         <div class="marquee-track gap-3 sm:gap-5 px-1.5 sm:px-2.5">
           <!-- Set 1 (8 Photos) -->
@@ -311,7 +311,6 @@
 
     <!-- LOVE STORY & MEMORY LANE -->
     <section id="story" class="py-16 text-center max-w-2xl mx-auto px-4 fade-section">
-      <!-- Circular Portrait -->
       <div class="relative w-[280px] h-[280px] sm:w-[340px] sm:h-[340px] mx-auto mb-8">
         <div class="w-full h-full rounded-full overflow-hidden p-2 border border-taupe/40 shadow-sm bg-paper">
           <img 
@@ -326,7 +325,7 @@
 
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Our Love Story</h2>
       
-      <div class="mt-6 space-y-4 text-xs sm:text-sm text-olive/85 leading-relaxed font-light text-center">
+      <div class="mt-6 space-y-4 text-sm sm:text-base text-olive font-medium leading-loose text-center">
         <p>
           Their paths first crossed in West Palm Beach, where they both worked and shared a love for the city, his through mapping and hers through landscape design. Their first date was at the serene Morikami Museum and Japanese Gardens during the beautiful month of December. What began as a connection soon grew into something deeply meaningful. One year later, they are so excited to begin the next chapter of their lives together!
         </p>
@@ -339,7 +338,7 @@
     <section id="invitation" class="py-16 relative fade-section px-4">
       <div class="max-w-xl mx-auto text-center">
         <h2 class="font-script text-5xl sm:text-6xl text-olive">You Are Invited</h2>
-        <p id="envelope-hint" class="text-[10px] sm:text-xs uppercase tracking-[0.24em] text-taupe mt-2 mb-12 transition-opacity duration-300">
+        <p id="envelope-hint" class="text-xs uppercase tracking-[0.2em] text-taupe mt-2 mb-12 font-semibold transition-opacity duration-300">
           Click the wax seal to open your invitation
         </p>
 
@@ -377,7 +376,7 @@
               </svg>
             </div>
 
-            <p class="font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.28em] text-olive/80 mb-5 font-normal">
+            <p class="font-sans text-[10px] sm:text-xs uppercase tracking-[0.25em] text-olive font-medium mb-5">
               Together With Their Families
             </p>
 
@@ -393,21 +392,21 @@
               </p>
             </div>
 
-            <div class="mt-6 space-y-2.5 font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.24em] text-olive/85 leading-relaxed font-normal">
+            <div class="mt-6 space-y-2.5 font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-olive font-medium leading-relaxed">
               <p>Request Your Presence At The Ceremony</p>
               <p>&amp; Celebration Of Their Marriage</p>
-              <p class="pt-1 font-medium text-olive">Friday, January Twenty-Ninth</p>
-              <p class="font-medium text-olive">Two Thousand And Twenty-Seven</p>
+              <p class="pt-1 font-bold text-olive">Friday, January Twenty-Ninth</p>
+              <p class="font-bold text-olive">Two Thousand And Twenty-Seven</p>
               <p>At Four In The Afternoon</p>
-              <p class="pt-1">Galuppi's Restaurant &amp; Patio</p>
-              <p>Pompano Beach, Florida</p>
+              <p class="pt-1 font-semibold">Galuppi's Restaurant &amp; Patio</p>
+              <p class="font-semibold">Pompano Beach, Florida</p>
             </div>
 
-            <p class="mt-8 font-sans text-[9px] sm:text-[10px] uppercase tracking-[0.28em] text-taupe font-medium">
+            <p class="mt-8 font-sans text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-olive font-bold">
               Reception To Follow
             </p>
 
-            <p class="mt-6 text-[8px] uppercase tracking-[0.2em] text-taupe/60">
+            <p class="mt-6 text-[9px] uppercase tracking-[0.2em] text-taupe font-medium">
               (Click card to close envelope)
             </p>
           </div>
@@ -431,14 +430,12 @@
       <div class="max-w-2xl mx-auto">
         <div class="text-center mb-10">
           <h2 class="font-script text-5xl sm:text-6xl text-olive">Wedding Schedule</h2>
-          <p class="font-serif text-xs uppercase tracking-[0.22em] text-taupe mt-1">
+          <p class="font-serif text-sm uppercase tracking-[0.2em] text-olive font-medium mt-1">
             January 29, 2027 &bull; Order of Events
           </p>
         </div>
 
-        <!-- Compact Timeline Container with Center Spine on Desktop -->
         <div class="relative">
-          <!-- Subtle Center Vertical Line (Desktop) & Left Line (Mobile) -->
           <div class="absolute left-7 sm:left-1/2 top-4 bottom-16 w-[1px] bg-taupe/30 sm:-translate-x-1/2"></div>
 
           <div class="space-y-6 sm:space-y-4">
@@ -446,14 +443,13 @@
             <!-- 1. 4:30 - 5:15 PM: CEREMONY -->
             <div class="relative flex sm:grid sm:grid-cols-12 items-center gap-4 sm:gap-6">
               <div class="hidden sm:block sm:col-span-5 text-right pr-2">
-                <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive font-medium">Wedding Ceremony</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">4:30 PM – 5:15 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Exchanging vows on the lakeside lawn</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Wedding Ceremony</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">4:30 PM – 5:15 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Exchanging vows on the lakeside lawn</p>
               </div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
-                  <!-- Crisp Arch Icon -->
-                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M5 20V9a7 7 0 0 1 14 0v11" />
                     <path d="M3 20h18" />
                     <circle cx="12" cy="4" r="1.5" fill="#BE8979" stroke="none" />
@@ -462,9 +458,9 @@
                 </div>
               </div>
               <div class="sm:col-span-5 text-left sm:hidden">
-                <p class="font-serif text-xs uppercase tracking-[0.18em] text-olive font-medium">Wedding Ceremony</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">4:30 PM – 5:15 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Exchanging vows on the lakeside lawn</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Wedding Ceremony</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">4:30 PM – 5:15 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Exchanging vows on the lakeside lawn</p>
               </div>
             </div>
 
@@ -473,8 +469,7 @@
               <div class="hidden sm:block sm:col-span-5"></div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
-                  <!-- Crisp Champagne Flutes Icon -->
-                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M8 22h4M10 15v7M7 3h6l-1 8a2 2 0 0 1-4 0L7 3z" />
                     <path d="M14 22h4M16 15v7M13 3h6l-1 8a2 2 0 0 1-4 0L13 3z" />
                     <path d="M7.5 7h5M13.5 7h5" stroke="#BE8979" />
@@ -482,23 +477,22 @@
                 </div>
               </div>
               <div class="sm:col-span-5 text-left pl-0 sm:pl-2">
-                <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive font-medium">Cocktail Hour &amp; Photos</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">5:15 PM – 6:30 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Drinks, hors d'oeuvres &amp; capturing memories</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Cocktail Hour &amp; Photos</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">5:15 PM – 6:30 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Drinks, hors d'oeuvres &amp; capturing memories</p>
               </div>
             </div>
 
             <!-- 3. 6:30 - 6:45 PM: GRAND ENTRANCE + FIRST DANCE -->
             <div class="relative flex sm:grid sm:grid-cols-12 items-center gap-4 sm:gap-6">
               <div class="hidden sm:block sm:col-span-5 text-right pr-2">
-                <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive font-medium">Grand Entrance &amp; First Dance</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">6:30 PM – 6:45 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Welcoming the newlyweds to the floor</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Entrance &amp; First Dance</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">6:30 PM – 6:45 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Welcoming the newlyweds to the floor</p>
               </div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
-                  <!-- Crisp Music & Sparkle Icon -->
-                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M9 18V5l12-2v13" />
                     <circle cx="6" cy="18" r="3" />
                     <circle cx="18" cy="16" r="3" />
@@ -507,9 +501,9 @@
                 </div>
               </div>
               <div class="sm:col-span-5 text-left sm:hidden">
-                <p class="font-serif text-xs uppercase tracking-[0.18em] text-olive font-medium">Grand Entrance &amp; First Dance</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">6:30 PM – 6:45 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Welcoming the newlyweds to the floor</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Entrance &amp; First Dance</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">6:30 PM – 6:45 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Welcoming the newlyweds to the floor</p>
               </div>
             </div>
 
@@ -518,8 +512,7 @@
               <div class="hidden sm:block sm:col-span-5"></div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
-                  <!-- Crisp Interlocking Rings & Heart Icon -->
-                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="9.5" cy="13.5" r="5.5" />
                     <circle cx="14.5" cy="13.5" r="5.5" />
                     <path d="M12 6.5c-1-1.5-3-1.5-3 0 0 1.2 3 3 3 3s3-1.8 3-3c0-1.5-2-1.5-3 0z" fill="#BE8979" stroke="#BE8979" stroke-width="1" />
@@ -527,23 +520,22 @@
                 </div>
               </div>
               <div class="sm:col-span-5 text-left pl-0 sm:pl-2">
-                <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive font-medium">Family Dances</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">6:45 PM – 7:00 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Father &amp; Bride and Mother &amp; Groom dances</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Family Dances</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">6:45 PM – 7:00 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Father &amp; Bride and Mother &amp; Groom dances</p>
               </div>
             </div>
 
             <!-- 5. 7:00 - 7:45 PM: DINNER -->
             <div class="relative flex sm:grid sm:grid-cols-12 items-center gap-4 sm:gap-6">
               <div class="hidden sm:block sm:col-span-5 text-right pr-2">
-                <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive font-medium">Dinner Service</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">7:00 PM – 7:45 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">A celebratory meal shared with loved ones</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Dinner Service</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">7:00 PM – 7:45 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">A celebratory meal shared with loved ones</p>
               </div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
-                  <!-- Crisp Place Setting Icon -->
-                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="6" />
                     <circle cx="12" cy="12" r="3.5" stroke="#BE8979" />
                     <path d="M3 6v6a2 2 0 0 0 2 2v5M3 6v4M5 6v4" />
@@ -552,9 +544,9 @@
                 </div>
               </div>
               <div class="sm:col-span-5 text-left sm:hidden">
-                <p class="font-serif text-xs uppercase tracking-[0.18em] text-olive font-medium">Dinner Service</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">7:00 PM – 7:45 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">A celebratory meal shared with loved ones</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Dinner Service</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">7:00 PM – 7:45 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">A celebratory meal shared with loved ones</p>
               </div>
             </div>
 
@@ -563,8 +555,7 @@
               <div class="hidden sm:block sm:col-span-5"></div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
-                  <!-- Crisp Microphone / Speech Icon -->
-                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="9" y="3" width="6" height="10" rx="3" />
                     <path d="M5 10a7 7 0 0 0 14 0" />
                     <line x1="12" y1="17" x2="12" y2="21" />
@@ -574,23 +565,22 @@
                 </div>
               </div>
               <div class="sm:col-span-5 text-left pl-0 sm:pl-2">
-                <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive font-medium">Open Floor Toasts &amp; Speeches</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">7:45 PM – 8:00 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Family and friends share a few words</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Open Floor Speeches</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">7:45 PM – 8:00 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Family and friends share a few words</p>
               </div>
             </div>
 
             <!-- 7. 8:00 - 8:25 PM: CAKE & DANCING -->
             <div class="relative flex sm:grid sm:grid-cols-12 items-center gap-4 sm:gap-6">
               <div class="hidden sm:block sm:col-span-5 text-right pr-2">
-                <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive font-medium">Cake and Dancing</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">8:00 PM – 8:25 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Cake cutting &amp; open dancing</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Cake and Dancing</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">8:00 PM – 8:25 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Cake cutting &amp; open dancing</p>
               </div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
-                  <!-- Crisp Tiered Cake Icon -->
-                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                  <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                     <rect x="4" y="15" width="16" height="5" rx="1" />
                     <rect x="6" y="10" width="12" height="5" rx="1" />
                     <rect x="8.5" y="6" width="7" height="4" rx="1" />
@@ -601,25 +591,24 @@
                 </div>
               </div>
               <div class="sm:col-span-5 text-left sm:hidden">
-                <p class="font-serif text-xs uppercase tracking-[0.18em] text-olive font-medium">Cake and Dancing</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">8:00 PM – 8:25 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Cake cutting &amp; open dancing</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Cake and Dancing</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">8:00 PM – 8:25 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Cake cutting &amp; open dancing</p>
               </div>
             </div>
 
             <!-- 8. 8:25 - 8:30 PM: FINAL SEND-OFF & FAREWELL -->
             <div class="relative flex flex-col sm:items-center items-start z-10 pt-4 sm:pt-6">
               <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive shrink-0">
-                <!-- Crisp Sparkler / Send-Off Icon -->
-                <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M12 2v4M12 14v8M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" />
                   <circle cx="12" cy="10" r="2" fill="#BE8979" stroke="#BE8979" />
                 </svg>
               </div>
-              <div class="mt-3 sm:mt-4 sm:text-center text-left sm:ml-0 ml-[4px]">
-                <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive font-medium">Final Send-Off &amp; Farewell</p>
-                <p class="font-cinzel text-[11px] tracking-[0.14em] text-rose font-semibold mt-0.5">8:25 PM – 8:30 PM</p>
-                <p class="text-[11px] text-taupe font-light mt-0.5">Wishing the newlyweds a joyful departure</p>
+              <div class="mt-4 sm:text-center text-left sm:ml-0 ml-[4px]">
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Final Send-Off &amp; Farewell</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">8:25 PM – 8:30 PM</p>
+                <p class="text-sm text-olive font-medium mt-1">Wishing the newlyweds a joyful departure</p>
               </div>
             </div>
 
@@ -642,8 +631,8 @@
           <!-- Left Column: Address, Phone & Description -->
           <div class="md:col-span-4 text-center md:text-left space-y-5 order-2 md:order-1 px-2 sm:px-0">
             <div class="space-y-1.5">
-              <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.2em] text-olive font-medium">Venue Address</p>
-              <p class="text-xs text-taupe leading-relaxed">
+              <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Venue Address</p>
+              <p class="text-sm text-olive font-medium leading-relaxed">
                 Galuppi's Restaurant &amp; Patio<br>
                 1103 N Federal Hwy<br>
                 Pompano Beach, FL 33062
@@ -651,14 +640,14 @@
             </div>
             
             <div class="space-y-1.5 pt-1">
-              <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.2em] text-olive font-medium">Contact</p>
-              <p class="text-xs text-taupe leading-relaxed">
+              <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Contact</p>
+              <p class="text-sm text-olive font-medium leading-relaxed">
                 (954) 785-0226
               </p>
             </div>
 
             <div class="pt-2">
-              <p class="text-[11px] sm:text-xs text-olive/85 leading-relaxed font-light">
+              <p class="text-sm text-olive font-medium leading-relaxed">
                 Located just off N Federal Highway (US-1) bordering the Pompano Beach Golf Course and waterways, complimentary parking is readily available directly in front of the venue. Once you arrive, look for our welcome wedding sign near the main entrance to guide you out to the lakeside garden lawn where our ceremony will take place.
               </p>
             </div>
@@ -668,7 +657,7 @@
                 href="https://www.google.com/maps/search/?api=1&query=Galuppi's+1103+N+Federal+Hwy+Pompano+Beach+FL" 
                 target="_blank" 
                 rel="noopener"
-                class="inline-block px-7 py-2 border border-olive/50 text-olive text-[10px] uppercase tracking-[0.2em] font-normal rounded-full hover:bg-olive hover:text-paper transition"
+                class="inline-block px-7 py-3 border-2 border-olive text-olive text-xs uppercase tracking-[0.15em] font-bold rounded-full hover:bg-olive hover:text-paper transition"
               >
                 Open in Google Maps
               </a>
@@ -696,7 +685,7 @@
 
     <section id="travel" class="py-16 text-center fade-section">
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Where to stay</h2>
-      <p class="text-xs text-taupe mt-2">Recommended accommodation near our wedding venue</p>
+      <p class="text-sm text-olive font-medium mt-2">Recommended accommodation near our wedding venue</p>
 
       <div class="mt-12 max-w-md mx-auto flex flex-col items-center">
         
@@ -709,21 +698,21 @@
           />
         </div>
 
-        <h3 class="font-serif text-base sm:text-lg uppercase tracking-[0.18em] text-olive leading-relaxed">
+        <h3 class="font-serif text-lg uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
           Fort Lauderdale Marriott Pompano Beach Resort
         </h3>
-        <p class="text-[11px] font-medium text-olive pt-1">Pompano Beach, FL</p>
+        <p class="text-xs uppercase font-bold tracking-[0.15em] text-olive pt-1">Pompano Beach, FL</p>
         
-        <p class="text-[11px] text-taupe leading-relaxed mt-3 max-w-xs">
+        <p class="text-sm text-olive font-medium leading-relaxed mt-4 max-w-xs">
           We recommend staying here, as it is conveniently located just an 6-minute drive from Galuppi's.
         </p>
 
-        <div class="pt-4">
+        <div class="pt-5">
           <a 
             href="https://maps.app.goo.gl/t5Lwouy1Lc4PS31R6" 
             target="_blank" 
             rel="noopener"
-            class="inline-block px-7 py-2 border border-olive/50 text-olive text-[10px] uppercase tracking-[0.2em] font-normal rounded-full hover:bg-olive hover:text-paper transition"
+            class="inline-block px-7 py-3 border-2 border-olive text-olive text-xs uppercase tracking-[0.15em] font-bold rounded-full hover:bg-olive hover:text-paper transition"
           >
             View on Map
           </a>
@@ -731,9 +720,9 @@
       </div>
     </section>
 
-    <div class="text-center text-sage/60 text-xl select-none">✦</div>
+    <div class="text-center text-sage/60 text-xl select-none pt-8 pb-4">✦</div>
 
-    <!-- MYREGISTRY.COM INTEGRATION LINKED DIRECTLY -->
+    <!-- MYREGISTRY.COM INTEGRATION -->
     <section id="registry" class="py-16 text-center fade-section">
       <div class="max-w-xs mx-auto mb-4">
         <svg viewBox="0 0 320 200" class="w-full h-auto watercolor-paint" xmlns="http://www.w3.org/2000/svg">
@@ -753,51 +742,51 @@
       </div>
 
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Gift Registry &amp; Honeymoon Fund</h2>
-      <p class="text-xs text-taupe mt-2 max-w-lg mx-auto leading-relaxed">
+      <p class="text-sm text-olive font-medium mt-3 max-w-lg mx-auto leading-relaxed">
         Your love and company on our wedding day is the greatest gift of all. Should you wish to bless us with a gift, you can view our complete registry on MyRegistry.com below.
       </p>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
         <div class="space-y-2.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive leading-relaxed">
+          <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
             Oregon &amp; California<br/>Coast Honeymoon
           </p>
-          <p class="text-[11px] text-taupe leading-relaxed">
+          <p class="text-sm text-olive font-medium leading-relaxed px-2">
             (Contribute toward our coastal road trip, Cannon Beach stays &amp; redwood trails)
           </p>
-          <p class="text-[11px] font-medium text-olive pt-1">Cash Gift Fund</p>
-          <div class="pt-2">
-            <a href="https://www.myregistry.com/wedding-registry/ashish-mahaur-and-megan-bichotte-/5687804" target="_blank" rel="noopener" class="inline-block px-6 py-1.5 border border-olive/50 text-olive text-[10px] uppercase tracking-[0.2em] font-normal rounded-full hover:bg-olive hover:text-paper transition">
+          <p class="text-xs uppercase font-bold tracking-[0.15em] text-rose pt-1">Cash Gift Fund</p>
+          <div class="pt-3">
+            <a href="https://www.myregistry.com/wedding-registry/ashish-mahaur-and-megan-bichotte-/5687804" target="_blank" rel="noopener" class="inline-block px-7 py-3 border-2 border-olive text-olive text-xs uppercase tracking-[0.15em] font-bold rounded-full hover:bg-olive hover:text-paper transition">
               View Cash Fund
             </a>
           </div>
         </div>
 
         <div class="space-y-2.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive leading-relaxed">
+          <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
             MyRegistry.com<br/>Universal Wishlist
           </p>
-          <p class="text-[11px] text-taupe leading-relaxed">
+          <p class="text-sm text-olive font-medium leading-relaxed px-2">
             (Browse all of our curated kitchen, dining &amp; household gifts in one place)
           </p>
-          <p class="text-[11px] font-medium text-olive pt-1">All Favorite Stores</p>
-          <div class="pt-2">
-            <a href="https://www.myregistry.com/wedding-registry/ashish-mahaur-and-megan-bichotte-/5687804" target="_blank" rel="noopener" class="inline-block px-6 py-1.5 bg-olive text-paper text-[10px] uppercase tracking-[0.2em] font-normal rounded-full hover:bg-rose transition">
+          <p class="text-xs uppercase font-bold tracking-[0.15em] text-rose pt-1">All Favorite Stores</p>
+          <div class="pt-3">
+            <a href="https://www.myregistry.com/wedding-registry/ashish-mahaur-and-megan-bichotte-/5687804" target="_blank" rel="noopener" class="inline-block px-7 py-3 bg-olive text-paper text-xs uppercase tracking-[0.15em] font-bold rounded-full hover:bg-rose transition">
               Open MyRegistry
             </a>
           </div>
         </div>
 
         <div class="space-y-2.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.18em] text-olive leading-relaxed">
+          <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
             Newlywed Home &amp;<br/>Botanical Fund
           </p>
-          <p class="text-[11px] text-taupe leading-relaxed">
+          <p class="text-sm text-olive font-medium leading-relaxed px-2">
             (For custom framed artwork, indoor houseplants &amp; cozying up our home with Ellie)
           </p>
-          <p class="text-[11px] font-medium text-olive pt-1">Home &amp; Garden</p>
-          <div class="pt-2">
-            <a href="https://www.myregistry.com/wedding-registry/ashish-mahaur-and-megan-bichotte-/5687804" target="_blank" rel="noopener" class="inline-block px-6 py-1.5 border border-olive/50 text-olive text-[10px] uppercase tracking-[0.2em] font-normal rounded-full hover:bg-olive hover:text-paper transition">
+          <p class="text-xs uppercase font-bold tracking-[0.15em] text-rose pt-1">Home &amp; Garden</p>
+          <div class="pt-3">
+            <a href="https://www.myregistry.com/wedding-registry/ashish-mahaur-and-megan-bichotte-/5687804" target="_blank" rel="noopener" class="inline-block px-7 py-3 border-2 border-olive text-olive text-xs uppercase tracking-[0.15em] font-bold rounded-full hover:bg-olive hover:text-paper transition">
               Contribute Gift
             </a>
           </div>
@@ -805,17 +794,17 @@
       </div>
     </section>
 
-    <!-- RSVP SECTION (ZOLA GUEST PORTAL) -->
+    <!-- RSVP SECTION -->
     <section id="rsvp" class="py-16 max-w-2xl mx-auto text-center fade-section px-4">
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Kindly RSVP</h2>
       
       <!-- Highlighted Deadline -->
-      <p class="font-serif text-sm sm:text-base text-rose uppercase tracking-[0.16em] mt-4 font-semibold">
+      <p class="font-serif text-base sm:text-lg text-rose uppercase tracking-[0.15em] mt-4 font-bold">
         Please reply by December 15, 2026
       </p>
 
       <!-- Minimal RSVP Text Countdown -->
-      <p id="rsvp-text-timer" class="text-[10px] sm:text-[11px] text-taupe uppercase tracking-[0.2em] mt-2 font-medium">
+      <p id="rsvp-text-timer" class="text-xs sm:text-sm text-olive uppercase tracking-[0.2em] mt-2 font-bold">
         <!-- JS will inject: "57 Days 3 Hours Remaining" -->
       </p>
 
@@ -833,10 +822,10 @@
           />
         </div>
 
-        <p class="font-cinzel text-base sm:text-lg uppercase tracking-[0.18em] text-olive font-semibold mb-2">
+        <p class="font-cinzel text-lg uppercase tracking-[0.15em] text-olive font-bold mb-2">
           Find Your Invitation
         </p>
-        <p class="text-[11px] sm:text-xs text-olive/80 leading-relaxed max-w-md mx-auto mb-8 font-light">
+        <p class="text-sm text-olive font-medium leading-relaxed max-w-md mx-auto mb-8">
           Enter your name on our guest portal to locate your party and confirm your attendance. Responding in advance helps us plan thoughtfully and minimize waste.
         </p>
         
@@ -844,62 +833,62 @@
           href="https://www.zola.com/wedding/megan-ashish/rsvp" 
           target="_blank" 
           rel="noopener"
-          class="inline-block px-10 py-3 bg-olive text-paper text-[11px] tracking-[0.2em] uppercase font-normal rounded-full hover:bg-rose transition duration-300 shadow-md"
+          class="inline-block px-10 py-4 bg-olive text-paper text-xs tracking-[0.2em] uppercase font-bold rounded-full hover:bg-rose transition duration-300 shadow-md"
         >
           Continue to RSVP
         </a>
         
-        <p class="text-[10px] text-taupe mt-6 uppercase tracking-wider">
+        <p class="text-xs text-olive font-medium mt-6 uppercase tracking-widest">
           Having trouble locating your invitation? Please reach out to us directly.
         </p>
       </div>
     </section>
 
     <!-- FREQUENTLY ASKED QUESTIONS -->
-    <section id="faqs" class="py-16 max-w-3xl mx-auto text-center fade-section px-4 mb-16">
+    <section id="faqs" class="py-16 max-w-3xl mx-auto text-center fade-section px-4 mb-10">
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Frequently Asked Questions</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-12 text-left">
-        <div class="space-y-1.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.16em] text-olive font-medium">
+        <div class="space-y-2">
+          <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
             What is the recommended attire or dress code for the celebration?
           </p>
-          <p class="text-[11px] text-taupe leading-relaxed">
+          <p class="text-sm text-olive font-medium leading-relaxed">
             We love to see you in black tie formal.
           </p>
         </div>
-        <div class="space-y-1.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.16em] text-olive font-medium">
+        <div class="space-y-2">
+          <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
             By what date should guests submit their RSVP?
           </p>
-          <p class="text-[11px] text-taupe leading-relaxed">
+          <p class="text-sm text-olive font-medium leading-relaxed">
             Please RSVP by 12/20/2026. All RSVPs not received after this date will be missing our final headcount submission to our vendors following this deadline.
           </p>
         </div>
-        <div class="space-y-1.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.16em] text-olive font-medium">
+        <div class="space-y-2">
+          <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
             What time should guests arrive at the venue?
           </p>
-          <p class="text-[11px] text-taupe leading-relaxed">
+          <p class="text-sm text-olive font-medium leading-relaxed">
             Guests are highly encouraged to arrive at the venue by 4:00 PM to allow time for parking, finding a seat, and settling in.
           </p>
         </div>
-        <div class="space-y-1.5">
-          <p class="font-serif text-xs sm:text-sm uppercase tracking-[0.16em] text-olive font-medium">
+        <div class="space-y-2">
+          <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
             Are plus-ones and children permitted to attend?
           </p>
-          <p class="text-[11px] text-taupe leading-relaxed">
+          <p class="text-sm text-olive font-medium leading-relaxed">
             If your invitation includes guest(s), their names will be listed on your invitation. Unfortunately, due to venue capacity, we are only able to accommodate those listed on the invitation.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="pt-16 pb-20 text-center fade-section">
+    <section class="pt-8 pb-20 text-center fade-section">
       <div class="relative pt-8 pb-6">
-        <p class="font-serif text-xs uppercase tracking-[0.24em] text-olive leading-relaxed">
+        <p class="font-serif text-sm uppercase tracking-[0.24em] text-olive font-bold leading-relaxed">
           We Can't Wait To<br/>Celebrate With You!
         </p>
-        <h2 class="font-script text-6xl sm:text-7xl text-olive mt-3">
+        <h2 class="font-script text-6xl sm:text-7xl text-olive mt-4">
           Ashish &amp; Megan
         </h2>
       </div>
@@ -946,14 +935,14 @@
     }
 
     // 3. Countdown Timers
-    // Set Main Wedding Date to Jan 29, 2027 4:00 PM EST
+    // Set Main Wedding Date to Jan 29, 2027 4:00 PM EST (16:00:00)
     const weddingDate = new Date('2027-01-29T16:00:00-05:00').getTime();
     const rsvpDate = new Date('2026-12-15T23:59:59-05:00').getTime();
 
     function updateCountdowns() {
       const now = new Date().getTime();
 
-      // Main Wedding Timer (Days, Hrs, Min, Sec)
+      // Main Wedding Timer
       const diffWedding = weddingDate - now;
       if (diffWedding > 0) {
         document.getElementById('days').innerText = Math.floor(diffWedding / (1000 * 60 * 60 * 24));
@@ -962,7 +951,7 @@
         document.getElementById('seconds').innerText = String(Math.floor((diffWedding / 1000) % 60)).padStart(2, '0');
       }
 
-      // Minimal RSVP Text Timer (Days & Hours only)
+      // Minimal RSVP Text Timer
       const diffRSVP = rsvpDate - now;
       const rsvpTextContainer = document.getElementById('rsvp-text-timer');
       
