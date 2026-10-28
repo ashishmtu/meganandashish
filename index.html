@@ -1105,6 +1105,17 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+    // 5. Disable Right-Click Saving & Dragging on All Photos
+    document.addEventListener('contextmenu', (e) => {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    });
+    document.addEventListener('dragstart', (e) => {
+      if (e.target.tagName === 'IMG') {
+        e.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
