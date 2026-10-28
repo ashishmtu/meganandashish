@@ -134,6 +134,16 @@
                   transform 0.9s cubic-bezier(0.34, 1.2, 0.64, 1) 0.25s,
                   z-index 0s 0.45s;
     }
+    /* Protect Photos from Dragging & Mobile Long-Press Saving */
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      -webkit-touch-callout: none;
+      user-select: none;
+    }
   </style>
 </head>
 <body class="selection:bg-rose selection:text-paper relative">
