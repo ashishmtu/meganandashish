@@ -45,7 +45,7 @@
       background-color: #FAF9F6;
       color: #384F1D;
       font-family: 'Montserrat', sans-serif;
-      font-weight: 400; /* Increased from 300 for better base readability */
+      font-weight: 400;
       overflow-x: hidden;
     }
     .watercolor-paint {
@@ -341,7 +341,7 @@
       
       <div class="mt-6 space-y-4 text-sm sm:text-base text-olive font-medium leading-loose text-center">
         <p>
-          Their paths first crossed in West Palm Beach, where they both worked and shared a love for the city, his through mapping and hers through landscape design. Their first date was at the serene Morikami Museum and Japanese Gardens during the beautiful month of December. What began as a connection soon grew into something deeply meaningful. One year later, they are so excited to begin the next chapter of their lives together!
+          Their paths first crossed in West Palm Beach, where they both worked &amp; shared a love for the city, his through mapping &amp; hers through landscape design. Their first date was at the serene Morikami Museum &amp; Japanese Gardens during the beautiful month of December. What began as a connection soon grew into something deeply meaningful. One year later, they are so excited to begin the next chapter of their lives together!
         </p>
       </div>
     </section>
@@ -349,238 +349,251 @@
     <div class="text-center text-sage/60 text-xl select-none pt-2 pb-2">✦</div>
 
         <!-- INTERACTIVE ENVELOPE INVITATION SECTION -->
-<section id="invitation" class="py-16 relative fade-section px-4">
-  <div class="max-w-xl mx-auto text-center">
-    <h2 class="font-script text-5xl sm:text-6xl text-olive">You Are Invited</h2>
-    <p id="envelope-hint" class="text-xs uppercase tracking-[0.2em] text-taupe mt-2 mb-12 font-semibold transition-opacity duration-300">
-      Click the wax seal to open your invitation
-    </p>
+    <section id="invitation" class="py-16 relative fade-section px-4">
+      <div class="max-w-xl mx-auto text-center">
+        <h2 class="font-script text-5xl sm:text-6xl text-olive">You Are Invited</h2>
+        <p id="envelope-hint" class="text-xs uppercase tracking-[0.2em] text-taupe mt-2 mb-12 font-semibold transition-opacity duration-300">
+          Click the wax seal to open your invitation
+        </p>
 
-    <!-- Interactive Envelope Container -->
-    <div id="envelope-container" onclick="toggleEnvelope()" class="envelope-wrapper envelope-stage relative max-w-lg mx-auto cursor-pointer select-none pt-6 pb-8">
-      
-      <div class="absolute inset-x-0 top-6 h-[290px] sm:h-[330px] bg-[#E8DDD3] rounded-xl shadow-md border border-taupe/30"></div>
+        <!-- Interactive Envelope Container -->
+        <div id="envelope-container" onclick="toggleEnvelope()" class="envelope-wrapper envelope-stage relative max-w-lg mx-auto cursor-pointer select-none pt-6 pb-8">
+          
+          <div class="absolute inset-x-0 top-6 h-[290px] sm:h-[330px] bg-[#E8DDD3] rounded-xl shadow-md border border-taupe/30"></div>
 
-      <div class="envelope-flap absolute inset-x-0 top-6 h-[175px] sm:h-[195px] pointer-events-none">
-        <svg viewBox="0 0 500 200" preserveAspectRatio="none" class="w-full h-full drop-shadow-md">
-          <polygon points="0,0 500,0 250,192" fill="#DFC9B8" stroke="#9F906D" stroke-width="1" stroke-opacity="0.35" />
-        </svg>
-      </div>
-
-      <div class="wax-seal absolute left-1/2 top-[175px] sm:top-[195px] -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#B57B6B] border-2 border-[#9E6353] shadow-lg flex flex-col items-center justify-center text-paper hover:scale-105 transition-transform">
-        <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-paper/40 flex flex-col items-center justify-center">
-          <span class="font-script text-lg sm:text-2xl leading-none">Open</span>
-        </div>
-      </div>
-
-      <!-- Redesigned Embossed Floral Corner Invitation Card -->
-      <div class="invitation-letter-card relative mx-auto w-[94%] sm:w-[90%] bg-[#EFECE4] border border-taupe/35 shadow-2xl rounded-sm px-6 py-16 sm:px-12 sm:py-20 text-center overflow-hidden">
-        
-        <!-- TOP-LEFT EMBOSSED ROSE CORNER -->
-        <svg viewBox="0 0 200 200" class="w-32 h-32 sm:w-44 sm:h-44 absolute top-1 left-1 pointer-events-none z-0" style="filter: drop-shadow(2px 2.5px 2px rgba(125, 110, 82, 0.45)) drop-shadow(-1.5px -1.5px 1px rgba(255, 255, 255, 0.95));">
-          <g fill="#F6F4EE" stroke="#D5CCB8" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M 65 24 Q 125 14 182 22" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
-            <path d="M 78 22 C 95 6, 122 6, 138 18 C 118 28, 95 28, 78 22 Z" />
-            <path d="M 88 20 Q 108 15 128 18" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 118 18 C 138 5, 162 7, 178 18 C 158 27, 136 26, 118 18 Z" />
-            <path d="M 92 24 C 108 32, 126 38, 144 34 C 128 24, 108 22, 92 24 Z" />
-            <path d="M 148 20 C 165 12, 182 14, 194 22 C 178 28, 162 26, 148 20 Z" />
-            <path d="M 24 65 Q 14 125 22 182" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
-            <path d="M 22 78 C 6 95, 6 122, 18 138 C 28 118, 28 95, 22 78 Z" />
-            <path d="M 20 88 Q 15 108 18 128" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 18 118 C 5 138, 7 162, 18 178 C 27 158, 26 136, 18 118 Z" />
-            <path d="M 24 92 C 32 108, 38 126, 34 144 C 24 128, 22 108, 24 92 Z" />
-            <path d="M 20 148 C 12 165, 14 182, 22 194 C 28 178, 26 162, 20 148 Z" />
-            <path d="M 58 58 C 76 62, 92 76, 96 94 C 76 90, 62 76, 58 58 Z" />
-            <path d="M 64 64 L 86 86" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 65 42 C 82 40, 98 48, 104 62 C 86 62, 72 54, 65 42 Z" />
-            <path d="M 42 65 C 40 82, 48 98, 62 104 C 62 86, 54 72, 42 65 Z" />
-            <path d="M 38 14 C 58 6, 78 18, 74 38 C 70 52, 50 54, 38 42 Z" />
-            <path d="M 14 38 C 6 58, 18 78, 38 74 C 52 70, 54 50, 42 38 Z" />
-            <path d="M 52 24 C 74 22, 86 42, 74 60 C 64 74, 42 70, 36 54 Z" />
-            <path d="M 24 52 C 22 74, 42 86, 60 74 C 74 64, 70 42, 54 36 Z" />
-            <path d="M 22 26 C 36 14, 60 18, 64 38 C 68 56, 48 68, 30 62 C 14 56, 12 36, 22 26 Z" fill="#FAF8F3" />
-            <path d="M 28 30 C 40 20, 58 26, 58 42 C 58 56, 40 62, 28 52 C 18 42, 20 36, 28 30 Z" />
-            <path d="M 33 35 C 40 29, 51 33, 50 43 C 49 51, 38 54, 32 47 C 27 41, 29 38, 33 35 Z" fill="#FAF8F3" />
-            <path d="M 37 39 C 41 36, 46 39, 45 43 C 44 47, 38 47, 36 43 C 35 41, 36 40, 37 39 Z" fill="#EFECE4" />
-          </g>
-        </svg>
-
-        <!-- TOP-RIGHT EMBOSSED ROSE CORNER -->
-        <svg viewBox="0 0 200 200" class="w-32 h-32 sm:w-44 sm:h-44 absolute top-1 right-1 pointer-events-none z-0" style="transform: scaleX(-1); filter: drop-shadow(-2px 2.5px 2px rgba(125, 110, 82, 0.45)) drop-shadow(1.5px -1.5px 1px rgba(255, 255, 255, 0.95));">
-          <g fill="#F6F4EE" stroke="#D5CCB8" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M 65 24 Q 125 14 182 22" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
-            <path d="M 78 22 C 95 6, 122 6, 138 18 C 118 28, 95 28, 78 22 Z" />
-            <path d="M 88 20 Q 108 15 128 18" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 118 18 C 138 5, 162 7, 178 18 C 158 27, 136 26, 118 18 Z" />
-            <path d="M 92 24 C 108 32, 126 38, 144 34 C 128 24, 108 22, 92 24 Z" />
-            <path d="M 148 20 C 165 12, 182 14, 194 22 C 178 28, 162 26, 148 20 Z" />
-            <path d="M 24 65 Q 14 125 22 182" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
-            <path d="M 22 78 C 6 95, 6 122, 18 138 C 28 118, 28 95, 22 78 Z" />
-            <path d="M 20 88 Q 15 108 18 128" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 18 118 C 5 138, 7 162, 18 178 C 27 158, 26 136, 18 118 Z" />
-            <path d="M 24 92 C 32 108, 38 126, 34 144 C 24 128, 22 108, 24 92 Z" />
-            <path d="M 20 148 C 12 165, 14 182, 22 194 C 28 178, 26 162, 20 148 Z" />
-            <path d="M 58 58 C 76 62, 92 76, 96 94 C 76 90, 62 76, 58 58 Z" />
-            <path d="M 64 64 L 86 86" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 65 42 C 82 40, 98 48, 104 62 C 86 62, 72 54, 65 42 Z" />
-            <path d="M 42 65 C 40 82, 48 98, 62 104 C 62 86, 54 72, 42 65 Z" />
-            <path d="M 38 14 C 58 6, 78 18, 74 38 C 70 52, 50 54, 38 42 Z" />
-            <path d="M 14 38 C 6 58, 18 78, 38 74 C 52 70, 54 50, 42 38 Z" />
-            <path d="M 52 24 C 74 22, 86 42, 74 60 C 64 74, 42 70, 36 54 Z" />
-            <path d="M 24 52 C 22 74, 42 86, 60 74 C 74 64, 70 42, 54 36 Z" />
-            <path d="M 22 26 C 36 14, 60 18, 64 38 C 68 56, 48 68, 30 62 C 14 56, 12 36, 22 26 Z" fill="#FAF8F3" />
-            <path d="M 28 30 C 40 20, 58 26, 58 42 C 58 56, 40 62, 28 52 C 18 42, 20 36, 28 30 Z" />
-            <path d="M 33 35 C 40 29, 51 33, 50 43 C 49 51, 38 54, 32 47 C 27 41, 29 38, 33 35 Z" fill="#FAF8F3" />
-            <path d="M 37 39 C 41 36, 46 39, 45 43 C 44 47, 38 47, 36 43 C 35 41, 36 40, 37 39 Z" fill="#EFECE4" />
-          </g>
-        </svg>
-
-        <!-- BOTTOM-LEFT EMBOSSED ROSE CORNER -->
-        <svg viewBox="0 0 200 200" class="w-32 h-32 sm:w-44 sm:h-44 absolute bottom-1 left-1 pointer-events-none z-0" style="transform: scaleY(-1); filter: drop-shadow(2px -2.5px 2px rgba(125, 110, 82, 0.45)) drop-shadow(-1.5px 1.5px 1px rgba(255, 255, 255, 0.95));">
-          <g fill="#F6F4EE" stroke="#D5CCB8" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M 65 24 Q 125 14 182 22" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
-            <path d="M 78 22 C 95 6, 122 6, 138 18 C 118 28, 95 28, 78 22 Z" />
-            <path d="M 88 20 Q 108 15 128 18" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 118 18 C 138 5, 162 7, 178 18 C 158 27, 136 26, 118 18 Z" />
-            <path d="M 92 24 C 108 32, 126 38, 144 34 C 128 24, 108 22, 92 24 Z" />
-            <path d="M 148 20 C 165 12, 182 14, 194 22 C 178 28, 162 26, 148 20 Z" />
-            <path d="M 24 65 Q 14 125 22 182" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
-            <path d="M 22 78 C 6 95, 6 122, 18 138 C 28 118, 28 95, 22 78 Z" />
-            <path d="M 20 88 Q 15 108 18 128" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 18 118 C 5 138, 7 162, 18 178 C 27 158, 26 136, 18 118 Z" />
-            <path d="M 24 92 C 32 108, 38 126, 34 144 C 24 128, 22 108, 24 92 Z" />
-            <path d="M 20 148 C 12 165, 14 182, 22 194 C 28 178, 26 162, 20 148 Z" />
-            <path d="M 58 58 C 76 62, 92 76, 96 94 C 76 90, 62 76, 58 58 Z" />
-            <path d="M 64 64 L 86 86" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 65 42 C 82 40, 98 48, 104 62 C 86 62, 72 54, 65 42 Z" />
-            <path d="M 42 65 C 40 82, 48 98, 62 104 C 62 86, 54 72, 42 65 Z" />
-            <path d="M 38 14 C 58 6, 78 18, 74 38 C 70 52, 50 54, 38 42 Z" />
-            <path d="M 14 38 C 6 58, 18 78, 38 74 C 52 70, 54 50, 42 38 Z" />
-            <path d="M 52 24 C 74 22, 86 42, 74 60 C 64 74, 42 70, 36 54 Z" />
-            <path d="M 24 52 C 22 74, 42 86, 60 74 C 74 64, 70 42, 54 36 Z" />
-            <path d="M 22 26 C 36 14, 60 18, 64 38 C 68 56, 48 68, 30 62 C 14 56, 12 36, 22 26 Z" fill="#FAF8F3" />
-            <path d="M 28 30 C 40 20, 58 26, 58 42 C 58 56, 40 62, 28 52 C 18 42, 20 36, 28 30 Z" />
-            <path d="M 33 35 C 40 29, 51 33, 50 43 C 49 51, 38 54, 32 47 C 27 41, 29 38, 33 35 Z" fill="#FAF8F3" />
-            <path d="M 37 39 C 41 36, 46 39, 45 43 C 44 47, 38 47, 36 43 C 35 41, 36 40, 37 39 Z" fill="#EFECE4" />
-          </g>
-        </svg>
-
-        <!-- BOTTOM-RIGHT EMBOSSED ROSE CORNER (FIXED POSITION) -->
-        <svg viewBox="0 0 200 200" class="w-32 h-32 sm:w-44 sm:h-44 absolute bottom-1 right-1 pointer-events-none z-0" style="transform: scale(-1, -1); filter: drop-shadow(-2px -2.5px 2px rgba(125, 110, 82, 0.45)) drop-shadow(1.5px 1.5px 1px rgba(255, 255, 255, 0.95));">
-          <g fill="#F6F4EE" stroke="#D5CCB8" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
-            <path d="M 65 24 Q 125 14 182 22" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
-            <path d="M 78 22 C 95 6, 122 6, 138 18 C 118 28, 95 28, 78 22 Z" />
-            <path d="M 88 20 Q 108 15 128 18" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 118 18 C 138 5, 162 7, 178 18 C 158 27, 136 26, 118 18 Z" />
-            <path d="M 92 24 C 108 32, 126 38, 144 34 C 128 24, 108 22, 92 24 Z" />
-            <path d="M 148 20 C 165 12, 182 14, 194 22 C 178 28, 162 26, 148 20 Z" />
-            <path d="M 24 65 Q 14 125 22 182" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
-            <path d="M 22 78 C 6 95, 6 122, 18 138 C 28 118, 28 95, 22 78 Z" />
-            <path d="M 20 88 Q 15 108 18 128" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 18 118 C 5 138, 7 162, 18 178 C 27 158, 26 136, 18 118 Z" />
-            <path d="M 24 92 C 32 108, 38 126, 34 144 C 24 128, 22 108, 24 92 Z" />
-            <path d="M 20 148 C 12 165, 14 182, 22 194 C 28 178, 26 162, 20 148 Z" />
-            <path d="M 58 58 C 76 62, 92 76, 96 94 C 76 90, 62 76, 58 58 Z" />
-            <path d="M 64 64 L 86 86" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
-            <path d="M 65 42 C 82 40, 98 48, 104 62 C 86 62, 72 54, 65 42 Z" />
-            <path d="M 42 65 C 40 82, 48 98, 62 104 C 62 86, 54 72, 42 65 Z" />
-            <path d="M 38 14 C 58 6, 78 18, 74 38 C 70 52, 50 54, 38 42 Z" />
-            <path d="M 14 38 C 6 58, 18 78, 38 74 C 52 70, 54 50, 42 38 Z" />
-            <path d="M 52 24 C 74 22, 86 42, 74 60 C 64 74, 42 70, 36 54 Z" />
-            <path d="M 24 52 C 22 74, 42 86, 60 74 C 74 64, 70 42, 54 36 Z" />
-            <path d="M 22 26 C 36 14, 60 18, 64 38 C 68 56, 48 68, 30 62 C 14 56, 12 36, 22 26 Z" fill="#FAF8F3" />
-            <path d="M 28 30 C 40 20, 58 26, 58 42 C 58 56, 40 62, 28 52 C 18 42, 20 36, 28 30 Z" />
-            <path d="M 33 35 C 40 29, 51 33, 50 43 C 49 51, 38 54, 32 47 C 27 41, 29 38, 33 35 Z" fill="#FAF8F3" />
-            <path d="M 37 39 C 41 36, 46 39, 45 43 C 44 47, 38 47, 36 43 C 35 41, 36 40, 37 39 Z" fill="#EFECE4" />
-          </g>
-        </svg>
-
-        <!-- Card Content -->
-        <div class="relative z-10">
-          <p class="font-cinzel text-[11px] sm:text-xs uppercase tracking-[0.22em] text-olive font-semibold mb-3">
-            Together With Their Families
-          </p>
-
-          <!-- Host parents names line -->
-          <p class="font-sans text-xs sm:text-[14px] font-medium tracking-wide text-olive mb-1.5">
-            Mr. &amp; Mrs. Bichotte <span class="font-script text-rose text-lg sm:text-[22px] px-1 inline-block transform translate-y-0.5">and</span> Mr. &amp; Mrs. Mahaur
-          </p>
-
-          <p class="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-olive font-medium mb-5 leading-normal">
-            Joyfully invite you to celebrate the<br class="sm:hidden"> wedding celebration of their children
-          </p>
-
-          <div class="my-5 space-y-1">
-            <p class="font-script text-4xl sm:text-5xl text-olive leading-tight">
-              Megan Bichotte
-            </p>
-            <p class="font-script text-2xl sm:text-3xl text-rose leading-none py-1">
-              &amp;
-            </p>
-            <p class="font-script text-4xl sm:text-5xl text-olive leading-tight">
-              Ashish Mahaur
-            </p>
+          <div class="envelope-flap absolute inset-x-0 top-6 h-[175px] sm:h-[195px] pointer-events-none">
+            <svg viewBox="0 0 500 200" preserveAspectRatio="none" class="w-full h-full drop-shadow-md">
+              <polygon points="0,0 500,0 250,192" fill="#DFC9B8" stroke="#9F906D" stroke-width="1" stroke-opacity="0.35" />
+            </svg>
           </div>
 
-          <div class="mt-5 space-y-1.5 font-cinzel text-[10px] sm:text-xs uppercase tracking-[0.18em] text-olive font-medium leading-relaxed">
-            <p>Request Your Presence At The Ceremony</p>
-            <p>&amp; Celebration Of Their Marriage</p>
-          </div>
-
-          <!-- Editorial Date Lockup with Vertical Dividers -->
-          <div class="my-7 flex items-center justify-center gap-3 sm:gap-5 text-olive">
-            <span class="font-cinzel text-xs sm:text-sm uppercase tracking-[0.22em] font-semibold w-24 sm:w-28 text-right">
-              January
-            </span>
-            <div class="border-l border-r border-olive/60 px-3.5 sm:px-5 py-0.5 flex flex-col items-center justify-center">
-              <span class="font-serif text-3xl sm:text-4xl leading-none tracking-wider font-normal">29</span>
+          <div class="wax-seal absolute left-1/2 top-[175px] sm:top-[195px] -translate-x-1/2 -translate-y-1/2 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#B57B6B] border-2 border-[#9E6353] shadow-lg flex flex-col items-center justify-center text-paper hover:scale-105 transition-transform">
+            <div class="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-paper/40 flex flex-col items-center justify-center">
+              <span class="font-script text-lg sm:text-2xl leading-none">Open</span>
             </div>
-            <span class="font-cinzel text-xs sm:text-sm uppercase tracking-[0.22em] font-semibold w-24 sm:w-28 text-left">
-              2027
-            </span>
           </div>
 
-          <!-- Formal Spelled-Out Date & Time -->
-          <div class="space-y-1.5 font-cinzel text-[9px] sm:text-[11px] uppercase tracking-[0.18em] text-olive font-medium">
-            <p>Friday, January Twenty-Ninth</p>
-            <p>Two Thousand And Twenty-Seven</p>
-            <p class="pt-1">At Four In The Afternoon</p>
+          <!-- Redesigned Embossed Floral Corner Invitation Card -->
+          <div class="invitation-letter-card relative mx-auto w-[94%] sm:w-[90%] bg-[#EFECE4] border border-taupe/35 shadow-2xl rounded-sm px-6 py-16 sm:px-12 sm:py-20 text-center overflow-hidden">
+            
+            <!-- TOP-LEFT EMBOSSED ROSE CORNER -->
+            <svg viewBox="0 0 200 200" class="w-32 h-32 sm:w-44 sm:h-44 absolute top-1 left-1 pointer-events-none z-0" style="filter: drop-shadow(2px 2.5px 2px rgba(125, 110, 82, 0.45)) drop-shadow(-1.5px -1.5px 1px rgba(255, 255, 255, 0.95));">
+              <g fill="#F6F4EE" stroke="#D5CCB8" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
+                <!-- Horizontal Branch & Leaves -->
+                <path d="M 65 24 Q 125 14 182 22" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
+                <path d="M 78 22 C 95 6, 122 6, 138 18 C 118 28, 95 28, 78 22 Z" />
+                <path d="M 88 20 Q 108 15 128 18" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 118 18 C 138 5, 162 7, 178 18 C 158 27, 136 26, 118 18 Z" />
+                <path d="M 92 24 C 108 32, 126 38, 144 34 C 128 24, 108 22, 92 24 Z" />
+                <path d="M 148 20 C 165 12, 182 14, 194 22 C 178 28, 162 26, 148 20 Z" />
+
+                <!-- Vertical Branch & Leaves -->
+                <path d="M 24 65 Q 14 125 22 182" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
+                <path d="M 22 78 C 6 95, 6 122, 18 138 C 28 118, 28 95, 22 78 Z" />
+                <path d="M 20 88 Q 15 108 18 128" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 18 118 C 5 138, 7 162, 18 178 C 27 158, 26 136, 18 118 Z" />
+                <path d="M 24 92 C 32 108, 38 126, 34 144 C 24 128, 22 108, 24 92 Z" />
+                <path d="M 20 148 C 12 165, 14 182, 22 194 C 28 178, 26 162, 20 148 Z" />
+
+                <!-- Inner Diagonal Leaves -->
+                <path d="M 58 58 C 76 62, 92 76, 96 94 C 76 90, 62 76, 58 58 Z" />
+                <path d="M 64 64 L 86 86" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 65 42 C 82 40, 98 48, 104 62 C 86 62, 72 54, 65 42 Z" />
+                <path d="M 42 65 C 40 82, 48 98, 62 104 C 62 86, 54 72, 42 65 Z" />
+
+                <!-- Sculpted Rose Outer Petals -->
+                <path d="M 38 14 C 58 6, 78 18, 74 38 C 70 52, 50 54, 38 42 Z" />
+                <path d="M 14 38 C 6 58, 18 78, 38 74 C 52 70, 54 50, 42 38 Z" />
+                <path d="M 52 24 C 74 22, 86 42, 74 60 C 64 74, 42 70, 36 54 Z" />
+                <path d="M 24 52 C 22 74, 42 86, 60 74 C 74 64, 70 42, 54 36 Z" />
+
+                <!-- Sculpted Rose Mid Petals -->
+                <path d="M 22 26 C 36 14, 60 18, 64 38 C 68 56, 48 68, 30 62 C 14 56, 12 36, 22 26 Z" fill="#FAF8F3" />
+                <path d="M 28 30 C 40 20, 58 26, 58 42 C 58 56, 40 62, 28 52 C 18 42, 20 36, 28 30 Z" />
+                
+                <!-- Rose Bud Center Swirl -->
+                <path d="M 33 35 C 40 29, 51 33, 50 43 C 49 51, 38 54, 32 47 C 27 41, 29 38, 33 35 Z" fill="#FAF8F3" />
+                <path d="M 37 39 C 41 36, 46 39, 45 43 C 44 47, 38 47, 36 43 C 35 41, 36 40, 37 39 Z" fill="#EFECE4" />
+              </g>
+            </svg>
+
+            <!-- TOP-RIGHT EMBOSSED ROSE CORNER -->
+            <svg viewBox="0 0 200 200" class="w-32 h-32 sm:w-44 sm:h-44 absolute top-1 right-1 pointer-events-none z-0" style="transform: scaleX(-1); filter: drop-shadow(-2px 2.5px 2px rgba(125, 110, 82, 0.45)) drop-shadow(1.5px -1.5px 1px rgba(255, 255, 255, 0.95));">
+              <g fill="#F6F4EE" stroke="#D5CCB8" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M 65 24 Q 125 14 182 22" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
+                <path d="M 78 22 C 95 6, 122 6, 138 18 C 118 28, 95 28, 78 22 Z" />
+                <path d="M 88 20 Q 108 15 128 18" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 118 18 C 138 5, 162 7, 178 18 C 158 27, 136 26, 118 18 Z" />
+                <path d="M 92 24 C 108 32, 126 38, 144 34 C 128 24, 108 22, 92 24 Z" />
+                <path d="M 148 20 C 165 12, 182 14, 194 22 C 178 28, 162 26, 148 20 Z" />
+                <path d="M 24 65 Q 14 125 22 182" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
+                <path d="M 22 78 C 6 95, 6 122, 18 138 C 28 118, 28 95, 22 78 Z" />
+                <path d="M 20 88 Q 15 108 18 128" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 18 118 C 5 138, 7 162, 18 178 C 27 158, 26 136, 18 118 Z" />
+                <path d="M 24 92 C 32 108, 38 126, 34 144 C 24 128, 22 108, 24 92 Z" />
+                <path d="M 20 148 C 12 165, 14 182, 22 194 C 28 178, 26 162, 20 148 Z" />
+                <path d="M 58 58 C 76 62, 92 76, 96 94 C 76 90, 62 76, 58 58 Z" />
+                <path d="M 64 64 L 86 86" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 65 42 C 82 40, 98 48, 104 62 C 86 62, 72 54, 65 42 Z" />
+                <path d="M 42 65 C 40 82, 48 98, 62 104 C 62 86, 54 72, 42 65 Z" />
+                <path d="M 38 14 C 58 6, 78 18, 74 38 C 70 52, 50 54, 38 42 Z" />
+                <path d="M 14 38 C 6 58, 18 78, 38 74 C 52 70, 54 50, 42 38 Z" />
+                <path d="M 52 24 C 74 22, 86 42, 74 60 C 64 74, 42 70, 36 54 Z" />
+                <path d="M 24 52 C 22 74, 42 86, 60 74 C 74 64, 70 42, 54 36 Z" />
+                <path d="M 22 26 C 36 14, 60 18, 64 38 C 68 56, 48 68, 30 62 C 14 56, 12 36, 22 26 Z" fill="#FAF8F3" />
+                <path d="M 28 30 C 40 20, 58 26, 58 42 C 58 56, 40 62, 28 52 C 18 42, 20 36, 28 30 Z" />
+                <path d="M 33 35 C 40 29, 51 33, 50 43 C 49 51, 38 54, 32 47 C 27 41, 29 38, 33 35 Z" fill="#FAF8F3" />
+                <path d="M 37 39 C 41 36, 46 39, 45 43 C 44 47, 38 47, 36 43 C 35 41, 36 40, 37 39 Z" fill="#EFECE4" />
+              </g>
+            </svg>
+
+            <!-- BOTTOM-LEFT EMBOSSED ROSE CORNER -->
+            <svg viewBox="0 0 200 200" class="w-32 h-32 sm:w-44 sm:h-44 absolute bottom-1 left-1 pointer-events-none z-0" style="transform: scaleY(-1); filter: drop-shadow(2px -2.5px 2px rgba(125, 110, 82, 0.45)) drop-shadow(-1.5px 1.5px 1px rgba(255, 255, 255, 0.95));">
+              <g fill="#F6F4EE" stroke="#D5CCB8" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M 65 24 Q 125 14 182 22" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
+                <path d="M 78 22 C 95 6, 122 6, 138 18 C 118 28, 95 28, 78 22 Z" />
+                <path d="M 88 20 Q 108 15 128 18" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 118 18 C 138 5, 162 7, 178 18 C 158 27, 136 26, 118 18 Z" />
+                <path d="M 92 24 C 108 32, 126 38, 144 34 C 128 24, 108 22, 92 24 Z" />
+                <path d="M 148 20 C 165 12, 182 14, 194 22 C 178 28, 162 26, 148 20 Z" />
+                <path d="M 24 65 Q 14 125 22 182" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
+                <path d="M 22 78 C 6 95, 6 122, 18 138 C 28 118, 28 95, 22 78 Z" />
+                <path d="M 20 88 Q 15 108 18 128" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 18 118 C 5 138, 7 162, 18 178 C 27 158, 26 136, 18 118 Z" />
+                <path d="M 24 92 C 32 108, 38 126, 34 144 C 24 128, 22 108, 24 92 Z" />
+                <path d="M 20 148 C 12 165, 14 182, 22 194 C 28 178, 26 162, 20 148 Z" />
+                <path d="M 58 58 C 76 62, 92 76, 96 94 C 76 90, 62 76, 58 58 Z" />
+                <path d="M 64 64 L 86 86" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 65 42 C 82 40, 98 48, 104 62 C 86 62, 72 54, 65 42 Z" />
+                <path d="M 42 65 C 40 82, 48 98, 62 104 C 62 86, 54 72, 42 65 Z" />
+                <path d="M 38 14 C 58 6, 78 18, 74 38 C 70 52, 50 54, 38 42 Z" />
+                <path d="M 14 38 C 6 58, 18 78, 38 74 C 52 70, 54 50, 42 38 Z" />
+                <path d="M 52 24 C 74 22, 86 42, 74 60 C 64 74, 42 70, 36 54 Z" />
+                <path d="M 24 52 C 22 74, 42 86, 60 74 C 74 64, 70 42, 54 36 Z" />
+                <path d="M 22 26 C 36 14, 60 18, 64 38 C 68 56, 48 68, 30 62 C 14 56, 12 36, 22 26 Z" fill="#FAF8F3" />
+                <path d="M 28 30 C 40 20, 58 26, 58 42 C 58 56, 40 62, 28 52 C 18 42, 20 36, 28 30 Z" />
+                <path d="M 33 35 C 40 29, 51 33, 50 43 C 49 51, 38 54, 32 47 C 27 41, 29 38, 33 35 Z" fill="#FAF8F3" />
+                <path d="M 37 39 C 41 36, 46 39, 45 43 C 44 47, 38 47, 36 43 C 35 41, 36 40, 37 39 Z" fill="#EFECE4" />
+              </g>
+            </svg>
+
+            <!-- BOTTOM-RIGHT EMBOSSED ROSE CORNER -->
+            <svg viewBox="0 0 200 200" class="w-32 h-32 sm:w-44 sm:h-44 absolute bottom-1 right-1 pointer-events-none z-0" style="transform: scale(-1, -1); filter: drop-shadow(-2px -2.5px 2px rgba(125, 110, 82, 0.45)) drop-shadow(1.5px 1.5px 1px rgba(255, 255, 255, 0.95));">
+              <g fill="#F6F4EE" stroke="#D5CCB8" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M 65 24 Q 125 14 182 22" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
+                <path d="M 78 22 C 95 6, 122 6, 138 18 C 118 28, 95 28, 78 22 Z" />
+                <path d="M 88 20 Q 108 15 128 18" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 118 18 C 138 5, 162 7, 178 18 C 158 27, 136 26, 118 18 Z" />
+                <path d="M 92 24 C 108 32, 126 38, 144 34 C 128 24, 108 22, 92 24 Z" />
+                <path d="M 148 20 C 165 12, 182 14, 194 22 C 178 28, 162 26, 148 20 Z" />
+                <path d="M 24 65 Q 14 125 22 182" fill="none" stroke="#C8BEA8" stroke-width="1.5" />
+                <path d="M 22 78 C 6 95, 6 122, 18 138 C 28 118, 28 95, 22 78 Z" />
+                <path d="M 20 88 Q 15 108 18 128" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 18 118 C 5 138, 7 162, 18 178 C 27 158, 26 136, 18 118 Z" />
+                <path d="M 24 92 C 32 108, 38 126, 34 144 C 24 128, 22 108, 24 92 Z" />
+                <path d="M 20 148 C 12 165, 14 182, 22 194 C 28 178, 26 162, 20 148 Z" />
+                <path d="M 58 58 C 76 62, 92 76, 96 94 C 76 90, 62 76, 58 58 Z" />
+                <path d="M 64 64 L 86 86" fill="none" stroke="#DFD7C5" stroke-width="0.8" />
+                <path d="M 65 42 C 82 40, 98 48, 104 62 C 86 62, 72 54, 65 42 Z" />
+                <path d="M 42 65 C 40 82, 48 98, 62 104 C 62 86, 54 72, 42 65 Z" />
+                <path d="M 38 14 C 58 6, 78 18, 74 38 C 70 52, 50 54, 38 42 Z" />
+                <path d="M 14 38 C 6 58, 18 78, 38 74 C 52 70, 54 50, 42 38 Z" />
+                <path d="M 52 24 C 74 22, 86 42, 74 60 C 64 74, 42 70, 36 54 Z" />
+                <path d="M 24 52 C 22 74, 42 86, 60 74 C 74 64, 70 42, 54 36 Z" />
+                <path d="M 22 26 C 36 14, 60 18, 64 38 C 68 56, 48 68, 30 62 C 14 56, 12 36, 22 26 Z" fill="#FAF8F3" />
+                <path d="M 28 30 C 40 20, 58 26, 58 42 C 58 56, 40 62, 28 52 C 18 42, 20 36, 28 30 Z" />
+                <path d="M 33 35 C 40 29, 51 33, 50 43 C 49 51, 38 54, 32 47 C 27 41, 29 38, 33 35 Z" fill="#FAF8F3" />
+                <path d="M 37 39 C 41 36, 46 39, 45 43 C 44 47, 38 47, 36 43 C 35 41, 36 40, 37 39 Z" fill="#EFECE4" />
+              </g>
+            </svg>
+
+            <!-- Card Content -->
+            <div class="relative z-10">
+              <p class="font-cinzel text-[11px] sm:text-xs uppercase tracking-[0.22em] text-olive font-semibold mb-3">
+                Together With Their Families
+              </p>
+
+              <!-- Host parents names line -->
+              <p class="font-sans text-xs sm:text-[14px] font-medium tracking-wide text-olive mb-1.5">
+                Mr. &amp; Mrs. Bichotte <span class="font-script text-rose text-lg sm:text-[22px] px-1 inline-block transform translate-y-0.5">&amp;</span> Mr. &amp; Mrs. Mahaur
+              </p>
+
+              <p class="text-[10px] sm:text-[11px] uppercase tracking-[0.12em] text-olive font-medium mb-5 leading-normal">
+                Joyfully invite you to celebrate the<br class="sm:hidden"> wedding celebration of their children
+              </p>
+
+              <div class="my-5 space-y-1">
+                <p class="font-script text-4xl sm:text-5xl text-olive leading-tight">
+                  Megan Bichotte
+                </p>
+                <p class="font-script text-2xl sm:text-3xl text-rose leading-none py-1">
+                  &amp;
+                </p>
+                <p class="font-script text-4xl sm:text-5xl text-olive leading-tight">
+                  Ashish Mahaur
+                </p>
+              </div>
+
+              <div class="mt-5 space-y-1.5 font-cinzel text-[10px] sm:text-xs uppercase tracking-[0.18em] text-olive font-medium leading-relaxed">
+                <p>Request Your Presence At The Ceremony</p>
+                <p>&amp; Celebration Of Their Marriage</p>
+              </div>
+
+              <!-- Editorial Date Lockup with Vertical Dividers -->
+              <div class="my-7 flex items-center justify-center gap-3 sm:gap-5 text-olive">
+                <span class="font-cinzel text-xs sm:text-sm uppercase tracking-[0.22em] font-semibold w-24 sm:w-28 text-right">
+                  January
+                </span>
+                <div class="border-l border-r border-olive/60 px-3.5 sm:px-5 py-0.5 flex flex-col items-center justify-center">
+                  <span class="font-serif text-3xl sm:text-4xl leading-none tracking-wider font-normal">29</span>
+                </div>
+                <span class="font-cinzel text-xs sm:text-sm uppercase tracking-[0.22em] font-semibold w-24 sm:w-28 text-left">
+                  2027
+                </span>
+              </div>
+
+              <!-- Formal Spelled-Out Date & Time -->
+              <div class="space-y-1.5 font-cinzel text-[9px] sm:text-[11px] uppercase tracking-[0.18em] text-olive font-medium">
+                <p>Friday, January Twenty-Ninth</p>
+                <p>Two Thousand &amp; Twenty-Seven</p>
+                <p class="pt-1">At Four In The Afternoon</p>
+              </div>
+
+              <!-- Venue Block -->
+              <div class="mt-6 space-y-1 font-cinzel text-xs sm:text-sm uppercase tracking-[0.2em] text-olive font-bold">
+                <p>Galuppi's Restaurant &amp; Patio</p>
+                <p class="text-[10px] sm:text-xs font-semibold tracking-[0.22em]">Pompano Beach, Florida</p>
+              </div>
+
+              <!-- Reception Callout -->
+              <p class="mt-7 font-serif text-sm sm:text-base uppercase tracking-[0.22em] text-olive font-semibold">
+                Reception To Follow
+              </p>
+
+              <p class="mt-6 font-cinzel text-[9px] uppercase tracking-[0.2em] text-taupe font-semibold">
+                (Click card to close envelope)
+              </p>
+            </div>
+
           </div>
 
-          <!-- Venue Block -->
-          <div class="mt-6 space-y-1 font-cinzel text-xs sm:text-sm uppercase tracking-[0.2em] text-olive font-bold">
-            <p>Galuppi's Restaurant &amp; Patio</p>
-            <p class="text-[10px] sm:text-xs font-semibold tracking-[0.22em]">Pompano Beach, Florida</p>
+          <div class="relative z-20 pointer-events-none h-[290px] sm:h-[330px] -mt-[180px]">
+            <svg viewBox="0 0 500 320" preserveAspectRatio="none" class="w-full h-full rounded-xl overflow-hidden drop-shadow-sm">
+              <polygon points="0,0 255,165 0,320" fill="#E5D3C5" />
+              <polygon points="500,0 245,165 500,320" fill="#DECAB9" />
+              <polygon points="0,320 250,150 500,320" fill="#EAD9CC" stroke="#9F906D" stroke-width="1" stroke-opacity="0.25" />
+            </svg>
           </div>
 
-          <!-- Reception Callout -->
-          <p class="mt-7 font-serif text-sm sm:text-base uppercase tracking-[0.22em] text-olive font-semibold">
-            Reception To Follow
-          </p>
-
-          <p class="mt-6 font-cinzel text-[9px] uppercase tracking-[0.2em] text-taupe font-semibold">
-            (Click card to close envelope)
-          </p>
         </div>
-
       </div>
+    </section>
 
-      <div class="relative z-20 pointer-events-none h-[290px] sm:h-[330px] -mt-[180px]">
-        <svg viewBox="0 0 500 320" preserveAspectRatio="none" class="w-full h-full rounded-xl overflow-hidden drop-shadow-sm">
-          <polygon points="0,0 255,165 0,320" fill="#E5D3C5" />
-          <polygon points="500,0 245,165 500,320" fill="#DECAB9" />
-          <polygon points="0,320 250,150 500,320" fill="#EAD9CC" stroke="#9F906D" stroke-width="1" stroke-opacity="0.25" />
-        </svg>
-      </div>
-
-    </div>
-  </div>
-</section>
+    <div class="text-center text-sage/60 text-xl select-none pt-4 pb-4">✦</div>
 
     <!-- SECTION: WEDDING SCHEDULE TIMELINE (COMPACT & CRISP ICONS) -->
     <section id="schedule" class="py-12 fade-section px-4">
-      <div class="max-w-2xl mx-auto">
+      <div class="max-w-4xl mx-auto">
         <div class="text-center mb-10">
           <h2 class="font-script text-5xl sm:text-6xl text-olive">Wedding Schedule</h2>
           <p class="font-serif text-sm uppercase tracking-[0.2em] text-olive font-medium mt-1">
@@ -593,12 +606,12 @@
 
           <div class="space-y-6 sm:space-y-4">
 
-            <!-- 1. 4:30 - 5:15 PM: CEREMONY -->
+            <!-- 1. 4:00 - 5:15 PM: CEREMONY -->
             <div class="relative flex sm:grid sm:grid-cols-12 items-center gap-4 sm:gap-6">
               <div class="hidden sm:block sm:col-span-5 text-right pr-2">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Wedding Ceremony</p>
-                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">4:30 PM – 5:15 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Exchanging vows on the lakeside lawn</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">4:00 PM – 5:15 PM</p>
+                <p class="text-xs sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Exchanging vows on the lakeside lawn</p>
               </div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
@@ -612,8 +625,8 @@
               </div>
               <div class="sm:col-span-5 text-left sm:hidden">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Wedding Ceremony</p>
-                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">4:30 PM – 5:15 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Exchanging vows on the lakeside lawn</p>
+                <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">4:00 PM – 5:15 PM</p>
+                <p class="text-[11px] sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Exchanging vows on the lakeside lawn</p>
               </div>
             </div>
 
@@ -632,7 +645,7 @@
               <div class="sm:col-span-5 text-left pl-0 sm:pl-2">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Cocktail Hour &amp; Photos</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">5:15 PM – 6:30 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Drinks, hors d'oeuvres &amp; capturing memories</p>
+                <p class="text-[11px] sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Drinks, hors d'oeuvres &amp; capturing memories</p>
               </div>
             </div>
 
@@ -641,7 +654,7 @@
               <div class="hidden sm:block sm:col-span-5 text-right pr-2">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Entrance &amp; First Dance</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">6:30 PM – 6:45 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Welcoming the newlyweds to the floor</p>
+                <p class="text-xs sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Welcoming the newlyweds to the floor</p>
               </div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
@@ -656,7 +669,7 @@
               <div class="sm:col-span-5 text-left sm:hidden">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Entrance &amp; First Dance</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">6:30 PM – 6:45 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Welcoming the newlyweds to the floor</p>
+                <p class="text-[11px] sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Welcoming the newlyweds to the floor</p>
               </div>
             </div>
 
@@ -675,7 +688,7 @@
               <div class="sm:col-span-5 text-left pl-0 sm:pl-2">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Family Dances</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">6:45 PM – 7:00 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Father &amp; Bride and Mother &amp; Groom dances</p>
+                <p class="text-[11px] sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Father &amp; Bride &amp; Mother &amp; Groom dances</p>
               </div>
             </div>
 
@@ -684,7 +697,7 @@
               <div class="hidden sm:block sm:col-span-5 text-right pr-2">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Dinner Service</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">7:00 PM – 7:45 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">A celebratory meal shared with loved ones</p>
+                <p class="text-xs sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">A celebratory meal shared with loved ones</p>
               </div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
@@ -699,7 +712,7 @@
               <div class="sm:col-span-5 text-left sm:hidden">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Dinner Service</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">7:00 PM – 7:45 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">A celebratory meal shared with loved ones</p>
+                <p class="text-[11px] sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">A celebratory meal shared with loved ones</p>
               </div>
             </div>
 
@@ -720,16 +733,16 @@
               <div class="sm:col-span-5 text-left pl-0 sm:pl-2">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Open Floor Speeches</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">7:45 PM – 8:00 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Family and friends share a few words</p>
+                <p class="text-[11px] sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Family &amp; friends share a few words</p>
               </div>
             </div>
 
             <!-- 7. 8:00 - 8:25 PM: CAKE & DANCING -->
             <div class="relative flex sm:grid sm:grid-cols-12 items-center gap-4 sm:gap-6">
               <div class="hidden sm:block sm:col-span-5 text-right pr-2">
-                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Cake and Dancing</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Cake &amp; Dancing</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">8:00 PM – 8:25 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Cake cutting &amp; open dancing</p>
+                <p class="text-xs sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Cake cutting &amp; open dancing</p>
               </div>
               <div class="sm:col-span-2 flex justify-center z-10 shrink-0">
                 <div class="w-14 h-14 rounded-full bg-paper border border-taupe/40 shadow-sm flex items-center justify-center text-olive">
@@ -744,9 +757,9 @@
                 </div>
               </div>
               <div class="sm:col-span-5 text-left sm:hidden">
-                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Cake and Dancing</p>
+                <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Cake &amp; Dancing</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">8:00 PM – 8:25 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Cake cutting &amp; open dancing</p>
+                <p class="text-[11px] sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Cake cutting &amp; open dancing</p>
               </div>
             </div>
 
@@ -761,7 +774,7 @@
               <div class="mt-4 sm:text-center text-left sm:ml-0 ml-[4px]">
                 <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold">Final Send-Off &amp; Farewell</p>
                 <p class="font-cinzel text-xs tracking-[0.14em] text-rose font-bold mt-0.5">8:25 PM – 8:30 PM</p>
-                <p class="text-sm text-olive font-medium mt-1">Wishing the newlyweds a joyful departure</p>
+                <p class="text-[11px] sm:text-sm text-olive font-medium mt-1 whitespace-nowrap">Wishing the newlyweds a joyful departure</p>
               </div>
             </div>
 
@@ -801,7 +814,7 @@
 
             <div class="pt-2">
               <p class="text-sm text-olive font-medium leading-relaxed">
-                Located just off N Federal Highway (US-1) bordering the Pompano Beach Golf Course and waterways, complimentary parking is readily available directly in front of the venue. Once you arrive, look for our welcome wedding sign near the main entrance to guide you out to the lakeside garden lawn where our ceremony will take place.
+                Located just off N Federal Highway (US-1) bordering the Pompano Beach Golf Course &amp; waterways, complimentary parking is readily available directly in front of the venue. Once you arrive, look for our welcome wedding sign near the main entrance to guide you out to the lakeside garden lawn where our ceremony will take place.
               </p>
             </div>
 
@@ -891,7 +904,7 @@
 
       <h2 class="font-script text-5xl sm:text-6xl text-olive">Gift Registry</h2>
       <p class="text-sm text-olive font-medium mt-3 max-w-lg mx-auto leading-relaxed">
-        Your love and company on our wedding day is the greatest gift of all. Should you wish to honor us with a gift, we have registered for our favorite home items and experiences on Zola.
+        Your love &amp; company on our wedding day is the greatest gift of all. Should you wish to honor us with a gift, we have registered for our favorite home items &amp; experiences on Zola.
       </p>
 
       <div class="mt-8 p-8 sm:p-12 border border-taupe/30 bg-paper rounded-3xl shadow-sm text-center">
@@ -899,7 +912,7 @@
           Megan &amp; Ashish's Registry
         </p>
         <p class="text-sm text-olive font-medium leading-relaxed max-w-md mx-auto mb-8">
-          Explore our complete wishlist, household favorites, and honeymoon funds directly through our Zola registry portal.
+          Explore our complete wishlist, household favorites, &amp; honeymoon funds directly through our Zola registry portal.
         </p>
 
         <a 
@@ -949,7 +962,7 @@
           Find Your Invitation
         </p>
         <p class="text-sm text-olive font-medium leading-relaxed max-w-md mx-auto mb-8">
-          Enter your name on our guest portal to locate your party and confirm your attendance. Responding in advance helps us plan thoughtfully and minimize waste.
+          Enter your name on our guest portal to locate your party &amp; confirm your attendance. Responding in advance helps us plan thoughtfully &amp; minimize waste.
         </p>
         
         <a 
@@ -992,15 +1005,24 @@
             What time should guests arrive at the venue?
           </p>
           <p class="text-sm text-rose font-medium leading-relaxed">
-            Guests are highly encouraged to arrive at the venue by 4:00 PM to allow time for parking, finding a seat, and settling in.
+            Guests are highly encouraged to arrive at the venue by 4:00 PM to allow time for parking, finding a seat, &amp; settling in.
           </p>
         </div>
         <div class="space-y-2">
           <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
-            Are plus-ones and children permitted to attend?
+            Are plus-ones &amp; children permitted to attend?
           </p>
           <p class="text-sm text-rose font-medium leading-relaxed">
             If your invitation includes guest(s), their names will be listed on your invitation. Unfortunately, due to venue capacity, we are only able to accommodate those listed on the invitation.
+          </p>
+        </div>
+        <!-- NEW FAQ -->
+        <div class="space-y-2">
+          <p class="font-serif text-sm uppercase tracking-[0.15em] text-olive font-bold leading-relaxed">
+            Can we bring physical gifts or cards to the wedding?
+          </p>
+          <p class="text-sm text-rose font-medium leading-relaxed">
+            We kindly request no physical gifts or cards at the venue. Because we are traveling, we ask that all gifts be sent directly through our Zola registry. Any items selected there will be shipped directly to our home.
           </p>
         </div>
       </div>
@@ -1100,6 +1122,7 @@
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+    
     // 5. Disable Right-Click Saving & Dragging on All Photos
     document.addEventListener('contextmenu', (e) => {
       if (e.target.tagName === 'IMG') {
